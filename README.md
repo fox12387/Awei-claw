@@ -181,7 +181,6 @@ dotnet run
 
 ## 📸 截图预览
 
-> 📷 **截图占位符** - 请在下方添加你的应用截图
 
 ### 主界面
 
@@ -256,6 +255,12 @@ dotnet run
 查看 [LICENSE](LICENSE) 文件了解更多信息。
 
 ---
+## 📥 下载安装
+
+[![Download AweiClaw](https://img.shields.io/github/v/release/fox12387/Awei-claw?label=Download%20AweiClaw)](https://github.com/fox12387/Awei-claw/releases/latest)
+
+直接下载：[AweiClaw.exe](https://github.com/fox12387/Awei-claw/releases/download/v1.0.0/AweiClaw.exe)
+
 
 ## 👨‍💻 作者信息
 
