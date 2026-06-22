@@ -1,0 +1,100 @@
+include|#include <iostream>
+include s|#include <string>
+include v|#include <vector>
+include m|#include <map>
+include a|#include <algorithm>
+include f|#include <fstream>
+include se|#include <set>
+include q|#include <queue>
+include st|#include <stack>
+include me|#include <memory>
+include ch|#include <chrono>
+include t|#include <thread>
+using|using namespace std;
+main|int main() {\n    \n    return 0;\n}
+cpp bp|#include <iostream>\nusing namespace std;\n\nint main() {\n    \n    return 0;\n}
+cout|cout << "text" << endl;
+cout v|cout << "Value: " << var << endl;
+cin|cin >> var;
+getline|getline(cin, str);
+for i|for (int i = 0; i < n; i++) {\n    \n}
+for a|for (auto& item : container) {\n    \n}
+for c|for (const auto& item : container) {\n    \n}
+while c|while (condition) {\n    \n}
+do|do {\n    \n} while (condition);
+if|if (condition) {\n    \n}
+ife|if (condition) {\n    \n} else {\n    \n}
+switch|switch (value) {\n    case 1:\n        break;\n    default:\n        break;\n}
+vector|vector<int> v;
+vector i|vector<int> v = {1, 2, 3};
+vector s|vector<int> v(n, 0);
+vector p|v.push_back(item);
+vector pb|v.pop_back();
+vector e|v.empty()
+vector sz|v.size()
+vector cl|v.clear();
+vector er|v.erase(v.begin() + i);
+map|map<string, int> m;
+map i|m["key"] = value;
+map f|if (m.find("key") != m.end()) { }
+map it|for (auto& [k, v] : m) { }
+set|set<int> s;
+set i|s.insert(value);
+set f|if (s.count(value)) { }
+string|string s = "hello";
+string l|s.length()
+string sub|s.substr(start, len);
+string f|s.find("sub");
+string ap|s.append("more");
+string c|s.compare(other);
+stoi|stoi(str);
+to_str|to_string(value);
+pair|pair<int, string> p = {1, "hello"};
+tuple|tuple<int, string, double> t = {1, "hi", 3.14};
+auto|auto x = value;
+const|const int x = 10;
+constexpr|constexpr int x = 10;
+ref|int& ref = var;
+ptr|int* ptr = &var;
+smart u|unique_ptr<Type> p = make_unique<Type>();
+smart s|shared_ptr<Type> p = make_shared<Type>();
+lambda|auto fn = [](int x) { return x * 2; };
+lambda c|auto fn = [&](int x) { return x * mul; };
+enum|enum class Color { Red, Green, Blue };
+struct|struct Name {\n    int field;\n    string name;\n};
+class|class Name {\npublic:\n    Name() {}\n    void method() {}\nprivate:\n    int field_;\n};
+class v|class Base {\npublic:\n    virtual void method() {}\n    virtual ~Base() = default;\n};
+class o|class Derived : public Base {\npublic:\n    void method() override {}\n};
+template f|template<typename T>\nT max(T a, T b) {\n    return a > b ? a : b;\n}
+template c|template<typename T>\nclass Container {\n    T data_;\npublic:\n    Container(T data) : data_(data) {}\n};
+try|try {\n    \n} catch (const exception& e) {\n    cerr << e.what() << endl;\n}
+sort|sort(v.begin(), v.end());
+sort d|sort(v.begin(), v.end(), greater<int>());
+sort l|sort(v.begin(), v.end(), [](int a, int b) { return a < b; });
+find|auto it = find(v.begin(), v.end(), value);\nif (it != v.end()) { }
+binary s|binary_search(v.begin(), v.end(), value);
+lower|auto it = lower_bound(v.begin(), v.end(), value);
+upper|auto it = upper_bound(v.begin(), v.end(), value);
+reverse|reverse(v.begin(), v.end());
+unique|auto it = unique(v.begin(), v.end());\nv.erase(it, v.end());
+count|count(v.begin(), v.end(), value);
+max e|*max_element(v.begin(), v.end());
+min e|*min_element(v.begin(), v.end());
+accum|accumulate(v.begin(), v.end(), 0);
+fill|fill(v.begin(), v.end(), value);
+copy|copy(src.begin(), src.end(), back_inserter(dst));
+file r|ifstream file("name.txt");\nstring line;\nwhile (getline(file, line)) {\n    \n}
+file w|ofstream file("name.txt");\nfile << "content" << endl;
+random|srand(time(0));\nint r = rand() % 100;
+sleep|this_thread::sleep_for(chrono::milliseconds(100));
+time|auto start = chrono::high_resolution_clock::now();\n// code\nauto end = chrono::high_resolution_clock::now();\nauto dur = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+assert|assert(condition);
+static|static int counter = 0;
+extern|extern int global;
+inline|inline int add(int a, int b) { return a + b; }
+nullptr|Type* ptr = nullptr;
+operator|bool operator<(const Name& other) const {\n    return field < other.field;\n}
+memset|memset(arr, 0, sizeof(arr));
+swap|swap(a, b);
+move|auto moved = move(obj);
+emplace|v.emplace_back(args...);

@@ -1,0 +1,117 @@
+fn|function name(params) {\n  \n}
+af|(params) => {\n  \n}
+af s|const name = (params) => {\n  \n};
+cl|console.log();
+ce|console.error();
+ct|console.table();
+var|const name = value;
+let|let name = value;
+async|async function name() {\n  try {\n    const result = await promise;\n    return result;\n  } catch (err) {\n    console.error(err);\n  }\n}
+await|const data = await fetchData();
+fetch|fetch(url)\n  .then(res => res.json())\n  .then(data => console.log(data))\n  .catch(err => console.error(err));
+fetch a|async function fetchData() {\n  try {\n    const res = await fetch(url);\n    if (!res.ok) throw new Error(`HTTP ${res.status}`);\n    return await res.json();\n  } catch (err) {\n    console.error('Fetch error:', err);\n    return null;\n  }\n}
+promise|new Promise((resolve, reject) => {\n  if (ok) resolve(data);\n  else reject(new Error('Failed'));\n})
+if|if (condition) {\n  \n}
+ife|if (condition) {\n  \n} else {\n  \n}
+for|for (let i = 0; i < array.length; i++) {\n  \n}
+for of|for (const item of iterable) {\n  \n}
+for in|for (const key in object) {\n  if (object.hasOwnProperty(key)) {\n    \n  }\n}
+foreach|array.forEach((item, index) => {\n  \n});
+map|const result = array.map((item) => {\n  return item;\n});
+filter|const filtered = array.filter((item) => {\n  return condition;\n});
+reduce|const total = array.reduce((acc, item) => {\n  return acc + item;\n}, 0);
+find|const found = array.find(item => item.id === id);
+some|const hasMatch = array.some(item => condition);
+every|const allMatch = array.every(item => condition);
+sort|array.sort((a, b) => a - b);
+sort rev|array.sort((a, b) => b - a);
+slice|array.slice(start, end);
+splice|array.splice(index, deleteCount, ...items);
+str t|typeof value === 'string'
+num t|typeof value === 'number'
+arr t|Array.isArray(value)
+obj t|typeof value === 'object' && value !== null
+bool t|typeof value === 'boolean'
+func t|typeof value === 'function'
+undef|typeof value === 'undefined'
+destruct o|const { prop1, prop2 } = obj;
+destruct a|const [first, second] = array;
+spread|...items
+rest|...args
+templ|`Hello, ${name}!`
+class|class Name {\n  constructor() {\n    \n  }\n  method() {\n    \n  }\n}
+extends|class Child extends Parent {\n  constructor() {\n    super();\n    \n  }\n}
+get|get prop() { return this._prop; }
+set|set prop(value) { this._prop = value; }
+import|import { name } from 'module';
+import d|import Name from 'module';
+import a|import * as Name from 'module';
+export|export { name };
+export d|export default name;
+export c|export const name = value;
+try|try {\n  \n} catch (err) {\n  console.error(err);\n}
+try f|try {\n  \n} catch (err) {\n  console.error(err);\n} finally {\n  \n}
+throw|throw new Error('message');
+switch|switch (key) {\n  case value:\n    break;\n  default:\n    break;\n}
+ternary|condition ? trueValue : falseValue
+nullish|value ?? defaultValue
+opt|obj?.prop?.subprop
+&&|condition && action()
+\|\||value \|\| defaultValue
+debounce|function debounce(fn, delay = 300) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => fn(...args), delay);\n  };\n}
+throttle|function throttle(fn, limit = 300) {\n  let inThrottle;\n  return (...args) => {\n    if (!inThrottle) {\n      fn(...args);\n      inThrottle = true;\n      setTimeout(() => inThrottle = false, limit);\n    }\n  };\n}
+event l|element.addEventListener('click', (e) => {\n  e.preventDefault();\n  \n});
+dom|const el = document.querySelector('.selector');
+dom a|const els = document.querySelectorAll('.selector');
+dom id|const el = document.getElementById('id');
+dom c|const el = document.createElement('div');
+dom t|element.textContent = '';
+dom h|element.innerHTML = ``;
+dom ap|parent.appendChild(child);
+dom rem|element.remove();
+dom cl|element.classList.add('active');
+dom clr|element.classList.remove('active');
+dom clt|element.classList.toggle('active');
+dom st|element.style.cssText = '';
+timeout|setTimeout(() => {\n  \n}, delay);
+interval|setInterval(() => {\n  \n}, delay);
+storage g|localStorage.getItem('key')
+storage s|localStorage.setItem('key', JSON.stringify(value));
+storage r|localStorage.removeItem('key');
+json p|JSON.parse(string);
+json s|JSON.stringify(object, null, 2);
+regex|/pattern/flags
+date|new Date().toLocaleDateString('zh-CN')
+rand|Math.floor(Math.random() * (max - min + 1)) + min
+uuid|crypto.randomUUID()
+copy|navigator.clipboard.writeText(text);
+iife|(function() {\n  \n})();
+use s|'use strict';
+proto|Object.create(proto);
+assign|Object.assign(target, source);
+keys|Object.keys(obj);
+values|Object.values(obj);
+entries|Object.entries(obj);
+freeze|Object.freeze(obj);
+seal|Object.seal(obj);
+string f|String(value);
+number f|Number(value);
+parseInt|parseInt(str, 10);
+parseFloat|parseFloat(str);
+isNaN|isNaN(value);
+trims|str.trim();
+split|str.split('delimiter');
+join|array.join(', ');
+replace|str.replace(/pattern/g, 'replacement');
+match|str.match(/pattern/);
+test|/pattern/.test(str);
+tolower|str.toLowerCase();
+toupper|str.toUpperCase();
+includes|str.includes('substring')
+startswith|str.startsWith('prefix')
+endswith|str.endsWith('suffix')
+padstart|str.padStart(length, '0')
+repeat|str.repeat(count);
+charat|str.charAt(0);
+charcode|str.charCodeAt(0);
+substr|str.substring(start, end);

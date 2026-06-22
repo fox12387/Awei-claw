@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "python",
+    "name": "Python 专家",
+    "name_en": "Python",
+    "category": "编程开发",
+    "file": "expert_python.txt",
+    "index": 0
+  },
+  {
+    "id": "c",
+    "name": "C语言专家",
+    "name_en": "C",
+    "category": "编程开发",
+    "file": "expert_c.txt",
+    "index": 1
+  },
+  {
+    "id": "cpp",
+    "name": "C++专家",
+    "name_en": "C++",
+    "category": "编程开发",
+    "file": "expert_cpp.txt",
+    "index": 2
+  },
+  {
+    "id": "csharp",
+    "name": "C#专家",
+    "name_en": "C#",
+    "category": "编程开发",
+    "file": "expert_csharp.txt",
+    "index": 3
+  },
+  {
+    "id": "html",
+    "name": "HTML专家",
+    "name_en": "HTML",
+    "category": "编程开发",
+    "file": "expert_html.txt",
+    "index": 4
+  },
+  {
+    "id": "css",
+    "name": "CSS专家",
+    "name_en": "CSS",
+    "category": "编程开发",
+    "file": "expert_css.txt",
+    "index": 5
+  },
+  {
+    "id": "js",
+    "name": "JavaScript专家",
+    "name_en": "JavaScript",
+    "category": "编程开发",
+    "file": "expert_js.txt",
+    "index": 6
+  },
+  {
+    "id": "java",
+    "name": "Java专家",
+    "name_en": "Java",
+    "category": "编程开发",
+    "file": "expert_java.txt",
+    "index": 7
+  },
+  {
+    "id": "jsx",
+    "name": "JSX专家",
+    "name_en": "JSX",
+    "category": "编程开发",
+    "file": "expert_jsx.txt",
+    "index": 8
+  },
+  {
+    "id": "go",
+    "name": "Go专家",
+    "name_en": "Go",
+    "category": "编程开发",
+    "file": "expert_go.txt",
+    "index": 9
+  },
+  {
+    "id": "rust",
+    "name": "Rust专家",
+    "name_en": "Rust",
+    "category": "编程开发",
+    "file": "expert_rust.txt",
+    "index": 10
+  },
+  {
+    "id": "swift",
+    "name": "Swift专家",
+    "name_en": "Swift",
+    "category": "编程开发",
+    "file": "expert_swift.txt",
+    "index": 11
+  },
+  {
+    "id": "kotlin",
+    "name": "Kotlin专家",
+    "name_en": "Kotlin",
+    "category": "编程开发",
+    "file": "expert_kotlin.txt",
+    "index": 12
+  },
+  {
+    "id": "php",
+    "name": "PHP专家",
+    "name_en": "PHP",
+    "category": "编程开发",
+    "file": "expert_php.txt",
+    "index": 13
+  },
+  {
+    "id": "ruby",
+    "name": "Ruby专家",
+    "name_en": "Ruby",
+    "category": "编程开发",
+    "file": "expert_ruby.txt",
+    "index": 14
+  },
+  {
+    "id": "ts",
+    "name": "TypeScript专家",
+    "name_en": "TypeScript",
+    "category": "编程开发",
+    "file": "expert_ts.txt",
+    "index": 15
+  },
+  {
+    "id": "scala",
+    "name": "Scala专家",
+    "name_en": "Scala",
+    "category": "编程开发",
+    "file": "expert_scala.txt",
+    "index": 16
+  },
+  {
+    "id": "dart",
+    "name": "Dart专家",
+    "name_en": "Dart",
+    "category": "编程开发",
+    "file": "expert_dart.txt",
+    "index": 17
+  },
+  {
+    "id": "lua",
+    "name": "Lua专家",
+    "name_en": "Lua",
+    "category": "编程开发",
+    "file": "expert_lua.txt",
+    "index": 18
+  },
+  {
+    "id": "perl",
+    "name": "Perl专家",
+    "name_en": "Perl",
+    "category": "编程开发",
+    "file": "expert_perl.txt",
+    "index": 19
+  },
+  {
+    "id": "r",
+    "name": "R语言专家",
+    "name_en": "R语言",
+    "category": "编程开发",
+    "file": "expert_r.txt",
+    "index": 20
+  },
+  {
+    "id": "matlab",
+    "name": "MATLAB专家",
+    "name_en": "MATLAB",
+    "category": "编程开发",
+    "file": "expert_matlab.txt",
+    "index": 21
+  },
+  {
+    "id": "sql",
+    "name": "SQL专家",
+    "name_en": "SQL",
+    "category": "编程开发",
+    "file": "expert_sql.txt",
+    "index": 22
+  },
+  {
+    "id": "nosql",
+    "name": "NoSQL专家",
+    "name_en": "NoSQL",
+    "category": "编程开发",
+    "file": "expert_nosql.txt",
+    "index": 23
+  },
+  {
+    "id": "graphql",
+    "name": "GraphQL专家",
+    "name_en": "GraphQL",
+    "category": "编程开发",
+    "file": "expert_graphql.txt",
+    "index": 24
+  },
+  {
+    "id": "docker",
+    "name": "Docker专家",
+    "name_en": "Docker",
+    "category": "编程开发",
+    "file": "expert_docker.txt",
+    "index": 25
+  },
+  {
+    "id": "k8s",
+    "name": "Kubernetes专家",
+    "name_en": "Kubernetes",
+    "category": "编程开发",
+    "file": "expert_k8s.txt",
+    "index": 26
+  },
+  {
+    "id": "linux",
+    "name": "Linux系统专家",
+    "name_en": "Linux系统",
+    "category": "编程开发",
+    "file": "expert_linux.txt",
+    "index": 27
+  },
+  {
+    "id": "network",
+    "name": "网络协议专家",
+    "name_en": "网络协议",
+    "category": "编程开发",
+    "file": "expert_network.txt",
+    "index": 28
+  },
+  {
+    "id": "security",
+    "name": "安全专家",
+    "name_en": "安全",
+    "category": "编程开发",
+    "file": "expert_security.txt",
+    "index": 29
+  },
+  {
+    "id": "blockchain",
+    "name": "区块链专家",
+    "name_en": "区块链",
+    "category": "编程开发",
+    "file": "expert_blockchain.txt",
+    "index": 30
+  },
+  {
+    "id": "aiml",
+    "name": "AI/ML算法专家",
+    "name_en": "AI/ML算法",
+    "category": "编程开发",
+    "file": "expert_aiml.txt",
+    "index": 31
+  },
+  {
+    "id": "dl",
+    "name": "深度学习框架专家",
+    "name_en": "深度学习框架",
+    "category": "编程开发",
+    "file": "expert_dl.txt",
+    "index": 32
+  },
+  {
+    "id": "dataeng",
+    "name": "数据工程专家",
+    "name_en": "数据工程",
+    "category": "编程开发",
+    "file": "expert_dataeng.txt",
+    "index": 33
+  },
+  {
+    "id": "frontend",
+    "name": "前端架构专家",
+    "name_en": "前端架构",
+    "category": "编程开发",
+    "file": "expert_frontend.txt",
+    "index": 34
+  },
+  {
+    "id": "backend",
+    "name": "后端架构专家",
+    "name_en": "后端架构",
+    "category": "编程开发",
+    "file": "expert_backend.txt",
+    "index": 35
+  },
+  {
+    "id": "mobile",
+    "name": "移动端专家",
+    "name_en": "移动端",
+    "category": "编程开发",
+    "file": "expert_mobile.txt",
+    "index": 36
+  },
+  {
+    "id": "gamedev",
+    "name": "游戏开发专家",
+    "name_en": "游戏开发",
+    "category": "编程开发",
+    "file": "expert_gamedev.txt",
+    "index": 37
+  },
+  {
+    "id": "embedded",
+    "name": "嵌入式专家",
+    "name_en": "嵌入式",
+    "category": "编程开发",
+    "file": "expert_embedded.txt",
+    "index": 38
+  },
+  {
+    "id": "quantum",
+    "name": "量子计算专家",
+    "name_en": "量子计算",
+    "category": "编程开发",
+    "file": "expert_quantum.txt",
+    "index": 39
+  },
+  {
+    "id": "compiler",
+    "name": "编译原理专家",
+    "name_en": "编译原理",
+    "category": "编程开发",
+    "file": "expert_compiler.txt",
+    "index": 40
+  },
+  {
+    "id": "os",
+    "name": "操作系统专家",
+    "name_en": "操作系统",
+    "category": "编程开发",
+    "file": "expert_os.txt",
+    "index": 41
+  },
+  {
+    "id": "dbkernel",
+    "name": "数据库内核专家",
+    "name_en": "数据库内核",
+    "category": "编程开发",
+    "file": "expert_dbkernel.txt",
+    "index": 42
+  },
+  {
+    "id": "wasm",
+    "name": "WebAssembly专家",
+    "name_en": "WebAssembly",
+    "category": "编程开发",
+    "file": "expert_wasm.txt",
+    "index": 43
+  },
+  {
+    "id": "devops",
+    "name": "DevOps专家",
+    "name_en": "DevOps",
+    "category": "编程开发",
+    "file": "expert_devops.txt",
+    "index": 44
+  },
+  {
+    "id": "sre",
+    "name": "SRE专家",
+    "name_en": "SRE",
+    "category": "编程开发",
+    "file": "expert_sre.txt",
+    "index": 45
+  },
+  {
+    "id": "cloud",
+    "name": "云计算专家",
+    "name_en": "云计算",
+    "category": "编程开发",
+    "file": "expert_cloud.txt",
+    "index": 46
+  },
+  {
+    "id": "edge",
+    "name": "边缘计算专家",
+    "name_en": "边缘计算",
+    "category": "编程开发",
+    "file": "expert_edge.txt",
+    "index": 47
+  },
+  {
+    "id": "lowcode",
+    "name": "低代码专家",
+    "name_en": "低代码",
+    "category": "编程开发",
+    "file": "expert_lowcode.txt",
+    "index": 48
+  },
+  {
+    "id": "testing",
+    "name": "测试自动化专家",
+    "name_en": "测试自动化",
+    "category": "编程开发",
+    "file": "expert_testing.txt",
+    "index": 49
+  },
+  {
+    "id": "travel",
+    "name": "旅行规划专家",
+    "name_en": "旅行规划",
+    "category": "生活旅行",
+    "file": "expert_travel.txt",
+    "index": 50
+  },
+  {
+    "id": "food",
+    "name": "美食专家",
+    "name_en": "美食",
+    "category": "生活旅行",
+    "file": "expert_food.txt",
+    "index": 51
+  },
+  {
+    "id": "coffee",
+    "name": "咖啡专家",
+    "name_en": "咖啡",
+    "category": "生活旅行",
+    "file": "expert_coffee.txt",
+    "index": 52
+  },
+  {
+    "id": "tea",
+    "name": "茶文化专家",
+    "name_en": "茶文化",
+    "category": "生活旅行",
+    "file": "expert_tea.txt",
+    "index": 53
+  },
+  {
+    "id": "wine",
+    "name": "葡萄酒品鉴专家",
+    "name_en": "葡萄酒品鉴",
+    "category": "生活旅行",
+    "file": "expert_wine.txt",
+    "index": 54
+  },
+  {
+    "id": "beer",
+    "name": "精酿啤酒专家",
+    "name_en": "精酿啤酒",
+    "category": "生活旅行",
+    "file": "expert_beer.txt",
+    "index": 55
+  },
+  {
+    "id": "baking",
+    "name": "烘焙专家",
+    "name_en": "烘焙",
+    "category": "生活旅行",
+    "file": "expert_baking.txt",
+    "index": 56
+  },
+  {
+    "id": "chinesecook",
+    "name": "中餐烹饪专家",
+    "name_en": "中餐烹饪",
+    "category": "生活旅行",
+    "file": "expert_chinesecook.txt",
+    "index": 57
+  },
+  {
+    "id": "westcook",
+    "name": "西餐烹饪专家",
+    "name_en": "西餐烹饪",
+    "category": "生活旅行",
+    "file": "expert_westcook.txt",
+    "index": 58
+  },
+  {
+    "id": "japanesecook",
+    "name": "日料专家",
+    "name_en": "日料",
+    "category": "生活旅行",
+    "file": "expert_japanesecook.txt",
+    "index": 59
+  },
+  {
+    "id": "vegan",
+    "name": "素食营养专家",
+    "name_en": "素食营养",
+    "category": "生活旅行",
+    "file": "expert_vegan.txt",
+    "index": 60
+  },
+  {
+    "id": "fitfood",
+    "name": "健身营养专家",
+    "name_en": "健身营养",
+    "category": "生活旅行",
+    "file": "expert_fitfood.txt",
+    "index": 61
+  },
+  {
+    "id": "outdoor",
+    "name": "户外探险专家",
+    "name_en": "户外探险",
+    "category": "生活旅行",
+    "file": "expert_outdoor.txt",
+    "index": 62
+  },
+  {
+    "id": "roadtrip",
+    "name": "自驾游专家",
+    "name_en": "自驾游",
+    "category": "生活旅行",
+    "file": "expert_roadtrip.txt",
+    "index": 63
+  },
+  {
+    "id": "backpacker",
+    "name": "背包客专家",
+    "name_en": "背包客",
+    "category": "生活旅行",
+    "file": "expert_backpacker.txt",
+    "index": 64
+  },
+  {
+    "id": "luxury",
+    "name": "豪华旅行专家",
+    "name_en": "豪华旅行",
+    "category": "生活旅行",
+    "file": "expert_luxury.txt",
+    "index": 65
+  },
+  {
+    "id": "familytravel",
+    "name": "亲子旅行专家",
+    "name_en": "亲子旅行",
+    "category": "生活旅行",
+    "file": "expert_familytravel.txt",
+    "index": 66
+  },
+  {
+    "id": "museum",
+    "name": "博物馆导览专家",
+    "name_en": "博物馆导览",
+    "category": "生活旅行",
+    "file": "expert_museum.txt",
+    "index": 67
+  },
+  {
+    "id": "arthistory",
+    "name": "艺术史专家",
+    "name_en": "艺术史",
+    "category": "生活旅行",
+    "file": "expert_arthistory.txt",
+    "index": 68
+  },
+  {
+    "id": "photo",
+    "name": "摄影专家",
+    "name_en": "摄影",
+    "category": "生活旅行",
+    "file": "expert_photo.txt",
+    "index": 69
+  },
+  {
+    "id": "mobilephoto",
+    "name": "手机摄影专家",
+    "name_en": "手机摄影",
+    "category": "生活旅行",
+    "file": "expert_mobilephoto.txt",
+    "index": 70
+  },
+  {
+    "id": "videoedit",
+    "name": "视频剪辑专家",
+    "name_en": "视频剪辑",
+    "category": "生活旅行",
+    "file": "expert_videoedit.txt",
+    "index": 71
+  },
+  {
+    "id": "musicprod",
+    "name": "音乐制作专家",
+    "name_en": "音乐制作",
+    "category": "生活旅行",
+    "file": "expert_musicprod.txt",
+    "index": 72
+  },
+  {
+    "id": "instrument",
+    "name": "乐器学习专家",
+    "name_en": "乐器学习",
+    "category": "生活旅行",
+    "file": "expert_instrument.txt",
+    "index": 73
+  },
+  {
+    "id": "illustration",
+    "name": "插画专家",
+    "name_en": "插画",
+    "category": "生活旅行",
+    "file": "expert_illustration.txt",
+    "index": 74
+  },
+  {
+    "id": "watercolor",
+    "name": "水彩画专家",
+    "name_en": "水彩画",
+    "category": "生活旅行",
+    "file": "expert_watercolor.txt",
+    "index": 75
+  },
+  {
+    "id": "calligraphy",
+    "name": "书法专家",
+    "name_en": "书法",
+    "category": "生活旅行",
+    "file": "expert_calligraphy.txt",
+    "index": 76
+  },
+  {
+    "id": "ceramics",
+    "name": "陶艺专家",
+    "name_en": "陶艺",
+    "category": "生活旅行",
+    "file": "expert_ceramics.txt",
+    "index": 77
+  },
+  {
+    "id": "gardening",
+    "name": "园艺专家",
+    "name_en": "园艺",
+    "category": "生活旅行",
+    "file": "expert_gardening.txt",
+    "index": 78
+  },
+  {
+    "id": "pet",
+    "name": "宠物专家",
+    "name_en": "宠物",
+    "category": "生活旅行",
+    "file": "expert_pet.txt",
+    "index": 79
+  },
+  {
+    "id": "fitness",
+    "name": "健身教练专家",
+    "name_en": "健身教练",
+    "category": "生活旅行",
+    "file": "expert_fitness.txt",
+    "index": 80
+  },
+  {
+    "id": "yoga",
+    "name": "瑜伽专家",
+    "name_en": "瑜伽",
+    "category": "生活旅行",
+    "file": "expert_yoga.txt",
+    "index": 81
+  },
+  {
+    "id": "psychology",
+    "name": "心理学专家",
+    "name_en": "心理学",
+    "category": "生活旅行",
+    "file": "expert_psychology.txt",
+    "index": 82
+  },
+  {
+    "id": "relationship",
+    "name": "婚姻情感专家",
+    "name_en": "婚姻情感",
+    "category": "生活旅行",
+    "file": "expert_relationship.txt",
+    "index": 83
+  },
+  {
+    "id": "parenting",
+    "name": "亲子教育专家",
+    "name_en": "亲子教育",
+    "category": "生活旅行",
+    "file": "expert_parenting.txt",
+    "index": 84
+  },
+  {
+    "id": "study",
+    "name": "学习方法专家",
+    "name_en": "学习方法",
+    "category": "生活旅行",
+    "file": "expert_study.txt",
+    "index": 85
+  },
+  {
+    "id": "english",
+    "name": "英语专家",
+    "name_en": "英语",
+    "category": "生活旅行",
+    "file": "expert_english.txt",
+    "index": 86
+  },
+  {
+    "id": "japanese",
+    "name": "日语专家",
+    "name_en": "日语",
+    "category": "生活旅行",
+    "file": "expert_japanese.txt",
+    "index": 87
+  },
+  {
+    "id": "french",
+    "name": "法语专家",
+    "name_en": "法语",
+    "category": "生活旅行",
+    "file": "expert_french.txt",
+    "index": 88
+  },
+  {
+    "id": "spanish",
+    "name": "西班牙语专家",
+    "name_en": "西班牙语",
+    "category": "生活旅行",
+    "file": "expert_spanish.txt",
+    "index": 89
+  },
+  {
+    "id": "writing",
+    "name": "中文写作专家",
+    "name_en": "中文写作",
+    "category": "生活旅行",
+    "file": "expert_writing.txt",
+    "index": 90
+  },
+  {
+    "id": "speech",
+    "name": "演讲口才专家",
+    "name_en": "演讲口才",
+    "category": "生活旅行",
+    "file": "expert_speech.txt",
+    "index": 91
+  },
+  {
+    "id": "careercomm",
+    "name": "职场沟通专家",
+    "name_en": "职场沟通",
+    "category": "生活旅行",
+    "file": "expert_careercomm.txt",
+    "index": 92
+  },
+  {
+    "id": "invest",
+    "name": "投资理财专家",
+    "name_en": "投资理财",
+    "category": "生活旅行",
+    "file": "expert_invest.txt",
+    "index": 93
+  },
+  {
+    "id": "realestate",
+    "name": "房产置业专家",
+    "name_en": "房产置业",
+    "category": "生活旅行",
+    "file": "expert_realestate.txt",
+    "index": 94
+  },
+  {
+    "id": "auto",
+    "name": "汽车专家",
+    "name_en": "汽车",
+    "category": "生活旅行",
+    "file": "expert_auto.txt",
+    "index": 95
+  },
+  {
+    "id": "fashion",
+    "name": "时尚穿搭专家",
+    "name_en": "时尚穿搭",
+    "category": "生活旅行",
+    "file": "expert_fashion.txt",
+    "index": 96
+  },
+  {
+    "id": "beauty",
+    "name": "美妆护肤专家",
+    "name_en": "美妆护肤",
+    "category": "生活旅行",
+    "file": "expert_beauty.txt",
+    "index": 97
+  },
+  {
+    "id": "perfume",
+    "name": "香水专家",
+    "name_en": "香水",
+    "category": "生活旅行",
+    "file": "expert_perfume.txt",
+    "index": 98
+  },
+  {
+    "id": "storage",
+    "name": "家居收纳专家",
+    "name_en": "家居收纳",
+    "category": "生活旅行",
+    "file": "expert_storage.txt",
+    "index": 99
+  },
+  {
+    "id": "astro",
+    "name": "天文学专家",
+    "name_en": "天文学",
+    "category": "科学人文",
+    "file": "expert_astro.txt",
+    "index": 100
+  },
+  {
+    "id": "physics",
+    "name": "物理学专家",
+    "name_en": "物理学",
+    "category": "科学人文",
+    "file": "expert_physics.txt",
+    "index": 101
+  },
+  {
+    "id": "chemistry",
+    "name": "化学专家",
+    "name_en": "化学",
+    "category": "科学人文",
+    "file": "expert_chemistry.txt",
+    "index": 102
+  },
+  {
+    "id": "biology",
+    "name": "生物学专家",
+    "name_en": "生物学",
+    "category": "科学人文",
+    "file": "expert_biology.txt",
+    "index": 103
+  },
+  {
+    "id": "geography",
+    "name": "地理学专家",
+    "name_en": "地理学",
+    "category": "科学人文",
+    "file": "expert_geography.txt",
+    "index": 104
+  },
+  {
+    "id": "history",
+    "name": "历史学专家",
+    "name_en": "历史学",
+    "category": "科学人文",
+    "file": "expert_history.txt",
+    "index": 105
+  },
+  {
+    "id": "philosophy",
+    "name": "哲学专家",
+    "name_en": "哲学",
+    "category": "科学人文",
+    "file": "expert_philosophy.txt",
+    "index": 106
+  },
+  {
+    "id": "economics",
+    "name": "经济学专家",
+    "name_en": "经济学",
+    "category": "科学人文",
+    "file": "expert_economics.txt",
+    "index": 107
+  },
+  {
+    "id": "sociology",
+    "name": "社会学专家",
+    "name_en": "社会学",
+    "category": "科学人文",
+    "file": "expert_sociology.txt",
+    "index": 108
+  },
+  {
+    "id": "politics",
+    "name": "政治学专家",
+    "name_en": "政治学",
+    "category": "科学人文",
+    "file": "expert_politics.txt",
+    "index": 109
+  },
+  {
+    "id": "archaeology",
+    "name": "考古学专家",
+    "name_en": "考古学",
+    "category": "科学人文",
+    "file": "expert_archaeology.txt",
+    "index": 110
+  },
+  {
+    "id": "linguistics",
+    "name": "语言学专家",
+    "name_en": "语言学",
+    "category": "科学人文",
+    "file": "expert_linguistics.txt",
+    "index": 111
+  },
+  {
+    "id": "psychresearch",
+    "name": "心理学研究专家",
+    "name_en": "心理学研究",
+    "category": "科学人文",
+    "file": "expert_psychresearch.txt",
+    "index": 112
+  },
+  {
+    "id": "medicine",
+    "name": "医学专家",
+    "name_en": "医学",
+    "category": "科学人文",
+    "file": "expert_medicine.txt",
+    "index": 113
+  },
+  {
+    "id": "tcm",
+    "name": "中医专家",
+    "name_en": "中医",
+    "category": "科学人文",
+    "file": "expert_tcm.txt",
+    "index": 114
+  },
+  {
+    "id": "nutrition",
+    "name": "营养学专家",
+    "name_en": "营养学",
+    "category": "科学人文",
+    "file": "expert_nutrition.txt",
+    "index": 115
+  },
+  {
+    "id": "sportsmed",
+    "name": "运动康复专家",
+    "name_en": "运动康复",
+    "category": "科学人文",
+    "file": "expert_sportsmed.txt",
+    "index": 116
+  },
+  {
+    "id": "dentist",
+    "name": "牙科专家",
+    "name_en": "牙科",
+    "category": "科学人文",
+    "file": "expert_dentist.txt",
+    "index": 117
+  },
+  {
+    "id": "eye",
+    "name": "眼科专家",
+    "name_en": "眼科",
+    "category": "科学人文",
+    "file": "expert_eye.txt",
+    "index": 118
+  },
+  {
+    "id": "dermatology",
+    "name": "皮肤科专家",
+    "name_en": "皮肤科",
+    "category": "科学人文",
+    "file": "expert_dermatology.txt",
+    "index": 119
+  },
+  {
+    "id": "sleep",
+    "name": "睡眠专家",
+    "name_en": "睡眠",
+    "category": "科学人文",
+    "file": "expert_sleep.txt",
+    "index": 120
+  },
+  {
+    "id": "mindfulness",
+    "name": "正念冥想专家",
+    "name_en": "正念冥想",
+    "category": "科学人文",
+    "file": "expert_mindfulness.txt",
+    "index": 121
+  },
+  {
+    "id": "homeschool",
+    "name": "家庭教育专家",
+    "name_en": "家庭教育",
+    "category": "科学人文",
+    "file": "expert_homeschool.txt",
+    "index": 122
+  },
+  {
+    "id": "specialed",
+    "name": "特殊教育专家",
+    "name_en": "特殊教育",
+    "category": "科学人文",
+    "file": "expert_specialed.txt",
+    "index": 123
+  },
+  {
+    "id": "career",
+    "name": "职业规划专家",
+    "name_en": "职业规划",
+    "category": "科学人文",
+    "file": "expert_career.txt",
+    "index": 124
+  },
+  {
+    "id": "startup",
+    "name": "创业专家",
+    "name_en": "创业",
+    "category": "科学人文",
+    "file": "expert_startup.txt",
+    "index": 125
+  },
+  {
+    "id": "product",
+    "name": "产品经理专家",
+    "name_en": "产品经理",
+    "category": "科学人文",
+    "file": "expert_product.txt",
+    "index": 126
+  },
+  {
+    "id": "project",
+    "name": "项目管理专家",
+    "name_en": "项目管理",
+    "category": "科学人文",
+    "file": "expert_project.txt",
+    "index": 127
+  },
+  {
+    "id": "marketing",
+    "name": "市场营销专家",
+    "name_en": "市场营销",
+    "category": "科学人文",
+    "file": "expert_marketing.txt",
+    "index": 128
+  },
+  {
+    "id": "ad",
+    "name": "广告创意专家",
+    "name_en": "广告创意",
+    "category": "科学人文",
+    "file": "expert_ad.txt",
+    "index": 129
+  },
+  {
+    "id": "pr",
+    "name": "公关传播专家",
+    "name_en": "公关传播",
+    "category": "科学人文",
+    "file": "expert_pr.txt",
+    "index": 130
+  },
+  {
+    "id": "sales",
+    "name": "销售技巧专家",
+    "name_en": "销售技巧",
+    "category": "科学人文",
+    "file": "expert_sales.txt",
+    "index": 131
+  },
+  {
+    "id": "customerservice",
+    "name": "客户服务专家",
+    "name_en": "客户服务",
+    "category": "科学人文",
+    "file": "expert_customerservice.txt",
+    "index": 132
+  },
+  {
+    "id": "hr",
+    "name": "人力资源专家",
+    "name_en": "人力资源",
+    "category": "科学人文",
+    "file": "expert_hr.txt",
+    "index": 133
+  },
+  {
+    "id": "law",
+    "name": "法律顾问专家",
+    "name_en": "法律顾问",
+    "category": "科学人文",
+    "file": "expert_law.txt",
+    "index": 134
+  },
+  {
+    "id": "tax",
+    "name": "税务专家",
+    "name_en": "税务",
+    "category": "科学人文",
+    "file": "expert_tax.txt",
+    "index": 135
+  },
+  {
+    "id": "insurance",
+    "name": "保险专家",
+    "name_en": "保险",
+    "category": "科学人文",
+    "file": "expert_insurance.txt",
+    "index": 136
+  },
+  {
+    "id": "stats",
+    "name": "统计学专家",
+    "name_en": "统计学",
+    "category": "科学人文",
+    "file": "expert_stats.txt",
+    "index": 137
+  },
+  {
+    "id": "math",
+    "name": "数学专家",
+    "name_en": "数学",
+    "category": "科学人文",
+    "file": "expert_math.txt",
+    "index": 138
+  },
+  {
+    "id": "logic",
+    "name": "逻辑学专家",
+    "name_en": "逻辑学",
+    "category": "科学人文",
+    "file": "expert_logic.txt",
+    "index": 139
+  },
+  {
+    "id": "speedread",
+    "name": "快速阅读专家",
+    "name_en": "快速阅读",
+    "category": "科学人文",
+    "file": "expert_speedread.txt",
+    "index": 140
+  },
+  {
+    "id": "memory",
+    "name": "记忆力专家",
+    "name_en": "记忆力",
+    "category": "科学人文",
+    "file": "expert_memory.txt",
+    "index": 141
+  },
+  {
+    "id": "mindmap",
+    "name": "思维导图专家",
+    "name_en": "思维导图",
+    "category": "科学人文",
+    "file": "expert_mindmap.txt",
+    "index": 142
+  },
+  {
+    "id": "astrology",
+    "name": "占星学专家",
+    "name_en": "占星学",
+    "category": "科学人文",
+    "file": "expert_astrology.txt",
+    "index": 143
+  },
+  {
+    "id": "tarot",
+    "name": "塔罗解读专家",
+    "name_en": "塔罗解读",
+    "category": "科学人文",
+    "file": "expert_tarot.txt",
+    "index": 144
+  },
+  {
+    "id": "fengshui",
+    "name": "风水专家",
+    "name_en": "风水",
+    "category": "科学人文",
+    "file": "expert_fengshui.txt",
+    "index": 145
+  },
+  {
+    "id": "craft",
+    "name": "手工艺专家",
+    "name_en": "手工艺",
+    "category": "科学人文",
+    "file": "expert_craft.txt",
+    "index": 146
+  },
+  {
+    "id": "origami",
+    "name": "折纸专家",
+    "name_en": "折纸",
+    "category": "科学人文",
+    "file": "expert_origami.txt",
+    "index": 147
+  },
+  {
+    "id": "rubik",
+    "name": "魔方专家",
+    "name_en": "魔方",
+    "category": "科学人文",
+    "file": "expert_rubik.txt",
+    "index": 148
+  },
+  {
+    "id": "chess",
+    "name": "棋类专家",
+    "name_en": "棋类",
+    "category": "科学人文",
+    "file": "expert_chess.txt",
+    "index": 149
+  },
+  {
+    "id": "movie",
+    "name": "电影专家",
+    "name_en": "电影",
+    "category": "娱乐创意",
+    "file": "expert_movie.txt",
+    "index": 150
+  },
+  {
+    "id": "tv",
+    "name": "电视剧专家",
+    "name_en": "电视剧",
+    "category": "娱乐创意",
+    "file": "expert_tv.txt",
+    "index": 151
+  },
+  {
+    "id": "anime",
+    "name": "动漫专家",
+    "name_en": "动漫",
+    "category": "娱乐创意",
+    "file": "expert_anime.txt",
+    "index": 152
+  },
+  {
+    "id": "scifi",
+    "name": "科幻文学专家",
+    "name_en": "科幻文学",
+    "category": "娱乐创意",
+    "file": "expert_scifi.txt",
+    "index": 153
+  },
+  {
+    "id": "mystery",
+    "name": "推理小说专家",
+    "name_en": "推理小说",
+    "category": "娱乐创意",
+    "file": "expert_mystery.txt",
+    "index": 154
+  },
+  {
+    "id": "poetry",
+    "name": "诗歌专家",
+    "name_en": "诗歌",
+    "category": "娱乐创意",
+    "file": "expert_poetry.txt",
+    "index": 155
+  },
+  {
+    "id": "theatre",
+    "name": "戏剧专家",
+    "name_en": "戏剧",
+    "category": "娱乐创意",
+    "file": "expert_theatre.txt",
+    "index": 156
+  },
+  {
+    "id": "dance",
+    "name": "舞蹈专家",
+    "name_en": "舞蹈",
+    "category": "娱乐创意",
+    "file": "expert_dance.txt",
+    "index": 157
+  },
+  {
+    "id": "talkshow",
+    "name": "脱口秀专家",
+    "name_en": "脱口秀",
+    "category": "娱乐创意",
+    "file": "expert_talkshow.txt",
+    "index": 158
+  },
+  {
+    "id": "boardgame",
+    "name": "桌游专家",
+    "name_en": "桌游",
+    "category": "娱乐创意",
+    "file": "expert_boardgame.txt",
+    "index": 159
+  },
+  {
+    "id": "esports",
+    "name": "电子竞技专家",
+    "name_en": "电子竞技",
+    "category": "娱乐创意",
+    "file": "expert_esports.txt",
+    "index": 160
+  },
+  {
+    "id": "console",
+    "name": "主机游戏专家",
+    "name_en": "主机游戏",
+    "category": "娱乐创意",
+    "file": "expert_console.txt",
+    "index": 161
+  },
+  {
+    "id": "indiegame",
+    "name": "独立游戏专家",
+    "name_en": "独立游戏",
+    "category": "娱乐创意",
+    "file": "expert_indiegame.txt",
+    "index": 162
+  },
+  {
+    "id": "vrar",
+    "name": "VR/AR专家",
+    "name_en": "VR/AR",
+    "category": "娱乐创意",
+    "file": "expert_vrar.txt",
+    "index": 163
+  },
+  {
+    "id": "model",
+    "name": "模型制作专家",
+    "name_en": "模型制作",
+    "category": "娱乐创意",
+    "file": "expert_model.txt",
+    "index": 164
+  },
+  {
+    "id": "lego",
+    "name": "乐高专家",
+    "name_en": "乐高",
+    "category": "娱乐创意",
+    "file": "expert_lego.txt",
+    "index": 165
+  },
+  {
+    "id": "manga",
+    "name": "漫画创作专家",
+    "name_en": "漫画创作",
+    "category": "娱乐创意",
+    "file": "expert_manga.txt",
+    "index": 166
+  },
+  {
+    "id": "animation",
+    "name": "动画制作专家",
+    "name_en": "动画制作",
+    "category": "娱乐创意",
+    "file": "expert_animation.txt",
+    "index": 167
+  },
+  {
+    "id": "voice",
+    "name": "配音专家",
+    "name_en": "配音",
+    "category": "娱乐创意",
+    "file": "expert_voice.txt",
+    "index": 168
+  },
+  {
+    "id": "magic",
+    "name": "魔术专家",
+    "name_en": "魔术",
+    "category": "娱乐创意",
+    "file": "expert_magic.txt",
+    "index": 169
+  },
+  {
+    "id": "florist",
+    "name": "花艺专家",
+    "name_en": "花艺",
+    "category": "娱乐创意",
+    "file": "expert_florist.txt",
+    "index": 170
+  },
+  {
+    "id": "aroma",
+    "name": "香薰专家",
+    "name_en": "香薰",
+    "category": "娱乐创意",
+    "file": "expert_aroma.txt",
+    "index": 171
+  },
+  {
+    "id": "soap",
+    "name": "肥皂化妆品制作专家",
+    "name_en": "肥皂化妆品制作",
+    "category": "娱乐创意",
+    "file": "expert_soap.txt",
+    "index": 172
+  },
+  {
+    "id": "brew",
+    "name": "酿酒专家",
+    "name_en": "酿酒",
+    "category": "娱乐创意",
+    "file": "expert_brew.txt",
+    "index": 173
+  },
+  {
+    "id": "cheese",
+    "name": "奶酪制作专家",
+    "name_en": "奶酪制作",
+    "category": "娱乐创意",
+    "file": "expert_cheese.txt",
+    "index": 174
+  },
+  {
+    "id": "chocolate",
+    "name": "巧克力专家",
+    "name_en": "巧克力",
+    "category": "娱乐创意",
+    "file": "expert_chocolate.txt",
+    "index": 175
+  },
+  {
+    "id": "icecream",
+    "name": "冰淇淋专家",
+    "name_en": "冰淇淋",
+    "category": "娱乐创意",
+    "file": "expert_icecream.txt",
+    "index": 176
+  },
+  {
+    "id": "cocktail",
+    "name": "调酒专家",
+    "name_en": "调酒",
+    "category": "娱乐创意",
+    "file": "expert_cocktail.txt",
+    "index": 177
+  },
+  {
+    "id": "drink",
+    "name": "茶饮专家",
+    "name_en": "茶饮",
+    "category": "娱乐创意",
+    "file": "expert_drink.txt",
+    "index": 178
+  },
+  {
+    "id": "streetdance",
+    "name": "街舞专家",
+    "name_en": "街舞",
+    "category": "娱乐创意",
+    "file": "expert_streetdance.txt",
+    "index": 179
+  },
+  {
+    "id": "yogaphilo",
+    "name": "瑜伽哲学专家",
+    "name_en": "瑜伽哲学",
+    "category": "娱乐创意",
+    "file": "expert_yogaphilo.txt",
+    "index": 180
+  },
+  {
+    "id": "marathon",
+    "name": "马拉松专家",
+    "name_en": "马拉松",
+    "category": "娱乐创意",
+    "file": "expert_marathon.txt",
+    "index": 181
+  },
+  {
+    "id": "swim",
+    "name": "游泳专家",
+    "name_en": "游泳",
+    "category": "娱乐创意",
+    "file": "expert_swim.txt",
+    "index": 182
+  },
+  {
+    "id": "ski",
+    "name": "滑雪专家",
+    "name_en": "滑雪",
+    "category": "娱乐创意",
+    "file": "expert_ski.txt",
+    "index": 183
+  },
+  {
+    "id": "dive",
+    "name": "潜水专家",
+    "name_en": "潜水",
+    "category": "娱乐创意",
+    "file": "expert_dive.txt",
+    "index": 184
+  },
+  {
+    "id": "climb",
+    "name": "攀岩专家",
+    "name_en": "攀岩",
+    "category": "娱乐创意",
+    "file": "expert_climb.txt",
+    "index": 185
+  },
+  {
+    "id": "surf",
+    "name": "冲浪专家",
+    "name_en": "冲浪",
+    "category": "娱乐创意",
+    "file": "expert_surf.txt",
+    "index": 186
+  },
+  {
+    "id": "bike",
+    "name": "自行车专家",
+    "name_en": "自行车",
+    "category": "娱乐创意",
+    "file": "expert_bike.txt",
+    "index": 187
+  },
+  {
+    "id": "fishing",
+    "name": "钓鱼专家",
+    "name_en": "钓鱼",
+    "category": "娱乐创意",
+    "file": "expert_fishing.txt",
+    "index": 188
+  },
+  {
+    "id": "birding",
+    "name": "观鸟专家",
+    "name_en": "观鸟",
+    "category": "娱乐创意",
+    "file": "expert_birding.txt",
+    "index": 189
+  },
+  {
+    "id": "astrophoto",
+    "name": "天文摄影专家",
+    "name_en": "天文摄影",
+    "category": "娱乐创意",
+    "file": "expert_astrophoto.txt",
+    "index": 190
+  },
+  {
+    "id": "macro",
+    "name": "微距摄影专家",
+    "name_en": "微距摄影",
+    "category": "娱乐创意",
+    "file": "expert_macro.txt",
+    "index": 191
+  },
+  {
+    "id": "drone",
+    "name": "航拍专家",
+    "name_en": "航拍",
+    "category": "娱乐创意",
+    "file": "expert_drone.txt",
+    "index": 192
+  },
+  {
+    "id": "vlogger",
+    "name": "视频博主专家",
+    "name_en": "视频博主",
+    "category": "娱乐创意",
+    "file": "expert_vlogger.txt",
+    "index": 193
+  },
+  {
+    "id": "podcast",
+    "name": "播客制作专家",
+    "name_en": "播客制作",
+    "category": "娱乐创意",
+    "file": "expert_podcast.txt",
+    "index": 194
+  },
+  {
+    "id": "socialmedia",
+    "name": "社交媒体运营专家",
+    "name_en": "社交媒体运营",
+    "category": "娱乐创意",
+    "file": "expert_socialmedia.txt",
+    "index": 195
+  },
+  {
+    "id": "personalbrand",
+    "name": "个人品牌专家",
+    "name_en": "个人品牌",
+    "category": "娱乐创意",
+    "file": "expert_personalbrand.txt",
+    "index": 196
+  },
+  {
+    "id": "timemgmt",
+    "name": "时间管理专家",
+    "name_en": "时间管理",
+    "category": "娱乐创意",
+    "file": "expert_timemgmt.txt",
+    "index": 197
+  },
+  {
+    "id": "fire",
+    "name": "财务自由规划专家",
+    "name_en": "财务自由规划",
+    "category": "娱乐创意",
+    "file": "expert_fire.txt",
+    "index": 198
+  },
+  {
+    "id": "minimalism",
+    "name": "极简主义专家",
+    "name_en": "极简主义",
+    "category": "娱乐创意",
+    "file": "expert_minimalism.txt",
+    "index": 199
+  },
+  {
+    "id": "quant",
+    "name": "量化交易专家",
+    "name_en": "量化交易",
+    "category": "交叉领域",
+    "file": "expert_quant.txt",
+    "index": 200
+  },
+  {
+    "id": "fintech",
+    "name": "金融科技专家",
+    "name_en": "金融科技",
+    "category": "交叉领域",
+    "file": "expert_fintech.txt",
+    "index": 201
+  },
+  {
+    "id": "actuary",
+    "name": "保险精算专家",
+    "name_en": "保险精算",
+    "category": "交叉领域",
+    "file": "expert_actuary.txt",
+    "index": 202
+  },
+  {
+    "id": "supplychain",
+    "name": "供应链管理专家",
+    "name_en": "供应链管理",
+    "category": "交叉领域",
+    "file": "expert_supplychain.txt",
+    "index": 203
+  },
+  {
+    "id": "operations",
+    "name": "运营管理专家",
+    "name_en": "运营管理",
+    "category": "交叉领域",
+    "file": "expert_operations.txt",
+    "index": 204
+  },
+  {
+    "id": "ba",
+    "name": "商业分析专家",
+    "name_en": "商业分析",
+    "category": "交叉领域",
+    "file": "expert_ba.txt",
+    "index": 205
+  },
+  {
+    "id": "ux",
+    "name": "用户体验设计专家",
+    "name_en": "用户体验设计",
+    "category": "交叉领域",
+    "file": "expert_ux.txt",
+    "index": 206
+  },
+  {
+    "id": "ui",
+    "name": "UI设计专家",
+    "name_en": "UI设计",
+    "category": "交叉领域",
+    "file": "expert_ui.txt",
+    "index": 207
+  },
+  {
+    "id": "branddesign",
+    "name": "品牌设计专家",
+    "name_en": "品牌设计",
+    "category": "交叉领域",
+    "file": "expert_branddesign.txt",
+    "index": 208
+  },
+  {
+    "id": "package",
+    "name": "包装设计专家",
+    "name_en": "包装设计",
+    "category": "交叉领域",
+    "file": "expert_package.txt",
+    "index": 209
+  },
+  {
+    "id": "architecture",
+    "name": "建筑设计专家",
+    "name_en": "建筑设计",
+    "category": "交叉领域",
+    "file": "expert_architecture.txt",
+    "index": 210
+  },
+  {
+    "id": "interior",
+    "name": "室内设计专家",
+    "name_en": "室内设计",
+    "category": "交叉领域",
+    "file": "expert_interior.txt",
+    "index": 211
+  },
+  {
+    "id": "landscape",
+    "name": "景观设计专家",
+    "name_en": "景观设计",
+    "category": "交叉领域",
+    "file": "expert_landscape.txt",
+    "index": 212
+  },
+  {
+    "id": "industrial",
+    "name": "工业设计专家",
+    "name_en": "工业设计",
+    "category": "交叉领域",
+    "file": "expert_industrial.txt",
+    "index": 213
+  },
+  {
+    "id": "fashiondesign",
+    "name": "服装设计专家",
+    "name_en": "服装设计",
+    "category": "交叉领域",
+    "file": "expert_fashiondesign.txt",
+    "index": 214
+  },
+  {
+    "id": "jewelry",
+    "name": "珠宝设计专家",
+    "name_en": "珠宝设计",
+    "category": "交叉领域",
+    "file": "expert_jewelry.txt",
+    "index": 215
+  },
+  {
+    "id": "sound",
+    "name": "声音设计专家",
+    "name_en": "声音设计",
+    "category": "交叉领域",
+    "file": "expert_sound.txt",
+    "index": 216
+  },
+  {
+    "id": "lighting",
+    "name": "灯光设计专家",
+    "name_en": "灯光设计",
+    "category": "交叉领域",
+    "file": "expert_lighting.txt",
+    "index": 217
+  },
+  {
+    "id": "curator",
+    "name": "策展专家",
+    "name_en": "策展",
+    "category": "交叉领域",
+    "file": "expert_curator.txt",
+    "index": 218
+  },
+  {
+    "id": "heritage",
+    "name": "非遗传承专家",
+    "name_en": "非遗传承",
+    "category": "交叉领域",
+    "file": "expert_heritage.txt",
+    "index": 219
+  },
+  {
+    "id": "folklore",
+    "name": "民俗文化专家",
+    "name_en": "民俗文化",
+    "category": "交叉领域",
+    "file": "expert_folklore.txt",
+    "index": 220
+  },
+  {
+    "id": "mythology",
+    "name": "神话题材专家",
+    "name_en": "神话题材",
+    "category": "交叉领域",
+    "file": "expert_mythology.txt",
+    "index": 221
+  },
+  {
+    "id": "scifiworld",
+    "name": "科幻设定专家",
+    "name_en": "科幻设定",
+    "category": "交叉领域",
+    "file": "expert_scifiworld.txt",
+    "index": 222
+  },
+  {
+    "id": "fantasy",
+    "name": "奇幻世界构建专家",
+    "name_en": "奇幻世界构建",
+    "category": "交叉领域",
+    "file": "expert_fantasy.txt",
+    "index": 223
+  },
+  {
+    "id": "screenplay",
+    "name": "剧本创作专家",
+    "name_en": "剧本创作",
+    "category": "交叉领域",
+    "file": "expert_screenplay.txt",
+    "index": 224
+  },
+  {
+    "id": "novel",
+    "name": "小说创作专家",
+    "name_en": "小说创作",
+    "category": "交叉领域",
+    "file": "expert_novel.txt",
+    "index": 225
+  },
+  {
+    "id": "shortstory",
+    "name": "短篇故事专家",
+    "name_en": "短篇故事",
+    "category": "交叉领域",
+    "file": "expert_shortstory.txt",
+    "index": 226
+  },
+  {
+    "id": "nonfiction",
+    "name": "非虚构写作专家",
+    "name_en": "非虚构写作",
+    "category": "交叉领域",
+    "file": "expert_nonfiction.txt",
+    "index": 227
+  },
+  {
+    "id": "poetrywrite",
+    "name": "诗歌创作专家",
+    "name_en": "诗歌创作",
+    "category": "交叉领域",
+    "file": "expert_poetrywrite.txt",
+    "index": 228
+  },
+  {
+    "id": "kidlit",
+    "name": "儿童文学专家",
+    "name_en": "儿童文学",
+    "category": "交叉领域",
+    "file": "expert_kidlit.txt",
+    "index": 229
+  },
+  {
+    "id": "scicomm",
+    "name": "科普写作专家",
+    "name_en": "科普写作",
+    "category": "交叉领域",
+    "file": "expert_scicomm.txt",
+    "index": 230
+  },
+  {
+    "id": "translate",
+    "name": "翻译专家",
+    "name_en": "翻译",
+    "category": "交叉领域",
+    "file": "expert_translate.txt",
+    "index": 231
+  },
+  {
+    "id": "interpreter",
+    "name": "同声传译专家",
+    "name_en": "同声传译",
+    "category": "交叉领域",
+    "file": "expert_interpreter.txt",
+    "index": 232
+  },
+  {
+    "id": "crossculture",
+    "name": "跨文化沟通专家",
+    "name_en": "跨文化沟通",
+    "category": "交叉领域",
+    "file": "expert_crossculture.txt",
+    "index": 233
+  },
+  {
+    "id": "negotiate",
+    "name": "谈判专家",
+    "name_en": "谈判",
+    "category": "交叉领域",
+    "file": "expert_negotiate.txt",
+    "index": 234
+  },
+  {
+    "id": "leadership",
+    "name": "领导力专家",
+    "name_en": "领导力",
+    "category": "交叉领域",
+    "file": "expert_leadership.txt",
+    "index": 235
+  },
+  {
+    "id": "eq",
+    "name": "情商提升专家",
+    "name_en": "情商提升",
+    "category": "交叉领域",
+    "file": "expert_eq.txt",
+    "index": 236
+  },
+  {
+    "id": "critical",
+    "name": "批判性思维专家",
+    "name_en": "批判性思维",
+    "category": "交叉领域",
+    "file": "expert_critical.txt",
+    "index": 237
+  },
+  {
+    "id": "creativity",
+    "name": "创造力激发专家",
+    "name_en": "创造力激发",
+    "category": "交叉领域",
+    "file": "expert_creativity.txt",
+    "index": 238
+  },
+  {
+    "id": "problemsolve",
+    "name": "问题解决专家",
+    "name_en": "问题解决",
+    "category": "交叉领域",
+    "file": "expert_problemsolve.txt",
+    "index": 239
+  },
+  {
+    "id": "emergency",
+    "name": "应急管理专家",
+    "name_en": "应急管理",
+    "category": "交叉领域",
+    "file": "expert_emergency.txt",
+    "index": 240
+  },
+  {
+    "id": "environment",
+    "name": "环保专家",
+    "name_en": "环保",
+    "category": "交叉领域",
+    "file": "expert_environment.txt",
+    "index": 241
+  },
+  {
+    "id": "urbanexplore",
+    "name": "城市探索专家",
+    "name_en": "城市探索",
+    "category": "交叉领域",
+    "file": "expert_urbanexplore.txt",
+    "index": 242
+  },
+  {
+    "id": "market",
+    "name": "菜市场导览专家",
+    "name_en": "菜市场导览",
+    "category": "交叉领域",
+    "file": "expert_market.txt",
+    "index": 243
+  },
+  {
+    "id": "camping",
+    "name": "露营专家",
+    "name_en": "露营",
+    "category": "交叉领域",
+    "file": "expert_camping.txt",
+    "index": 244
+  },
+  {
+    "id": "outdoorcook",
+    "name": "野炊专家",
+    "name_en": "野炊",
+    "category": "交叉领域",
+    "file": "expert_outdoorcook.txt",
+    "index": 245
+  },
+  {
+    "id": "survival",
+    "name": "生存技能专家",
+    "name_en": "生存技能",
+    "category": "交叉领域",
+    "file": "expert_survival.txt",
+    "index": 246
+  },
+  {
+    "id": "leather",
+    "name": "手工皮具专家",
+    "name_en": "手工皮具",
+    "category": "交叉领域",
+    "file": "expert_leather.txt",
+    "index": 247
+  },
+  {
+    "id": "woodwork",
+    "name": "木工专家",
+    "name_en": "木工",
+    "category": "交叉领域",
+    "file": "expert_woodwork.txt",
+    "index": 248
+  },
+  {
+    "id": "metal",
+    "name": "金属工艺专家",
+    "name_en": "金属工艺",
+    "category": "交叉领域",
+    "file": "expert_metal.txt",
+    "index": 249
+  }
+]

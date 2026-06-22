@@ -1,0 +1,102 @@
+using|using System;
+using c|using System.Collections.Generic;
+using l|using System.Linq;
+using io|using System.IO;
+using t|using System.Threading.Tasks;
+using h|using System.Net.Http;
+using j|using System.Text.Json;
+namespace|namespace Namespace;\n\n
+class|class Name\n{\n    \n}
+class p|public class Name\n{\n    \n}
+class s|static class Name\n{\n    \n}
+class a|abstract class Name\n{\n    \n}
+class se|sealed class Name\n{\n    \n}
+interface|interface IName\n{\n    \n}
+main|public static void Main(string[] args)\n{\n    \n}
+cw|Console.WriteLine();
+cw v|Console.WriteLine($"Value: {value}");
+cr|Console.ReadLine();
+prop|public type Name { get; set; }
+prop p|private type _name;\npublic type Name\n{\n    get => _name;\n    set => _name = value;\n}
+prop r|public type Name { get; }
+prop i|public type Name { get; init; }
+prop f|public type Name { get; private set; }
+field|private type _name;
+ctor|public Name()\n{\n    \n}
+ctor i|public Name(type param)\n{\n    Name = param;\n}
+string|string s = "hello";
+string f|string.Format("Hello, {0}!", name);
+string j|string.Join(", ", items);
+string eb|string.IsNullOrEmpty(s)
+string ew|string.IsNullOrWhiteSpace(s)
+list|var list = new List<type>();
+list i|var list = new List<type> { item, item };
+list a|list.Add(item);
+list r|list.Remove(item);
+list c|list.Contains(item)
+list f|list.Find(x => condition);
+list fa|list.FindAll(x => condition);
+dict|var dict = new Dictionary<string, type>();
+dict a|dict["key"] = value;
+dict t|dict.TryGetValue("key", out var val)
+dict k|dict.ContainsKey("key")
+dict f|foreach (var kvp in dict) { }
+array|var arr = new type[size];
+array i|var arr = new type[] { a, b, c };
+for|for (int i = 0; i < n; i++)\n{\n    \n}
+foreach|foreach (var item in collection)\n{\n    \n}
+while|while (condition)\n{\n    \n}
+if|if (condition)\n{\n    \n}
+ife|if (condition)\n{\n    \n}\nelse\n{\n    \n}
+switch|switch (value)\n{\n    case 1:\n        break;\n    default:\n        break;\n}
+switch e|var result = value switch\n{\n    1 => "one",\n    _ => "other"\n};
+try|try\n{\n    \n}\ncatch (Exception ex)\n{\n    Console.WriteLine(ex.Message);\n}
+try f|try\n{\n    \n}\ncatch (Exception ex)\n{\n    Console.WriteLine(ex.Message);\n}\nfinally\n{\n    \n}
+using d|using var resource = new Resource();
+linq w|var result = collection.Where(x => condition);
+linq s|var result = collection.Select(x => x.Prop);
+linq o|var result = collection.OrderBy(x => x.Prop);
+linq od|var result = collection.OrderByDescending(x => x.Prop);
+linq g|var groups = collection.GroupBy(x => x.Prop);
+linq f|var first = collection.FirstOrDefault();
+linq a|bool any = collection.Any(x => condition);
+linq al|bool all = collection.All(x => condition);
+linq c|int count = collection.Count();
+linq sk|var result = collection.Skip(10).Take(10);
+linq d|var result = collection.Distinct();
+linq t|var result = list1.Concat(list2);
+linq agg|var result = collection.Aggregate((a, b) => a + b);
+async|public async Task<type> Method()\n{\n    await Task.Delay(100);\n}
+async a|public async Task<type> Method()\n{\n    var client = new HttpClient();\n    var json = await client.GetStringAsync(url);\n}
+task r|Task.Run(() => { });
+task w|await Task.WhenAll(tasks);
+event|public event EventHandler Name;
+event i|Name?.Invoke(this, EventArgs.Empty);
+delegate|public delegate void NameDelegate(type param);
+func|Func<int, int, int> add = (a, b) => a + b;
+action|Action<string> log = msg => Console.WriteLine(msg);
+getset|public type Name\n{\n    get => _name;\n    set\n    {\n        _name = value;\n        OnPropertyChanged();\n    }\n}
+inotify|public class Name : INotifyPropertyChanged\n{\n    public event PropertyChangedEventHandler PropertyChanged;\n    protected void OnPropertyChanged([CallerMemberName] string name = null)\n    {\n        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));\n    }\n}
+attr|[AttributeName]
+attr p|[Obsolete("Use X instead")]
+nullable|type? value = null;
+null c|value ?? defaultValue
+null a|value?.Property?.SubProperty
+null f|ArgumentNullException.ThrowIfNull(value);
+null e|#nullable enable
+rec p|public record Name(int Id, string Name);
+rec s|public struct Name\n{\n    public int X;\n    public int Y;\n}
+file r|var text = File.ReadAllText("path.txt");
+file rl|var lines = File.ReadAllLines("path.txt");
+file w|File.WriteAllText("path.txt", content);
+json ser|using System.Text.Json;\nvar json = JsonSerializer.Serialize(obj);\nvar obj = JsonSerializer.Deserialize<Type>(json);
+json opt|var options = new JsonSerializerOptions\n{\n    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,\n    WriteIndented = true\n};
+enum|enum Color\n{\n    Red,\n    Green,\n    Blue\n}
+enum f|enum Color\n{\n    Red = 1,\n    Green = 2,\n    Blue = 4\n}
+ext|public static class Extensions\n{\n    public static type Method(this type obj)\n    {\n        \n    }\n}
+generic m|public T Method<T>(T value) where T : class\n{\n    return value;\n}
+partial|public partial class Name\n{\n    \n}
+default|default(type)
+nameof|nameof(variable)
+typeof|typeof(ClassName)
+yield|yield return item;

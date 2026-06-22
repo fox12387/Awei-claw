@@ -1,0 +1,119 @@
+def|def name():\n    pass
+class|class Name:\n    def __init__(self):\n        pass
+if|if condition:\n    pass
+ife|if condition:\n    pass\nelse:\n    pass
+elif|elif condition:\n    pass
+for|for item in iterable:\n    print(item)
+for r|for i in range(10):\n    print(i)
+for re|for i in range(start, end):\n    print(i)
+for rs|for i in range(start, end, step):\n    print(i)
+for i|for i, item in enumerate(items):\n    print(i, item)
+for z|for a, b in zip(list1, list2):\n    print(a, b)
+while|while condition:\n    pass
+try|try:\n    pass\nexcept Exception as e:\n    print(f'Error: {e}')
+try f|try:\n    pass\nexcept Exception as e:\n    print(f'Error: {e}')\nfinally:\n    pass
+with|with open('file.txt', 'r') as f:\n    content = f.read()
+with w|with open('file.txt', 'w') as f:\n    f.write(content)
+import|import module
+from|from module import name
+lambda|lambda x: x * 2
+list c|[x for x in range(10)]
+list cf|[x for x in items if condition]
+dict c|{k: v for k, v in items}
+set c|{x for x in items}
+generator|(x for x in items)
+print|print(value)
+print f|print(f'Value: {value}')
+print d|print(f'Value: {value=}')
+input|name = input('Prompt: ')
+main|if __name__ == "__main__":\n    main()
+type h|def func(param: str) -> int:\n    return 0
+deco|@staticmethod\ndef name():\n    pass
+prop|@property\ndef name(self):\n    return self._name
+prop s|@name.setter\ndef name(self, value):\n    self._name = value
+dataclass|@dataclass\nclass Name:\n    field: type
+enum|from enum import Enum\n\nclass Color(Enum):\n    RED = 1\n    GREEN = 2\n    BLUE = 3
+dict|d = {'key': 'value'}
+dict d|d = dict(key='value')
+dict g|d.get('key', default)
+dict u|d.update({'key': 'value'})
+dict p|d.pop('key', None)
+dict i|for k, v in d.items():\n    print(k, v)
+list|lst = [1, 2, 3]
+list a|lst.append(item)
+list e|lst.extend(other)
+list i|lst.insert(index, item)
+list r|lst.remove(item)
+list p|last = lst.pop()
+list pi|item = lst.pop(index)
+list s|lst.sort()
+list sr|lst.sort(reverse=True)
+list sk|lst.sort(key=lambda x: x.prop)
+list sl|sliced = lst[start:end:step]
+set|s = set()
+set a|s.add(item)
+set r|s.remove(item)
+set u|s.union(other)
+set i|s.intersection(other)
+str f|f'Hello, {name}!'
+str j|','.join(items)
+str sp|s.split(',')
+str r|s.replace('old', 'new')
+str st|s.strip()
+str lo|s.lower()
+str up|s.upper()
+str ti|s.title()
+str sw|s.startswith('prefix')
+str ew|s.endswith('suffix')
+str fi|s.find('sub')
+str co|s.count('sub')
+str isd|s.isdigit()
+str isa|s.isalpha()
+map|list(map(func, iterable))
+filter|list(filter(func, iterable))
+zip|list(zip(a, b))
+any|any(iterable)
+all|all(iterable)
+sum|sum(numbers)
+max|max(numbers, key=lambda x: x)
+min|min(numbers, key=lambda x: x)
+sorted|sorted(items, key=lambda x: x.prop, reverse=True)
+enumerate|enumerate(items, start=0)
+len|len(obj)
+range|range(start, end, step)
+type|type(obj)
+isinstance|isinstance(obj, type)
+hasattr|hasattr(obj, 'attr')
+getattr|getattr(obj, 'attr', default)
+setattr|setattr(obj, 'attr', value)
+issubclass|issubclass(Child, Parent)
+super|super().__init__(args)
+repr|def __repr__(self):\n    return f'{self.__class__.__name__}(...)'
+str rep|def __str__(self):\n    return f'...'
+abc|from abc import ABC, abstractmethod\n\nclass Base(ABC):\n    @abstractmethod\n    def method(self):\n        pass
+path e|from pathlib import Path\np = Path('file.txt')\nif p.exists():\n    content = p.read_text()
+read|with open('file.txt', 'r', encoding='utf-8') as f:\n    data = f.read()
+write|with open('file.txt', 'w', encoding='utf-8') as f:\n    f.write(content)
+json l|import json\nwith open('data.json', 'r') as f:\n    data = json.load(f)
+json d|import json\nwith open('data.json', 'w') as f:\n    json.dump(data, f, indent=2)
+csv r|import csv\nwith open('data.csv', 'r') as f:\n    reader = csv.DictReader(f)\n    for row in reader:\n        print(row)
+csv w|import csv\nwith open('data.csv', 'w', newline='') as f:\n    writer = csv.DictWriter(f, fieldnames=['col'])\n    writer.writeheader()\n    writer.writerows(rows)
+req|import requests\nresp = requests.get('https://api.example.com')\ndata = resp.json()
+req p|import requests\nresp = requests.post('https://api.example.com', json={'key': 'value'})\ndata = resp.json()
+argp|import argparse\nparser = argparse.ArgumentParser(description='Description')\nparser.add_argument('--name', type=str, help='Help text')\nargs = parser.parse_args()
+import os|import os
+os.listdir|import os\nfiles = os.listdir('/home/pyodide')\nfor f in files:\n    print(f)
+os.mkdir|import os\nos.makedirs('/home/pyodide/new_dir', exist_ok=True)
+os.path|import os\nbase = os.path.basename('/path/to/file.txt')\ndirname = os.path.dirname('/path/to/file.txt')\nexists = os.path.exists('/home/pyodide')\njoined = os.path.join('/home', 'pyodide', 'file.txt')
+os.walk|import os\nfor root, dirs, files in os.walk('/home/pyodide'):\n    for name in files:\n        print(os.path.join(root, name))
+os.getcwd|import os\ncwd = os.getcwd()\nprint(cwd)
+os.environ|import os\nhome = os.environ.get('HOME', '/home/pyodide')\ntmp = os.environ.get('TMPDIR', '/tmp')\nprint(f'HOME={home}, TMP={tmp}')
+os.remove|import os\nos.remove('/home/pyodide/unwanted.txt')
+os.rename|import os\nos.rename('/home/pyodide/old.txt', '/home/pyodide/new.txt')
+os.stat|import os\ninfo = os.stat('/home/pyodide')\nprint(f'size={info.st_size}, mode={info.st_mode}')
+openai|from openai import OpenAI\nclient = OpenAI(api_key="sk-xxx", base_url="https://api.siliconflow.cn/v1")
+openai chat|from openai import OpenAI\nclient = OpenAI(api_key="sk-xxx", base_url="https://api.siliconflow.cn/v1")\nresponse = client.chat.completions.create(\n    model="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",\n    messages=[\n        {"role": "system", "content": "You are helpful."},\n        {"role": "user", "content": "Hello!"}\n    ]\n)\nprint(response.choices[0].message.content)
+openai stream|from openai import OpenAI\nclient = OpenAI(api_key="sk-xxx", base_url="https://api.siliconflow.cn/v1")\nresponse = client.chat.completions.create(\n    model="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",\n    messages=[{"role": "user", "content": "Hello!"}],\n    stream=True\n)\nfor chunk in response:\n    if chunk.choices[0].delta.content:\n        print(chunk.choices[0].delta.content, end="")
+openai temp|response = client.chat.completions.create(\n    model="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",\n    messages=[{"role": "user", "content": "Write a poem"}],\n    temperature=0.7,\n    max_tokens=512\n)
+openai multi|messages = [\n    {"role": "system", "content": "You are helpful."},\n    {"role": "user", "content": "What is Python?"},\n    {"role": "assistant", "content": "Python is a programming language."},\n    {"role": "user", "content": "Tell me more."}\n]\nresponse = client.chat.completions.create(model="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B", messages=messages)\nprint(response.choices[0].message.content)
+openai usage|response = client.chat.completions.create(\n    model="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",\n    messages=[{"role": "user", "content": "Hi"}]\n)\nprint(f"Tokens used: {response.usage.total_tokens}")\nprint(f"Prompt: {response.usage.prompt_tokens}, Completion: {response.usage.completion_tokens}")

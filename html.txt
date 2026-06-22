@@ -1,0 +1,109 @@
+<!DOCTYPE>|<!DOCTYPE html>
+<html>|<html lang="en">
+<head>|<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>
+<meta|<meta charset="UTF-8">
+<meta vp|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>|<title>Page Title</title>
+<link>|<link rel="stylesheet" href="style.css">
+<script>|<script src="script.js"></script>
+<body>|<body>\n  \n</body>
+<h1>|<h1>Heading 1</h1>
+<h2>|<h2>Heading 2</h2>
+<h3>|<h3>Heading 3</h3>
+<p>|<p>Paragraph text</p>
+<a>|<a href="#">Link</a>
+<img>|<img src="image.jpg" alt="Description">
+<ul>|<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>
+<ol>|<ol>\n  <li>First</li>\n  <li>Second</li>\n</ol>
+<li>|<li>List item</li>
+<table>|<table>\n  <thead>\n    <tr>\n      <th>Header</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n    </tr>\n  </tbody>\n</table>
+<div>|<div class="container">\n  \n</div>
+<span>|<span>Text</span>
+<form>|<form action="#" method="POST">\n  \n</form>
+<input>|<input type="text" placeholder="Enter value">
+<input t|<input type="text" name="field" placeholder="Enter text">
+<input p|<input type="password" name="password" placeholder="Password">
+<input e|<input type="email" name="email" placeholder="Email">
+<input n|<input type="number" name="num" min="0" max="100">
+<input ch|<input type="checkbox" name="agree">
+<input r|<input type="radio" name="option" value="1">
+<input s|<input type="submit" value="Submit">
+<input b|<input type="button" value="Click">
+<input f|<input type="file" name="upload">
+<input d|<input type="date" name="date">
+<input co|<input type="color" name="color">
+<input ra|<input type="range" min="0" max="100" value="50">
+<input h|<input type="hidden" name="token" value="abc">
+<textarea>|<textarea name="message" rows="4" cols="50"></textarea>
+<select>|<select name="choice">\n  <option value="1">Option 1</option>\n  <option value="2">Option 2</option>\n</select>
+<option>|<option value="val">Label</option>
+<button>|<button type="submit">Submit</button>
+<label>|<label for="id">Label Text</label>
+<fieldset>|<fieldset>\n  <legend>Group</legend>\n  \n</fieldset>
+<header>|<header>\n  <nav>\n    \n  </nav>\n</header>
+<nav>|<nav>\n  <a href="#">Home</a>\n  <a href="#">About</a>\n</nav>
+<main>|<main>\n  \n</main>
+<footer>|<footer>\n  <p>&copy; 2026</p>\n</footer>
+<section>|<section>\n  <h2>Section Title</h2>\n  <p>Content</p>\n</section>
+<article>|<article>\n  <h2>Article Title</h2>\n  <p>Content</p>\n</article>
+<aside>|<aside>\n  <p>Sidebar content</p>\n</aside>
+<figure>|<figure>\n  <img src="img.jpg" alt="Image">\n  <figcaption>Caption</figcaption>\n</figure>
+<video>|<video controls width="640">\n  <source src="video.mp4" type="video/mp4">\n  Your browser does not support the video tag.\n</video>
+<audio>|<audio controls>\n  <source src="audio.mp3" type="audio/mpeg">\n</audio>
+<canvas>|<canvas id="myCanvas" width="400" height="300"></canvas>
+<svg>|<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">\n  <circle cx="50" cy="50" r="40" fill="blue"/>\n</svg>
+<iframe>|<iframe src="https://example.com" width="600" height="400"></iframe>
+<details>|<details>\n  <summary>Click to expand</summary>\n  <p>Hidden content</p>\n</details>
+<summary>|<summary>Expand me</summary>
+<progress>|<progress value="50" max="100">50%</progress>
+<meter>|<meter value="0.6" min="0" max="1">60%</meter>
+<datalist>|<datalist id="options">\n  <option value="A">\n  <option value="B">\n</datalist>
+<code>|<code>console.log("hello")</code>
+<pre>|<pre><code>\n  // code block\n</code></pre>
+<blockquote>|<blockquote cite="source">\n  <p>Quoted text</p>\n</blockquote>
+<abbr>|<abbr title="Abbreviation">ABBR</abbr>
+<time>|<time datetime="2026-06-21">June 21, 2026</time>
+<mark>|<mark>Highlighted text</mark>
+<del>|<del>Deleted text</del>
+<ins>|<ins>Inserted text</ins>
+<sub>|<sub>subscript</sub>
+<sup>|<sup>superscript</sup>
+<br>|<br>
+<hr>|<hr>
+<wbr>|<wbr>
+<em>|<em>Emphasized text</em>
+<strong>|<strong>Bold text</strong>
+<small>|<small>Small text</small>
+<s>|<s>Strikethrough</s>
+<i>|<i>Italic</i>
+<b>|<b>Bold</b>
+<u>|<u>Underline</u>
+<!--|<!-- Comment -->
+<templ|<template>\n  <div class="item">\n    \n  </div>\n</template>
+<dialog>|<dialog open>\n  <p>Dialog content</p>\n  <button onclick="this.parentElement.close()">Close</button>\n</dialog>
+<output>|<output name="result">0</output>
+<optgroup>|<optgroup label="Group">\n  <option value="1">Option</option>\n</optgroup>
+<map|<map name="imagemap">\n  <area shape="rect" coords="0,0,100,100" href="link.html" alt="Area">\n</map>
+<thead>|<thead>\n  <tr>\n    <th>Col</th>\n  </tr>\n</thead>
+<tbody>|<tbody>\n  <tr>\n    <td>Data</td>\n  </tr>\n</tbody>
+<tfoot>|<tfoot>\n  <tr>\n    <td>Footer</td>\n  </tr>\n</tfoot>
+<th>|<th scope="col">Column Header</th>
+<td>|<td>Cell data</td>
+<tr>|<tr>\n  <td>Cell</td>\n</tr>
+<colgroup>|<colgroup>\n  <col span="1" style="background:#f0f0f0">\n</colgroup>
+DOCTYPE|<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n  \n</body>\n</html>
+HTML5 bp|<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Page</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  \n  <script src="script.js"></script>\n</body>\n</html>
+<style>|<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n  body { font-family: sans-serif; }\n</style>
+<noscript>|<noscript>\n  <p>JavaScript is required for this page.</p>\n</noscript>
+<!DOCT|<!DOCTYPE html>
+<html l|<html lang="zh-CN">
+<meta d|<meta name="description" content="Page description">
+<meta k|<meta name="keywords" content="keyword1, keyword2">
+<meta a|<meta name="author" content="Author Name">
+<base>|<base href="https://example.com/">
+<cite>|<cite>Source Title</cite>
+<q>|<q>Inline quote</q>
+<dfn>|<dfn>Definition term</dfn>
+<var>|<var>x</var>
+<samp>|<samp>Sample output</samp>
+<kbd>|<kbd>Ctrl</kbd> + <kbd>C</kbd>

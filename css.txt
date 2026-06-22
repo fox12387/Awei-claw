@@ -1,0 +1,101 @@
+reset|* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}
+body|body {\n  font-family: 'Inter', sans-serif;\n  color: #111827;\n  background: #FFFFFF;\n}
+flex|display: flex;\njustify-content: center;\nalign-items: center;
+flex c|display: flex;\nflex-direction: column;\nalign-items: center;
+flex b|display: flex;\njustify-content: space-between;\nalign-items: center;
+flex w|display: flex;\nflex-wrap: wrap;\ngap: 16px;
+grid|display: grid;\ngrid-template-columns: repeat(3, 1fr);\ngap: 16px;
+grid a|display: grid;\nplace-items: center;
+pos r|position: relative;
+pos a|position: absolute;\ntop: 50%;\nleft: 50%;\ntransform: translate(-50%, -50%);
+pos f|position: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nz-index: 1000;
+pos st|position: sticky;\ntop: 0;\nz-index: 100;
+text c|text-align: center;
+text l|text-align: left;
+text r|text-align: right;
+font|font-size: 16px;\nfont-weight: 400;\nline-height: 1.5;
+fw|font-weight: 600;
+fwb|font-weight: 700;
+color|color: #6366F1;
+bg|background-color: #F9FAFB;
+border|border: 1px solid #E5E7EB;\nborder-radius: 8px;
+radius|border-radius: 8px;
+shadow|box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+shadow l|box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+trans|transition: all 0.2s ease;
+trans o|transition: opacity 0.3s ease;
+trans t|transition: transform 0.3s ease;
+anim|@keyframes fadeIn {\n  from { opacity: 0; transform: translateY(10px); }\n  to { opacity: 1; transform: translateY(0); }\n}\n.animate {\n  animation: fadeIn 0.5s ease forwards;\n}
+anim p|@keyframes pulse {\n  0%, 100% { transform: scale(1); }\n  50% { transform: scale(1.05); }\n}\n.pulse {\n  animation: pulse 2s infinite;\n}
+anim sp|@keyframes spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n.spinner {\n  animation: spin 1s linear infinite;\n}
+overflow|overflow: hidden;
+overflow a|overflow: auto;
+overflow s|overflow-y: scroll;
+truncate|white-space: nowrap;\noverflow: hidden;\ntext-overflow: ellipsis;
+hidden|display: none;
+block|display: block;
+inline|display: inline;
+ib|display: inline-block;
+pointer|cursor: pointer;
+no-select|user-select: none;
+cover|object-fit: cover;\nwidth: 100%;\nheight: 100%;
+contain|object-fit: contain;
+gap|gap: 16px;
+pad|padding: 16px;
+margin|margin: 16px;
+m-auto|margin: 0 auto;
+w-full|width: 100%;
+h-full|height: 100%;
+wh-full|width: 100%;\nheight: 100%;
+vw|width: 100vw;\nheight: 100vh;
+max-w|max-width: 1200px;\nmargin: 0 auto;\npadding: 0 16px;
+hover|:hover {\n  opacity: 0.8;\n  transition: opacity 0.2s;\n}
+active|:active {\n  transform: scale(0.98);\n}
+focus|:focus {\n  outline: 2px solid #6366F1;\n  outline-offset: 2px;\n}
+z|z-index: 10;
+opacity|opacity: 0.5;
+var|:root {\n  --primary: #6366F1;\n  --bg: #FFFFFF;\n  --text: #111827;\n  --border: #E5E7EB;\n}
+mq|@media (max-width: 768px) {\n  \n}
+mq min|@media (min-width: 1024px) {\n  \n}
+mq d|@media (prefers-color-scheme: dark) {\n  \n}
+print|@media print {\n  body { font-size: 12pt; }\n  .no-print { display: none; }\n}
+imp|!important
+after|::after {\n  content: '';\n  display: block;\n}
+before|::before {\n  content: '';\n  display: block;\n}
+first|:first-child { margin-top: 0; }
+last|:last-child { margin-bottom: 0; }
+nth|:nth-child(odd) { background: #F3F4F6; }
+nth e|:nth-child(even) { background: #F9FAFB; }
+not|:not(:last-child) { margin-bottom: 16px; }
+empty|:empty { display: none; }
+scroll|scroll-behavior: smooth;
+scrollbar|::-webkit-scrollbar { width: 6px; }\n::-webkit-scrollbar-track { background: transparent; }\n::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+filter bl|filter: blur(4px);
+filter br|filter: brightness(1.2);
+filter gr|filter: grayscale(100%);
+bgi|background-image: url('image.jpg');\nbackground-size: cover;\nbackground-position: center;\nbackground-repeat: no-repeat;
+grd|background: linear-gradient(135deg, #6366F1, #8B5CF6);
+grd r|background: radial-gradient(circle, #6366F1, #1E1B4B);
+glass|background: rgba(255, 255, 255, 0.1);\nbackdrop-filter: blur(10px);\nborder: 1px solid rgba(255, 255, 255, 0.2);
+card|.card {\n  background: #FFFFFF;\n  border-radius: 12px;\n  padding: 24px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);\n  transition: all 0.2s ease;\n}\n.card:hover {\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);\n  transform: translateY(-2px);\n}
+btn|.btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 20px;\n  border: none;\n  border-radius: 8px;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s;\n}\n.btn-primary {\n  background: #6366F1;\n  color: white;\n}\n.btn-primary:hover {\n  background: #4F52D6;\n}
+input|.input {\n  width: 100%;\n  padding: 10px 14px;\n  border: 1.5px solid #E5E7EB;\n  border-radius: 8px;\n  font-size: 14px;\n  outline: none;\n  transition: border-color 0.15s;\n}\n.input:focus {\n  border-color: #6366F1;\n}
+nav|.nav {\n  display: flex;\n  align-items: center;\n  gap: 24px;\n  padding: 0 24px;\n  height: 56px;\n  border-bottom: 1px solid #E5E7EB;\n}
+grid r|display: grid;\ngrid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\ngap: 20px;
+grid 2|display: grid;\ngrid-template-columns: 1fr 1fr;\ngap: 24px;
+grid s|display: grid;\ngrid-template-columns: 250px 1fr;\nheight: 100vh;
+clamp|font-size: clamp(1rem, 2.5vw, 1.5rem);
+aspect|aspect-ratio: 16 / 9;
+inset|position: absolute;\ninset: 0;
+min-h|min-height: 100vh;
+gap f|gap: clamp(12px, 2vw, 24px);
+vstack|display: flex;\nflex-direction: column;\ngap: 16px;
+hstack|display: flex;\nalign-items: center;\ngap: 12px;
+spread|display: flex;\njustify-content: space-between;\nalign-items: center;
+sr-only|position: absolute;\nwidth: 1px;\nheight: 1px;\nmargin: -1px;\npadding: 0;\noverflow: hidden;\nclip: rect(0, 0, 0, 0);\nwhite-space: nowrap;\nborder: 0;
+contain s|contain: strict;\ncontent-visibility: auto;
+outline|outline: none;\nbox-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+vis h|visibility: hidden;
+vis v|visibility: visible;
+list n|list-style: none;
+will|will-change: transform;
