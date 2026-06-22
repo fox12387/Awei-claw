@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Version-1.0.0-blue?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Web-green?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/License-MIT-orange?style=flat-square" alt="License">
-  <img src="https://img.shields.io/github/stars/fox12387/AweiClaw?style=flat-square&logo=github" alt="Stars">
+  <img src="https://img.shields.io/github/stars/fox12387/Awei-claw?style=flat-square&logo=github" alt="Stars">
 </p>
 
 <p align="center">
@@ -85,7 +85,7 @@
 
 ### 方式一：下载 Release（推荐）
 
-1. 前往 [Releases 页面](https://github.com/fox12387/AweiClaw/releases)
+1. 前往 [Releases 页面](https://github.com/fox12387/Awei-claw/releases)
 2. 下载最新版本的 `AweiClaw.exe`
 3. 双击运行，无需安装
 
@@ -93,10 +93,10 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/fox12387/AweiClaw.git
+git clone https://github.com/fox12387/Awei-claw.git
 
 # 进入项目目录
-cd AweiClaw/aweiclaw-launcher
+cd Awei-claw/aweiclaw-launcher
 
 # 使用 .NET 6.0+ 编译
 dotnet build
@@ -105,7 +105,7 @@ dotnet run
 
 ### 方式三：Web 版
 
-直接访问：[AweiClaw Web 版](https://fox12387.github.io/AweiClaw/)
+直接访问：[AweiClaw Web 版](https://fox12387.github.io/Awei-claw/)
 
 ---
 
@@ -281,7 +281,7 @@ Wiki 包含以下内容：
 - **开发者**: Awei studio(阿威工作室)
 - **GitHub**: [@fox12387](https://github.com/fox12387)
 - **工作室**: AWEI Studio
-- **项目地址**: [https://github.com/fox12387/AweiClaw](https://github.com/fox12387/AweiClaw)
+- **项目地址**: [https://github.com/fox12387/Awei-claw](https://github.com/fox12387/Awei-claw)
 
 ---
 
@@ -298,7 +298,7 @@ Wiki 包含以下内容：
 如果你有任何问题或建议，欢迎通过以下方式联系我们：
 
 - 📧 **Email**: [awgzs2026@gmail.com]
-- 💬 **Issues**: [GitHub Issues](https://github.com/fox12387/AweiClaw/issues)
+- 💬 **Issues**: [GitHub Issues](https://github.com/fox12387/Awei-claw/issues)
 - 🌐 **Website**: [https://awgzs.cn]
 
 ---
