@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/29202231/README.md)
 # 🦅 AweiClaw - AI 编程助手
 
 <p align="center">
@@ -22,6 +21,7 @@
 - [📥 下载安装](#下载安装)
 - [🚀 快速开始](#快速开始)
 - [💡 使用指南](#使用指南)
+- [📚 文档 Wiki](#文档-wiki)
 - [🛠️ 技术栈](#技术栈)
 - [📸 截图预览](#截图预览)
 - [🤝 贡献指南](#贡献指南)
@@ -156,6 +156,23 @@ dotnet run
 
 ---
 
+## 📚 文档 Wiki
+
+⚡ 访问 **[AweiClaw Wiki](https://github.com/fox12387/Awei-claw/wiki)** 获取完整文档！
+
+Wiki 包含以下内容：
+
+- 📘 **安装指南**：详细的安装与配置教程
+- 🔧 **开发文档**：项目架构、API 说明
+- 🎓 **使用教程**：从零开始使用 AweiClaw
+- 📦 **更新日志**：版本更新记录与发布说明
+- 🤔 **常见问题**：FAQ 与疑难解答
+- 🗺️ **路线图**：未来功能规划
+
+> 欢迎大家一起维护和完善 Wiki 文档！
+
+---
+
 ## 🛠️ 技术栈
 
 ### 桌面版 (aweiclaw-launcher)
@@ -180,7 +197,6 @@ dotnet run
 ---
 
 ## 📸 截图预览
-
 
 ### 主界面
 
@@ -255,12 +271,6 @@ dotnet run
 查看 [LICENSE](LICENSE) 文件了解更多信息。
 
 ---
-## 📥 下载安装
-
-[![Download AweiClaw](https://img.shields.io/github/v/release/fox12387/Awei-claw?label=Download%20AweiClaw)](https://github.com/fox12387/Awei-claw/releases/latest)
-
-直接下载：[AweiClaw.exe](https://github.com/fox12387/Awei-claw/releases/download/v1.0.0/AweiClaw.exe)
-
 
 ## 👨‍💻 作者信息
 
