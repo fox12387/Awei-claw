@@ -1,2122 +1,915 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AweiClaw</title>
-<style>
-/* ============================================
-   AweiClaw Design System v1.0
-   ============================================ */
-
-/* ----- Design Tokens ----- */
-:root {
-  /* Primary */
-  --clr-primary-50:  #EEF2FF;
-  --clr-primary-100: #E0E7FF;
-  --clr-primary-200: #C7D2FE;
-  --clr-primary-300: #A5B4FC;
-  --clr-primary-400: #818CF8;
-  --clr-primary-500: #6366F1;
-  --clr-primary-600: #4F46E5;
-  --clr-primary-700: #4338CA;
-  --clr-primary-800: #3730A3;
-  --clr-primary-900: #312E81;
-
-  /* Neutral */
-  --clr-white:      #FFFFFF;
-  --clr-bg:         #F8FAFC;
-  --clr-bg-alt:     #F1F5F9;
-  --clr-border:     #E2E8F0;
-  --clr-border-alt: #CBD5E1;
-  --clr-text:       #0F172A;
-  --clr-text-body:  #334155;
-  --clr-text-muted: #64748B;
-  --clr-text-subtle:#94A3B8;
-
-  /* Semantic */
-  --clr-success: #10B981;
-  --clr-warning: #F59E0B;
-  --clr-error:   #EF4444;
-  --clr-info:    #3B82F6;
-
-  /* Sidebar */
-  --sidebar-bg:    #F8FAFC;
-  --sidebar-width: 260px;
-  --sidebar-hover: #E2E8F0;
-  --sidebar-active:#EEF2FF;
-
-  /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
-
-  --fs-xs:   0.75rem;   /* 12px */
-  --fs-sm:   0.8125rem; /* 13px */
-  --fs-base: 0.875rem;  /* 14px */
-  --fs-lg:   1rem;      /* 16px */
-  --fs-xl:   1.125rem;  /* 18px */
-  --fs-2xl:  1.5rem;    /* 24px */
-  --fs-3xl:  1.875rem;  /* 30px */
-
-  --fw-normal: 400;
-  --fw-medium: 500;
-  --fw-semibold:600;
-  --fw-bold:   700;
-
-  --lh-tight:  1.25;
-  --lh-normal: 1.5;
-  --lh-relaxed:1.625;
-
-  /* Spacing (4px base) */
-  --sp-1:  0.25rem;
-  --sp-2:  0.5rem;
-  --sp-3:  0.75rem;
-  --sp-4:  1rem;
-  --sp-5:  1.25rem;
-  --sp-6:  1.5rem;
-  --sp-8:  2rem;
-  --sp-10: 2.5rem;
-  --sp-12: 3rem;
-  --sp-16: 4rem;
-
-  /* Radii */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
-
-  /* Shadows */
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
-
-  /* Transitions */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 150ms;
-  --dur-normal: 250ms;
-  --dur-slow: 400ms;
-}
-
-/* ----- Reset & Base ----- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  font-family: var(--font-sans);
-  font-size: var(--fs-base);
-  line-height: var(--lh-normal);
-  color: var(--clr-text-body);
-  background: var(--clr-white);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-input, textarea, select { font: inherit; color: inherit; }
-ul, ol { list-style: none; }
-img, svg { display: block; max-width: 100%; }
-
-/* Focus ring */
-:focus-visible {
-  outline: 2px solid var(--clr-primary-500);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--clr-border-alt); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--clr-text-muted); }
-
-/* ============================================
-   Layout
-   ============================================ */
-.app-layout {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-}
-
-/* ----- Sidebar ----- */
-.sidebar {
-  width: var(--sidebar-width);
-  min-width: var(--sidebar-width);
-  background: var(--sidebar-bg);
-  border-right: 1px solid var(--clr-border);
-  display: flex;
-  flex-direction: column;
-  user-select: none;
-  z-index: 10;
-}
-
-.sidebar-brand {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-5) var(--sp-5) var(--sp-4);
-  border-bottom: 1px solid var(--clr-border);
-}
-
-.sidebar-brand-logo {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, var(--clr-primary-600), var(--clr-primary-400));
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  flex-shrink: 0;
-}
-
-.sidebar-brand-text {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-bold);
-  color: var(--clr-text);
-  letter-spacing: -0.01em;
-}
-
-.sidebar-brand-version {
-  font-size: var(--fs-xs);
-  color: var(--clr-text-subtle);
-  font-weight: var(--fw-normal);
-  margin-left: auto;
-  background: var(--clr-bg-alt);
-  padding: 2px 6px;
-  border-radius: var(--radius-sm);
-}
-
-/* Nav */
-.sidebar-nav {
-  flex: 1;
-  padding: var(--sp-3) var(--sp-3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-1);
-  overflow-y: auto;
-}
-
-.nav-section-label {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: var(--sp-3) var(--sp-3) var(--sp-2);
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-2) var(--sp-3);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--clr-text-body);
-  transition: all var(--dur-fast) var(--ease-out);
-  position: relative;
-}
-
-.nav-item:hover {
-  background: var(--sidebar-hover);
-  color: var(--clr-text);
-}
-
-.nav-item.active {
-  background: var(--sidebar-active);
-  color: var(--clr-primary-700);
-  font-weight: var(--fw-semibold);
-}
-
-.nav-item.active::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 3px;
-  background: var(--clr-primary-500);
-  border-radius: 0 2px 2px 0;
-}
-
-.nav-item-icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-item-icon svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-}
-
-.nav-item-badge {
-  margin-left: auto;
-  font-size: var(--fs-xs);
-  background: var(--clr-primary-100);
-  color: var(--clr-primary-700);
-  padding: 1px 6px;
-  border-radius: var(--radius-full);
-  font-weight: var(--fw-medium);
-}
-
-/* Sidebar Footer */
-.sidebar-footer {
-  padding: var(--sp-3);
-  border-top: 1px solid var(--clr-border);
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
-
-.sidebar-user-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--clr-primary-400), var(--clr-primary-600));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  flex-shrink: 0;
-}
-
-.sidebar-user-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.sidebar-user-name {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--clr-text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sidebar-user-role {
-  font-size: var(--fs-xs);
-  color: var(--clr-text-muted);
-}
-
-/* ============================================
-   Main Content Area
-   ============================================ */
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  background: var(--clr-white);
-}
-
-/* Page Header */
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--sp-4) var(--sp-6);
-  border-bottom: 1px solid var(--clr-border);
-  min-height: 57px;
-  flex-shrink: 0;
-}
-
-.page-header-left {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
-
-.page-title {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text);
-}
-
-.page-subtitle {
-  font-size: var(--fs-sm);
-  color: var(--clr-text-muted);
-}
-
-.page-header-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-}
-
-/* Page Container */
-.page {
-  display: none;
-  flex: 1;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.page.active {
-  display: flex;
-}
-
-/* ============================================
-   Buttons
-   ============================================ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-  padding: var(--sp-2) var(--sp-4);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  border-radius: var(--radius-md);
-  transition: all var(--dur-fast) var(--ease-out);
-  white-space: nowrap;
-  user-select: none;
-  height: 36px;
-}
-
-.btn:active { transform: scale(0.97); }
-
-.btn-primary {
-  background: var(--clr-primary-600);
-  color: white;
-  box-shadow: var(--shadow-xs);
-}
-.btn-primary:hover { background: var(--clr-primary-700); box-shadow: var(--shadow-sm); }
-
-.btn-secondary {
-  background: var(--clr-white);
-  color: var(--clr-text-body);
-  border: 1px solid var(--clr-border);
-}
-.btn-secondary:hover { background: var(--clr-bg); border-color: var(--clr-border-alt); }
-
-.btn-ghost {
-  color: var(--clr-text-muted);
-}
-.btn-ghost:hover { background: var(--clr-bg); color: var(--clr-text); }
-
-.btn-icon {
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border-radius: var(--radius-md);
-}
-
-.btn-icon svg { width: 18px; height: 18px; }
-
-.btn-sm { height: 30px; padding: var(--sp-1) var(--sp-3); font-size: var(--fs-xs); }
-.btn-sm.btn-icon { width: 30px; height: 30px; }
-
-/* ============================================
-   Chat Page
-   ============================================ */
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow: hidden;
-}
-
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--sp-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-6);
-}
-
-.chat-empty {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-4);
-  color: var(--clr-text-muted);
-  text-align: center;
-  padding: var(--sp-8);
-}
-
-.chat-empty-icon {
-  width: 64px;
-  height: 64px;
-  background: var(--clr-primary-50);
-  border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--clr-primary-400);
-  margin-bottom: var(--sp-2);
-}
-
-.chat-empty-icon svg { width: 32px; height: 32px; }
-
-.chat-empty h2 {
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text);
-}
-
-.chat-empty p {
-  font-size: var(--fs-base);
-  max-width: 480px;
-  line-height: var(--lh-relaxed);
-}
-
-.chat-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2);
-  margin-top: var(--sp-4);
-  justify-content: center;
-}
-
-.chat-suggestion {
-  padding: var(--sp-2) var(--sp-4);
-  background: var(--clr-bg);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-full);
-  font-size: var(--fs-sm);
-  color: var(--clr-text-body);
-  transition: all var(--dur-fast) var(--ease-out);
-}
-.chat-suggestion:hover {
-  background: var(--clr-primary-50);
-  border-color: var(--clr-primary-200);
-  color: var(--clr-primary-700);
-}
-
-/* Message */
-.message {
-  display: flex;
-  gap: var(--sp-4);
-  max-width: 800px;
-  animation: msgIn var(--dur-slow) var(--ease-out);
-}
-
-@keyframes msgIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.message-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-bold);
-}
-
-.message-avatar.user {
-  background: var(--clr-primary-600);
-  color: white;
-}
-
-.message-avatar.ai {
-  background: linear-gradient(135deg, var(--clr-primary-500), var(--clr-primary-700));
-  color: white;
-}
-
-.message-body { flex: 1; min-width: 0; }
-
-.message-header {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  margin-bottom: var(--sp-1);
-}
-
-.message-author {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text);
-}
-
-.message-time {
-  font-size: var(--fs-xs);
-  color: var(--clr-text-subtle);
-}
-
-.message-content {
-  font-size: var(--fs-base);
-  line-height: var(--lh-relaxed);
-  color: var(--clr-text-body);
-}
-
-.message-content p + p { margin-top: var(--sp-3); }
-
-.message-content code {
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-  background: var(--clr-bg-alt);
-  padding: 1px 5px;
-  border-radius: 3px;
-  color: var(--clr-primary-700);
-}
-
-.message-content pre {
-  margin-top: var(--sp-3);
-  background: #1E293B;
-  color: #E2E8F0;
-  padding: var(--sp-4);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-relaxed);
-}
-
-.message-content pre code {
-  background: none;
-  padding: 0;
-  color: inherit;
-  font-size: inherit;
-}
-
-.message-actions {
-  display: flex;
-  gap: var(--sp-1);
-  margin-top: var(--sp-2);
-  opacity: 0;
-  transition: opacity var(--dur-fast);
-}
-
-.message:hover .message-actions { opacity: 1; }
-.message-actions .btn-ghost { padding: 4px; height: 28px; width: 28px; }
-
-/* Chat Input */
-.chat-input-area {
-  border-top: 1px solid var(--clr-border);
-  padding: var(--sp-4) var(--sp-6);
-  background: var(--clr-white);
-}
-
-.chat-input-wrapper {
-  display: flex;
-  align-items: flex-end;
-  gap: var(--sp-3);
-  background: var(--clr-bg);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-lg);
-  padding: var(--sp-2) var(--sp-3);
-  transition: all var(--dur-fast) var(--ease-out);
-}
-
-.chat-input-wrapper:focus-within {
-  border-color: var(--clr-primary-400);
-  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.1);
-  background: var(--clr-white);
-}
-
-.chat-input-wrapper textarea {
-  flex: 1;
-  border: none;
-  background: transparent;
-  resize: none;
-  padding: var(--sp-1) 0;
-  font-size: var(--fs-base);
-  line-height: var(--lh-normal);
-  max-height: 160px;
-  min-height: 24px;
-}
-
-.chat-input-wrapper textarea:focus { outline: none; }
-
-.chat-input-wrapper textarea::placeholder { color: var(--clr-text-subtle); }
-
-.chat-input-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-1);
-  flex-shrink: 0;
-}
-
-.chat-input-actions .btn-icon {
-  width: 32px;
-  height: 32px;
-  color: var(--clr-text-muted);
-}
-.chat-input-actions .btn-icon:hover { color: var(--clr-text); background: var(--clr-border); }
-
-.btn-send {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  background: var(--clr-primary-600);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--dur-fast) var(--ease-out);
-}
-.btn-send:hover { background: var(--clr-primary-700); }
-.btn-send:active { transform: scale(0.95); }
-
-.chat-input-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: var(--sp-2);
-  padding: 0 var(--sp-1);
-}
-
-.chat-model-selector {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-size: var(--fs-xs);
-  color: var(--clr-text-muted);
-  cursor: pointer;
-  padding: var(--sp-1) var(--sp-2);
-  border-radius: var(--radius-sm);
-  transition: all var(--dur-fast);
-}
-.chat-model-selector:hover { background: var(--clr-bg); color: var(--clr-text); }
-
-.chat-model-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--clr-success);
-}
-
-.chat-char-count {
-  font-size: var(--fs-xs);
-  color: var(--clr-text-subtle);
-}
-
-/* ============================================
-   Workspace Page
-   ============================================ */
-.workspace-layout {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-}
-
-.workspace-sidebar {
-  width: 240px;
-  min-width: 240px;
-  border-right: 1px solid var(--clr-border);
-  display: flex;
-  flex-direction: column;
-  background: var(--clr-bg);
-}
-
-.workspace-sidebar-header {
-  padding: var(--sp-3) var(--sp-4);
-  border-bottom: 1px solid var(--clr-border);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.workspace-file-tree {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--sp-2);
-}
-
-.file-tree-item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  padding: var(--sp-1) var(--sp-2);
-  border-radius: var(--radius-sm);
-  font-size: var(--fs-sm);
-  color: var(--clr-text-body);
-  cursor: pointer;
-  transition: all var(--dur-fast);
-}
-
-.file-tree-item:hover { background: var(--clr-border); }
-.file-tree-item.active { background: var(--clr-primary-50); color: var(--clr-primary-700); }
-
-.file-tree-item svg { width: 16px; height: 16px; flex-shrink: 0; }
-
-.file-tree-item.folder { font-weight: var(--fw-medium); color: var(--clr-text); }
-.file-tree-item .file-ext { color: var(--clr-text-muted); font-size: var(--fs-xs); margin-left: auto; }
-
-.workspace-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.workspace-toolbar {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-1);
-  padding: var(--sp-2) var(--sp-4);
-  border-bottom: 1px solid var(--clr-border);
-  background: var(--clr-white);
-  min-height: 40px;
-}
-
-.workspace-tab {
-  padding: var(--sp-1) var(--sp-3);
-  font-size: var(--fs-sm);
-  color: var(--clr-text-muted);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--dur-fast);
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  border: 1px solid transparent;
-}
-
-.workspace-tab:hover { background: var(--clr-bg); color: var(--clr-text); }
-.workspace-tab.active { background: var(--clr-bg); color: var(--clr-text); border-color: var(--clr-border); }
-
-.workspace-tab-close {
-  width: 16px; height: 16px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 3px;
-  opacity: 0;
-  transition: all var(--dur-fast);
-}
-.workspace-tab:hover .workspace-tab-close { opacity: 1; }
-.workspace-tab-close:hover { background: var(--clr-border-alt); }
-
-.workspace-editor {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-}
-
-.code-editor {
-  flex: 1;
-  display: flex;
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  line-height: 1.7;
-  overflow: auto;
-}
-
-.code-line-numbers {
-  padding: var(--sp-4) var(--sp-3);
-  text-align: right;
-  color: var(--clr-text-subtle);
-  user-select: none;
-  min-width: 48px;
-  background: var(--clr-bg);
-  border-right: 1px solid var(--clr-border);
-}
-
-.code-line-numbers div { padding-right: var(--sp-2); }
-
-.code-content {
-  flex: 1;
-  padding: var(--sp-4);
-  color: var(--clr-text);
-  white-space: pre;
-  overflow: auto;
-  outline: none;
-}
-
-.code-content:focus { background: var(--clr-white); }
-
-/* Syntax highlighting */
-.code-keyword  { color: #7C3AED; }
-.code-string   { color: #059669; }
-.code-comment  { color: #94A3B8; font-style: italic; }
-.code-function { color: #2563EB; }
-.code-number   { color: #D97706; }
-.code-type     { color: #0891B2; }
-
-/* ============================================
-   Terminal Page
-   ============================================ */
-.terminal-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.terminal-toolbar {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  padding: var(--sp-2) var(--sp-4);
-  border-bottom: 1px solid var(--clr-border);
-  background: var(--clr-white);
-}
-
-.terminal-session {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--clr-text);
-  padding: var(--sp-1) var(--sp-3);
-  background: var(--clr-bg);
-  border-radius: var(--radius-sm);
-}
-
-.terminal-output {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--sp-4) var(--sp-6);
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  line-height: 1.7;
-  background: #FAFBFC;
-  color: var(--clr-text);
-}
-
-.terminal-line {
-  display: flex;
-  gap: var(--sp-3);
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-.terminal-prompt {
-  color: var(--clr-primary-600);
-  font-weight: var(--fw-semibold);
-  flex-shrink: 0;
-  user-select: none;
-}
-
-.terminal-command { color: var(--clr-text); }
-.terminal-output-text { color: var(--clr-text-body); }
-.terminal-error { color: var(--clr-error); }
-.terminal-success { color: var(--clr-success); }
-.terminal-info { color: var(--clr-info); }
-
-.terminal-input-line {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-3) var(--sp-6);
-  border-top: 1px solid var(--clr-border);
-  background: var(--clr-white);
-}
-
-.terminal-input-line .terminal-prompt { font-size: var(--fs-base); }
-
-.terminal-input-line input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  font-family: var(--font-mono);
-  font-size: var(--fs-base);
-  color: var(--clr-text);
-  outline: none;
-}
-
-.terminal-input-line input::placeholder { color: var(--clr-text-subtle); }
-
-/* ============================================
-   History Page
-   ============================================ */
-.history-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.history-search {
-  padding: var(--sp-4) var(--sp-6);
-  border-bottom: 1px solid var(--clr-border);
-}
-
-.history-search-input {
-  width: 100%;
-  max-width: 480px;
-  padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-8);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-sm);
-  background: var(--clr-bg);
-  transition: all var(--dur-fast);
-}
-
-.history-search-input:focus {
-  outline: none;
-  border-color: var(--clr-primary-400);
-  background: var(--clr-white);
-  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.08);
-}
-
-.history-search-wrapper {
-  position: relative;
-  max-width: 480px;
-}
-
-.history-search-wrapper svg {
-  position: absolute;
-  left: var(--sp-3);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  color: var(--clr-text-subtle);
-  pointer-events: none;
-}
-
-.history-list {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--sp-2) var(--sp-6);
-}
-
-.history-group {
-  margin-bottom: var(--sp-6);
-}
-
-.history-group-label {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text-muted);
-  padding: var(--sp-2) 0;
-  position: sticky;
-  top: 0;
-  background: var(--clr-white);
-  z-index: 1;
-}
-
-.history-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--sp-4);
-  padding: var(--sp-3) var(--sp-4);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all var(--dur-fast);
-  border: 1px solid transparent;
-}
-
-.history-item:hover {
-  background: var(--clr-bg);
-  border-color: var(--clr-border);
-}
-
-.history-item-icon {
-  width: 36px;
-  height: 36px;
-  background: var(--clr-primary-50);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--clr-primary-500);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.history-item-icon svg { width: 18px; height: 18px; }
-
-.history-item-content { flex: 1; min-width: 0; }
-
-.history-item-title {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-medium);
-  color: var(--clr-text);
-  margin-bottom: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.history-item-preview {
-  font-size: var(--fs-sm);
-  color: var(--clr-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.history-item-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  margin-top: var(--sp-1);
-  font-size: var(--fs-xs);
-  color: var(--clr-text-subtle);
-}
-
-.history-item-time {
-  flex-shrink: 0;
-  font-size: var(--fs-xs);
-  color: var(--clr-text-subtle);
-  margin-top: 4px;
-}
-
-/* ============================================
-   Settings Page
-   ============================================ */
-.settings-container {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-}
-
-.settings-sidebar {
-  width: 200px;
-  min-width: 200px;
-  border-right: 1px solid var(--clr-border);
-  padding: var(--sp-4) var(--sp-2);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-1);
-}
-
-.settings-nav-item {
-  padding: var(--sp-2) var(--sp-3);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--clr-text-muted);
-  cursor: pointer;
-  transition: all var(--dur-fast);
-}
-
-.settings-nav-item:hover { background: var(--clr-bg); color: var(--clr-text); }
-.settings-nav-item.active { background: var(--clr-primary-50); color: var(--clr-primary-700); }
-
-.settings-main {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--sp-6) var(--sp-8);
-  max-width: 640px;
-}
-
-.settings-section { margin-bottom: var(--sp-8); }
-
-.settings-section-title {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text);
-  margin-bottom: var(--sp-1);
-}
-
-.settings-section-desc {
-  font-size: var(--fs-sm);
-  color: var(--clr-text-muted);
-  margin-bottom: var(--sp-6);
-}
-
-.settings-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-5);
-}
-
-.setting-item {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--sp-6);
-  padding-bottom: var(--sp-5);
-  border-bottom: 1px solid var(--clr-border);
-}
-
-.setting-item:last-child { border-bottom: none; }
-
-.setting-label {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-medium);
-  color: var(--clr-text);
-  margin-bottom: 2px;
-}
-
-.setting-hint {
-  font-size: var(--fs-sm);
-  color: var(--clr-text-muted);
-  line-height: var(--lh-relaxed);
-}
-
-/* Toggle */
-.toggle {
-  position: relative;
-  width: 44px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.toggle input { display: none; }
-
-.toggle-track {
-  position: absolute;
-  inset: 0;
-  background: var(--clr-border-alt);
-  border-radius: 12px;
-  transition: all var(--dur-fast) var(--ease-out);
-  cursor: pointer;
-}
-
-.toggle input:checked + .toggle-track { background: var(--clr-primary-500); }
-
-.toggle-thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  transition: all var(--dur-fast) var(--ease-out);
-  box-shadow: var(--shadow-sm);
-}
-
-.toggle input:checked + .toggle-track .toggle-thumb { transform: translateX(20px); }
-
-/* Select */
-.setting-select {
-  padding: var(--sp-2) var(--sp-3);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-sm);
-  color: var(--clr-text);
-  background: var(--clr-white);
-  cursor: pointer;
-  min-width: 160px;
-  transition: border-color var(--dur-fast);
-}
-
-.setting-select:focus {
-  outline: none;
-  border-color: var(--clr-primary-400);
-  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.08);
-}
-
-/* Input */
-.setting-input {
-  padding: var(--sp-2) var(--sp-3);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-sm);
-  color: var(--clr-text);
-  background: var(--clr-white);
-  width: 240px;
-  transition: border-color var(--dur-fast);
-}
-
-.setting-input:focus {
-  outline: none;
-  border-color: var(--clr-primary-400);
-  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.08);
-}
-
-/* ============================================
-   Status Bar
-   ============================================ */
-.status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--sp-4);
-  height: 28px;
-  border-top: 1px solid var(--clr-border);
-  background: var(--clr-bg);
-  font-size: var(--fs-xs);
-  color: var(--clr-text-subtle);
-  flex-shrink: 0;
-}
-
-.status-bar-left, .status-bar-right {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
-
-.status-item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-1);
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--clr-success);
-}
-
-/* ============================================
-   Animations
-   ============================================ */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.page.active {
-  animation: fadeIn var(--dur-normal) var(--ease-out);
-}
-
-/* Pulse for status indicator */
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.5; }
-}
-
-.status-dot.live { animation: pulse 2s ease-in-out infinite; }
-
-/* Skeleton loading */
-.skeleton {
-  background: linear-gradient(90deg, var(--clr-bg-alt) 25%, var(--clr-border) 50%, var(--clr-bg-alt) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
-  border-radius: var(--radius-sm);
-}
-
-@keyframes shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AweiClaw - AI-Native Coding Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="app-layout">
-
-  <!-- ==================== SIDEBAR ==================== -->
-  <aside class="sidebar">
-    <!-- Brand -->
-    <div class="sidebar-brand">
-      <div class="sidebar-brand-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      <span class="sidebar-brand-text">AweiClaw</span>
-      <span class="sidebar-brand-version">v1.0</span>
+<!-- ═══════════════════════════════════════════
+     AUTH OVERLAY (注册 / 登录)
+     ═══════════════════════════════════════════ -->
+<div class="auth-overlay" id="auth-overlay">
+  <div class="auth-card">
+    <!-- Logo -->
+    <div class="auth-logo">
+      <div class="auth-logo-icon">A</div>
+      <span class="auth-logo-name">AweiClaw</span>
     </div>
 
-    <!-- Navigation -->
-    <nav class="sidebar-nav">
-      <span class="nav-section-label">主菜单</span>
-
-      <a class="nav-item active" data-page="chat">
-        <span class="nav-item-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        </span>
-        Chat
-        <span class="nav-item-badge">New</span>
-      </a>
-
-      <a class="nav-item" data-page="workspace">
-        <span class="nav-item-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </span>
-        Workspace
-      </a>
-
-      <a class="nav-item" data-page="terminal">
-        <span class="nav-item-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-        </span>
-        Terminal
-      </a>
-
-      <a class="nav-item" data-page="history">
-        <span class="nav-item-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </span>
-        History
-      </a>
-
-      <span class="nav-section-label" style="margin-top: var(--sp-3);">系统</span>
-
-      <a class="nav-item" data-page="settings">
-        <span class="nav-item-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-        </span>
-        Settings
-      </a>
-    </nav>
-
-    <!-- User Footer -->
-    <div class="sidebar-footer">
-      <div class="sidebar-user-avatar">A</div>
-      <div class="sidebar-user-info">
-        <div class="sidebar-user-name">Awei</div>
-        <div class="sidebar-user-role">Developer</div>
-      </div>
-      <button class="btn btn-ghost btn-icon" title="Account menu">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-    </div>
-  </aside>
-
-  <!-- ==================== MAIN CONTENT ==================== -->
-  <main class="main-content">
-
-    <!-- ===== CHAT PAGE ===== -->
-    <div class="page active" id="page-chat">
-      <div class="page-header">
-        <div class="page-header-left">
-          <h1 class="page-title">Chat</h1>
-          <span class="page-subtitle">AI 对话助手</span>
-        </div>
-        <div class="page-header-actions">
-          <button class="btn btn-ghost btn-icon" title="New conversation">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="chat-container">
-        <div class="chat-messages" id="chatMessages">
-          <!-- Empty state -->
-          <div class="chat-empty">
-            <div class="chat-empty-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-            <h2>Welcome to AweiClaw</h2>
-            <p>你的 AI 编程助手，随时准备协助编码、调试和解答技术问题。</p>
-            <div class="chat-suggestions">
-              <button class="chat-suggestion" onclick="sendQuickMessage('帮我写一个 Python 脚本')">🐍 帮我写一个 Python 脚本</button>
-              <button class="chat-suggestion" onclick="sendQuickMessage('解释这段代码的作用')">📖 解释这段代码的作用</button>
-              <button class="chat-suggestion" onclick="sendQuickMessage('优化性能')">⚡ 优化性能</button>
-              <button class="chat-suggestion" onclick="sendQuickMessage('Debug 这个错误')">🐛 Debug 这个错误</button>
-              <button class="chat-suggestion" onclick="sendQuickMessage('帮我设计 API 接口')">🔧 帮我设计 API 接口</button>
-              <button class="chat-suggestion" onclick="sendQuickMessage('写单元测试')">🧪 写单元测试</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="chat-input-area">
-          <div class="chat-input-wrapper">
-            <textarea id="chatInput" rows="1" placeholder="输入消息... (Shift+Enter 换行，Enter 发送)" onkeydown="handleChatInput(event)"></textarea>
-            <div class="chat-input-actions">
-              <button class="btn btn-ghost btn-icon" title="附加文件">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
-              </button>
-              <button class="btn btn-ghost btn-icon" title="添加图片">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              </button>
-              <button class="btn-send" onclick="sendMessage()" title="发送消息">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </button>
-            </div>
-          </div>
-          <div class="chat-input-footer">
-            <div class="chat-model-selector">
-              <span class="chat-model-dot"></span>
-              Claude 3.5 Sonnet
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <span class="chat-char-count" id="charCount">0 / 4000</span>
-          </div>
-        </div>
-      </div>
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-register" onclick="switchAuthTab('register')">Create Account</button>
+      <button class="auth-tab" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
     </div>
 
-    <!-- ===== WORKSPACE PAGE ===== -->
-    <div class="page" id="page-workspace">
-      <div class="page-header">
-        <div class="page-header-left">
-          <h1 class="page-title">Workspace</h1>
-          <span class="page-subtitle">项目文件 &amp; 编辑器</span>
-        </div>
-        <div class="page-header-actions">
-          <button class="btn btn-secondary btn-sm">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-            Pull
-          </button>
-          <button class="btn btn-primary btn-sm">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            New File
-          </button>
-        </div>
+    <!-- Register Form -->
+    <form class="auth-form" id="form-register" onsubmit="handleRegister(event)">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="reg-username" placeholder="Enter your username" autocomplete="username">
       </div>
-
-      <div class="workspace-layout">
-        <div class="workspace-sidebar">
-          <div class="workspace-sidebar-header">Files</div>
-          <div class="workspace-file-tree">
-            <div class="file-tree-item folder" style="padding-left:8px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-              src
-            </div>
-            <div class="file-tree-item" style="padding-left:28px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              index.ts
-              <span class="file-ext">.ts</span>
-            </div>
-            <div class="file-tree-item active" style="padding-left:28px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              App.tsx
-              <span class="file-ext">.tsx</span>
-            </div>
-            <div class="file-tree-item" style="padding-left:28px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              styles.css
-              <span class="file-ext">.css</span>
-            </div>
-            <div class="file-tree-item folder" style="padding-left:8px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-              components
-            </div>
-            <div class="file-tree-item" style="padding-left:28px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Button.tsx
-              <span class="file-ext">.tsx</span>
-            </div>
-            <div class="file-tree-item" style="padding-left:28px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Modal.tsx
-              <span class="file-ext">.tsx</span>
-            </div>
-            <div class="file-tree-item folder" style="padding-left:8px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-              utils
-            </div>
-            <div class="file-tree-item" style="padding-left:28px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              helpers.ts
-              <span class="file-ext">.ts</span>
-            </div>
-            <div class="file-tree-item" style="padding-left:8px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              package.json
-            </div>
-            <div class="file-tree-item" style="padding-left:8px">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              tsconfig.json
-            </div>
-          </div>
-        </div>
-
-        <div class="workspace-main">
-          <div class="workspace-toolbar">
-            <div class="workspace-tab active">App.tsx <span class="workspace-tab-close">&times;</span></div>
-            <div class="workspace-tab">index.ts <span class="workspace-tab-close">&times;</span></div>
-          </div>
-          <div class="workspace-editor">
-            <div class="code-editor">
-              <div class="code-line-numbers" id="lineNumbers"></div>
-              <div class="code-content" contenteditable="false">
-<span class="code-keyword">import</span> React, { useState } <span class="code-keyword">from</span> <span class="code-string">'react'</span>;
-<span class="code-keyword">import</span> { Button, Modal } <span class="code-keyword">from</span> <span class="code-string">'./components'</span>;
-<span class="code-keyword">import</span> { formatDate } <span class="code-keyword">from</span> <span class="code-string">'./utils/helpers'</span>;
-
-<span class="code-keyword">interface</span> <span class="code-type">AppProps</span> {
-  title: <span class="code-type">string</span>;
-  version: <span class="code-type">number</span>;
-}
-
-<span class="code-keyword">export default function</span> <span class="code-function">App</span>({ title, version }: <span class="code-type">AppProps</span>) {
-  <span class="code-keyword">const</span> [count, setCount] = <span class="code-function">useState</span>&lt;<span class="code-type">number</span>&gt;(<span class="code-number">0</span>);
-  <span class="code-keyword">const</span> [isOpen, setIsOpen] = <span class="code-function">useState</span>(<span class="code-number">false</span>);
-
-  <span class="code-comment">// Render the main application</span>
-  <span class="code-keyword">return</span> (
-    &lt;<span class="code-type">div</span> className=<span class="code-string">"app"</span>&gt;
-      &lt;<span class="code-type">header</span>&gt;
-        &lt;<span class="code-type">h1</span>&gt;{title} v{version}&lt;/<span class="code-type">h1</span>&gt;
-      &lt;/<span class="code-type">header</span>&gt;
-      &lt;<span class="code-type">main</span>&gt;
-        &lt;<span class="code-type">Button</span> onClick={() =&gt; <span class="code-function">setCount</span>(c =&gt; c + <span class="code-number">1</span>)}&gt;
-          Count: {count}
-        &lt;/<span class="code-type">Button</span>&gt;
-      &lt;/<span class="code-type">main</span>&gt;
-    &lt;/<span class="code-type">div</span>&gt;
-  );
-}</div>
-            </div>
-          </div>
-        </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email">
       </div>
-    </div>
-
-    <!-- ===== TERMINAL PAGE ===== -->
-    <div class="page" id="page-terminal">
-      <div class="page-header">
-        <div class="page-header-left">
-          <h1 class="page-title">Terminal</h1>
-          <span class="page-subtitle">命令行界面</span>
-        </div>
-        <div class="page-header-actions">
-          <button class="btn btn-ghost btn-icon" title="New session">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-          </button>
-          <button class="btn btn-ghost btn-icon" title="Clear">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
-          </button>
-        </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="reg-password" placeholder="••••••••" autocomplete="new-password">
       </div>
-
-      <div class="terminal-container">
-        <div class="terminal-toolbar">
-          <span class="terminal-session">bash &mdash; awei@MacBook-Pro</span>
-          <span class="terminal-session" style="opacity:0.5">+</span>
-        </div>
-
-        <div class="terminal-output" id="terminalOutput">
-          <div class="terminal-line">
-            <span class="terminal-prompt">~</span>
-            <span class="terminal-output-text">Last login: Sat Jun 20 22:15:32 on ttys001</span>
-          </div>
-          <div class="terminal-line" style="margin-top:4px">
-            <span class="terminal-prompt">~</span>
-            <span class="terminal-command">ls -la</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-output-text">drwxr-xr-x  12 awei  staff   384 Jun 20 22:15 .</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-output-text">drwxr-xr-x   5 awei  staff   160 Jun 18 14:22 ..</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-output-text">-rw-r--r--   1 awei  staff  2048 Jun 20 21:30 index.html</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-output-text">drwxr-xr-x   6 awei  staff   192 Jun 20 20:15 src</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-output-text">-rw-r--r--   1 awei  staff   512 Jun 19 18:00 package.json</span>
-          </div>
-          <div class="terminal-line" style="margin-top:4px">
-            <span class="terminal-prompt">~</span>
-            <span class="terminal-command">npm run build</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-success">✓ Build completed in 2.3s</span>
-          </div>
-          <div class="terminal-line" style="margin-top:4px">
-            <span class="terminal-prompt">~</span>
-            <span class="terminal-command">git status</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-info">On branch main</span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt"></span>
-            <span class="terminal-info">nothing to commit, working tree clean</span>
-          </div>
-          <div class="terminal-line" style="margin-top:4px">
-            <span class="terminal-prompt">~</span>
-            <span class="terminal-command"></span>
-            <span class="terminal-output-text" style="animation: pulse 1s ease-in-out infinite">▊</span>
-          </div>
-        </div>
-
-        <div class="terminal-input-line">
-          <span class="terminal-prompt">~</span>
-          <input type="text" id="terminalInput" placeholder="输入命令..." onkeydown="handleTerminalInput(event)">
-        </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" id="reg-confirm" placeholder="••••••••" autocomplete="new-password">
       </div>
-    </div>
-
-    <!-- ===== HISTORY PAGE ===== -->
-    <div class="page" id="page-history">
-      <div class="page-header">
-        <div class="page-header-left">
-          <h1 class="page-title">History</h1>
-          <span class="page-subtitle">历史会话记录</span>
-        </div>
-        <div class="page-header-actions">
-          <button class="btn btn-secondary btn-sm">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
-            Clear All
-          </button>
-        </div>
+      <div class="form-terms">
+        <input type="checkbox" id="reg-terms">
+        <label for="reg-terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
       </div>
+      <button type="submit" class="btn-submit" id="btn-register">Create Account</button>
+      <p class="auth-msg" id="reg-msg"></p>
+    </form>
 
-      <div class="history-container">
-        <div class="history-search">
-          <div class="history-search-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" class="history-search-input" placeholder="搜索历史会话...">
-          </div>
-        </div>
-
-        <div class="history-list">
-          <!-- Today -->
-          <div class="history-group">
-            <div class="history-group-label">今天</div>
-            <div class="history-item">
-              <div class="history-item-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div class="history-item-content">
-                <div class="history-item-title">AweiClaw UI 设计讨论</div>
-                <div class="history-item-preview">我们需要设计一个电脑端html网页，叫AweiClaw...</div>
-                <div class="history-item-meta">
-                  <span>Claude 3.5 Sonnet</span>
-                  <span>·</span>
-                  <span>12 条消息</span>
-                </div>
-              </div>
-              <span class="history-item-time">22:15</span>
-            </div>
-            <div class="history-item">
-              <div class="history-item-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div class="history-item-content">
-                <div class="history-item-title">React 组件重构</div>
-                <div class="history-item-preview">帮我把这个 class 组件改写成 hooks...</div>
-                <div class="history-item-meta">
-                  <span>Claude 3.5 Sonnet</span>
-                  <span>·</span>
-                  <span>8 条消息</span>
-                </div>
-              </div>
-              <span class="history-item-time">16:30</span>
-            </div>
-          </div>
-
-          <!-- Yesterday -->
-          <div class="history-group">
-            <div class="history-group-label">昨天</div>
-            <div class="history-item">
-              <div class="history-item-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div class="history-item-content">
-                <div class="history-item-title">API 接口性能优化</div>
-                <div class="history-item-preview">这个接口响应时间需要从 500ms 优化到 100ms 以下...</div>
-                <div class="history-item-meta">
-                  <span>Claude 3.5 Sonnet</span>
-                  <span>·</span>
-                  <span>15 条消息</span>
-                </div>
-              </div>
-              <span class="history-item-time">14:22</span>
-            </div>
-            <div class="history-item">
-              <div class="history-item-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div class="history-item-content">
-                <div class="history-item-title">Docker 部署配置</div>
-                <div class="history-item-preview">帮我写一个多阶段 Dockerfile 用于 Node.js 应用...</div>
-                <div class="history-item-meta">
-                  <span>Claude 3.5 Sonnet</span>
-                  <span>·</span>
-                  <span>6 条消息</span>
-                </div>
-              </div>
-              <span class="history-item-time">10:08</span>
-            </div>
-          </div>
-
-          <!-- This Week -->
-          <div class="history-group">
-            <div class="history-group-label">本周</div>
-            <div class="history-item">
-              <div class="history-item-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div class="history-item-content">
-                <div class="history-item-title">TypeScript 类型体操</div>
-                <div class="history-item-preview">如何实现一个 DeepPartial 泛型类型...</div>
-                <div class="history-item-meta">
-                  <span>Claude 3.5 Sonnet</span>
-                  <span>·</span>
-                  <span>10 条消息</span>
-                </div>
-              </div>
-              <span class="history-item-time">周三</span>
-            </div>
-            <div class="history-item">
-              <div class="history-item-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div class="history-item-content">
-                <div class="history-item-title">CSS Grid 布局方案</div>
-                <div class="history-item-preview">需要一个响应式的 dashboard 布局方案...</div>
-                <div class="history-item-meta">
-                  <span>GPT-4o</span>
-                  <span>·</span>
-                  <span>7 条消息</span>
-                </div>
-              </div>
-              <span class="history-item-time">周一</span>
-            </div>
-          </div>
-        </div>
+    <!-- Login Form -->
+    <form class="auth-form hidden" id="form-login" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label>Username or Email</label>
+        <input type="text" id="login-id" placeholder="Enter username or email" autocomplete="username">
       </div>
-    </div>
-
-    <!-- ===== SETTINGS PAGE ===== -->
-    <div class="page" id="page-settings">
-      <div class="page-header">
-        <div class="page-header-left">
-          <h1 class="page-title">Settings</h1>
-          <span class="page-subtitle">应用配置</span>
-        </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
       </div>
-
-      <div class="settings-container">
-        <div class="settings-sidebar">
-          <a class="settings-nav-item active" data-settings="general">General</a>
-          <a class="settings-nav-item" data-settings="models">Models &amp; API</a>
-          <a class="settings-nav-item" data-settings="editor">Editor</a>
-          <a class="settings-nav-item" data-settings="appearance">Appearance</a>
-          <a class="settings-nav-item" data-settings="shortcuts">Shortcuts</a>
-        </div>
-
-        <div class="settings-main">
-          <div class="settings-section">
-            <h2 class="settings-section-title">General</h2>
-            <p class="settings-section-desc">基本应用设置和首选项。</p>
-            <div class="settings-group">
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Auto-save</div>
-                  <div class="setting-hint">自动保存工作区文件更改。</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox" checked>
-                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                </label>
-              </div>
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Telemetry</div>
-                  <div class="setting-hint">发送匿名使用数据以帮助改进产品。</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox">
-                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                </label>
-              </div>
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Default Model</div>
-                  <div class="setting-hint">新对话默认使用的 AI 模型。</div>
-                </div>
-                <select class="setting-select">
-                  <option>Claude 3.5 Sonnet</option>
-                  <option>GPT-4o</option>
-                  <option>Claude 3 Opus</option>
-                  <option>Gemini 2.0 Pro</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Workspace Path</div>
-                  <div class="setting-hint">默认项目文件夹路径。</div>
-                </div>
-                <input type="text" class="setting-input" value="~/projects/awei-claw" placeholder="输入路径...">
-              </div>
-            </div>
-          </div>
-
-          <div class="settings-section">
-            <h2 class="settings-section-title">Editor</h2>
-            <p class="settings-section-desc">代码编辑器相关配置。</p>
-            <div class="settings-group">
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Font Size</div>
-                  <div class="setting-hint">编辑器字体大小 (px)。</div>
-                </div>
-                <select class="setting-select">
-                  <option>12</option>
-                  <option selected>14</option>
-                  <option>16</option>
-                  <option>18</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Tab Size</div>
-                  <div class="setting-hint">缩进空格数。</div>
-                </div>
-                <select class="setting-select">
-                  <option selected>2</option>
-                  <option>4</option>
-                  <option>8</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Word Wrap</div>
-                  <div class="setting-hint">自动换行显示长代码行。</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox" checked>
-                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                </label>
-              </div>
-              <div class="setting-item">
-                <div>
-                  <div class="setting-label">Line Numbers</div>
-                  <div class="setting-hint">在编辑器左侧显示行号。</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox" checked>
-                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== STATUS BAR ===== -->
-    <div class="status-bar">
-      <div class="status-bar-left">
-        <div class="status-item">
-          <span class="status-dot live"></span>
-          Connected
-        </div>
-        <span>main</span>
-        <span>UTF-8</span>
-      </div>
-      <div class="status-bar-right">
-        <span>Ln 12, Col 8</span>
-        <span>Spaces: 2</span>
-        <span>TypeScript</span>
-      </div>
-    </div>
-
-  </main>
+      <button type="submit" class="btn-submit" id="btn-login">Sign In</button>
+      <p class="auth-msg" id="login-msg"></p>
+    </form>
+  </div>
 </div>
 
-<script>
-// ============================================
-// Navigation
-// ============================================
-document.querySelectorAll('.nav-item[data-page]').forEach(item => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
-    const page = item.dataset.page;
+<!-- ═══════════════════════════════════════════
+     MAIN APP
+     ═══════════════════════════════════════════ -->
+<div class="app-container hidden" id="main-app">
 
-    // Update nav
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    item.classList.add('active');
-
-    // Update page
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    const targetPage = document.getElementById('page-' + page);
-    if (targetPage) targetPage.classList.add('active');
-  });
-});
-
-// ============================================
-// Chat functionality
-// ============================================
-const chatInput = document.getElementById('chatInput');
-const chatMessages = document.getElementById('chatMessages');
-const charCount = document.getElementById('charCount');
-const chatEmpty = chatMessages.querySelector('.chat-empty');
-
-chatInput.addEventListener('input', () => {
-  charCount.textContent = chatInput.value.length + ' / 4000';
-  // Auto-resize
-  chatInput.style.height = 'auto';
-  chatInput.style.height = Math.min(chatInput.scrollHeight, 160) + 'px';
-});
-
-function handleChatInput(e) {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    sendMessage();
-  }
-}
-
-function sendMessage() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-
-  // Remove empty state
-  if (chatEmpty) chatEmpty.remove();
-
-  // Add user message
-  const now = new Date();
-  const time = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
-  const userMsg = document.createElement('div');
-  userMsg.className = 'message';
-  userMsg.innerHTML = `
-    <div class="message-avatar user">A</div>
-    <div class="message-body">
-      <div class="message-header">
-        <span class="message-author">You</span>
-        <span class="message-time">${time}</span>
-      </div>
-      <div class="message-content"><p>${escapeHtml(text)}</p></div>
+  <!-- ═══ Top Navigation ═══ -->
+  <header class="top-nav">
+    <div class="nav-brand">
+      <span class="nav-logo">AweiClaw</span>
+      <span class="nav-version">v1.0</span>
     </div>
-  `;
-  chatMessages.appendChild(userMsg);
-  chatInput.value = '';
-  charCount.textContent = '0 / 4000';
-  chatInput.style.height = 'auto';
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-page="app" onclick="switchPage('app', this)">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+        App
+      </button>
+      <button class="nav-tab" data-page="ai" onclick="switchPage('ai', this)">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 4.5H14l-3.5 2.5L12 15 8 11.5 4 15l1.5-7L2 5.5h4.5L8 1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        AI
+      </button>
+      <button class="nav-tab" data-page="chat" onclick="switchPage('chat', this)">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 4a2 2 0 012-2h8a2 2 0 012 2v5a2 2 0 01-2 2H6l-3 3V4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Chat
+      </button>
+      <button class="nav-tab" data-page="products" onclick="switchPage('products', this)">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+        Products
+      </button>
+      <button class="nav-tab" data-page="landing" onclick="switchPage('landing', this)">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Home
+      </button>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle dark/light mode">🌙</button>
+      <span class="nav-user" id="nav-user-display"></span>
+      <button class="btn-logout" onclick="handleLogout()">Sign Out</button>
+      <span class="nav-status">
+        <span class="status-dot"></span>
+        AI Ready
+      </span>
+    </div>
+  </header>
 
-  // Simulate AI response
-  setTimeout(() => {
-    const aiMsg = document.createElement('div');
-    aiMsg.className = 'message';
-    aiMsg.innerHTML = `
-      <div class="message-avatar ai">A</div>
-      <div class="message-body">
-        <div class="message-header">
-          <span class="message-author">AweiClaw</span>
-          <span class="message-time">${time}</span>
-        </div>
-        <div class="message-content">
-          <p>收到你的消息：「${escapeHtml(text)}」</p>
-          <p>这是一个模拟的 AI 响应。在真实环境中，AweiClaw 会连接 AI 模型来生成智能回复。</p>
-          <pre><code>// 示例代码块
-function greet(name: string): string {
-  return \`Hello, \${name}! Welcome to AweiClaw.\`;
-}
+  <!-- ═══ PAGE: App 主界面 ═══ -->
+  <section class="page active" id="page-app">
+    <div class="app-layout" id="app-layout">
 
-console.log(greet("Awei"));
-// Output: Hello, Awei! Welcome to AweiClaw.</code></pre>
+      <!-- App Toolbar -->
+      <div class="app-toolbar">
+        <div class="toolbar-left">
+          <span class="toolbar-project-label">Project:</span>
+          <select class="toolbar-project-select" id="project-select" onchange="switchProject(this.value)">
+            <option value="">— No Project —</option>
+          </select>
+          <button class="toolbar-btn primary" onclick="showNewProjectDialog()">+ New Project</button>
+          <button class="toolbar-btn" onclick="openLocalFile()">📂 Open File</button>
+          <div class="tools-dropdown-wrapper">
+            <button class="toolbar-btn tools-dropdown-btn" onclick="toggleToolsMenu(event)" title="All Tools">🛠 Tools ▾</button>
+            <div class="tools-dropdown-menu hidden" id="tools-dropdown-menu">
+              <button class="tools-menu-item" onclick="runCodeReview();toggleToolsMenu()">🔍 AI Code Review</button>
+              <button class="tools-menu-item" onclick="showAPITester();toggleToolsMenu()">🔗 API Tester</button>
+              <button class="tools-menu-item" onclick="showCodeStats();toggleToolsMenu()">📊 Code Statistics</button>
+              <button class="tools-menu-item" onclick="showChatHistory();toggleToolsMenu()">💬 Chat History</button>
+              <button class="tools-menu-item" onclick="showSnippetManager();toggleToolsMenu()">📋 Snippet Manager</button>
+              <button class="tools-menu-item" onclick="showTimestampConverter();toggleToolsMenu()">🕐 Timestamp Converter</button>
+              <button class="tools-menu-item" onclick="showUsageDashboard();toggleToolsMenu()">📊 AI Usage Dashboard</button>
+              <button class="tools-menu-item" onclick="generateTests();toggleToolsMenu()">🧪 Generate Tests</button>
+              <button class="tools-menu-item" onclick="exportProjectZIP();toggleToolsMenu()">📦 Export ZIP</button>
+              <button class="tools-menu-item" onclick="bundleToSingleHTML();toggleToolsMenu()">📄 Bundle to HTML</button>
+              <button class="tools-menu-item" onclick="generateCommitMessage();toggleToolsMenu()">💬 AI Commit Msg</button>
+              <hr class="tools-menu-divider">
+              <button class="tools-menu-item" onclick="explainCurrentCode();toggleToolsMenu()">📖 Explain This Code</button>
+            </div>
+          </div>
+          <input type="file" id="file-input" style="display:none" onchange="handleFileOpen(event)" accept="*/*">
         </div>
-        <div class="message-actions">
-          <button class="btn btn-ghost btn-icon" title="Copy">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          </button>
-          <button class="btn btn-ghost btn-icon" title="Regenerate">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        <div class="toolbar-right" id="file-actions" style="display:none">
+          <span class="toolbar-filename" id="toolbar-filename">Untitled</span>
+          <span class="auto-save-indicator hidden" id="auto-save-indicator">💾 Saved</span>
+          <button class="toolbar-btn" onclick="explainCurrentCode()" id="explain-btn" title="Explain This Code">📖 Explain</button>
+          <button class="toolbar-btn success" onclick="saveCurrentFile()">💾 Save</button>
+          <button class="toolbar-btn" onclick="downloadCurrentFile()">⬇ Download</button>
+          <button class="toolbar-btn run" onclick="runCurrentFile()" id="run-btn">▶ Run Locally</button>
+        </div>
+      </div>
+
+      <!-- App Body -->
+      <div class="app-body">
+        <!-- Left Sidebar: Projects + Files -->
+        <aside class="app-sidebar">
+          <div class="sidebar-header">
+            <span class="sidebar-title">EXPLORER</span>
+            <button class="sidebar-add-btn" title="New File" onclick="showNewFileDialog()">＋</button>
+          </div>
+
+          <!-- Empty State -->
+          <div class="sidebar-empty" id="sidebar-empty">
+            <p>No project open.</p>
+            <p>Create a project to start.</p>
+          </div>
+
+          <!-- File Tree -->
+          <div class="sidebar-tree" id="sidebar-tree" style="display:none"></div>
+          <!-- Pinned Files -->
+          <div class="sidebar-pinned hidden" id="sidebar-pinned">
+            <div class="sidebar-pinned-header">📌 Pinned</div>
+            <div id="sidebar-pinned-list"></div>
+          </div>
+          <!-- Bookmarks -->
+          <div class="sidebar-bookmarks hidden" id="sidebar-bookmarks">
+            <div class="sidebar-bookmarks-header">🔖 Bookmarks</div>
+            <div id="sidebar-bookmarks-list"></div>
+          </div>
+        </aside>
+
+        <!-- Center Editor -->
+        <main class="app-editor">
+          <!-- Empty Editor State -->
+          <div class="editor-empty" id="editor-empty">
+            <div class="editor-empty-icon">{ }</div>
+            <h3>No file open</h3>
+            <p>Create a new project and file, or open a local file to get started.</p>
+            <div class="editor-empty-actions">
+              <button class="btn-primary" onclick="showNewProjectDialog()">+ New Project</button>
+              <button class="btn-secondary" onclick="openLocalFile()">Open Local File</button>
+            </div>
+          </div>
+
+          <!-- Editor Area (shown when file is open) -->
+          <div class="editor-active hidden" id="editor-active">
+            <div class="editor-tabs-bar" id="editor-tabs-bar"></div>
+            <div class="editor-content">
+              <div class="line-numbers" id="line-numbers"></div>
+              <textarea class="code-textarea" id="code-textarea" spellcheck="false" oninput="onCodeChange()" onkeydown="handleEditorKey(event)" ondragover="event.preventDefault()" ondrop="handleFileDrop(event)"></textarea>
+              <div class="ghost-text-overlay hidden" id="ghost-text-overlay">
+                <span class="ghost-text-content" id="ghost-text-content"></span>
+                <span class="ghost-text-hint">Tab to accept</span>
+              </div>
+              <div class="error-explain-bubble hidden" id="error-explain-bubble" onclick="explainLastError()">
+                💡 AI can explain this error — Click here
+              </div>
+              <div class="tab-context-menu hidden" id="tab-context-menu">
+                <button onclick="tabMenuClose()">✕ Close</button>
+                <button onclick="tabMenuCloseOthers()">Close Others</button>
+                <button onclick="tabMenuCloseAll()">Close All</button>
+                <hr>
+                <button onclick="tabMenuCopyPath()">📋 Copy Path</button>
+              </div>
+            </div>
+
+            <!-- Suggestion Panel -->
+            <div class="suggest-panel hidden" id="suggest-panel">
+              <div class="suggest-header">
+                <span class="suggest-label">
+                  <span class="suggest-icon">✦</span>
+                  <span id="suggest-lang-label">AI Suggestion Library</span>
+                </span>
+                <span class="suggest-hint">Ctrl+Enter to insert first · Click to insert</span>
+              </div>
+              <div class="suggest-list" id="suggest-list"></div>
+            </div>
+
+            <!-- Run Output Panel -->
+            <div class="run-output-panel hidden" id="run-output-panel">
+              <div class="run-output-header">
+                <span class="run-output-title">▶ Run Output</span>
+                <span class="run-output-lang" id="run-output-lang"></span>
+                <span class="run-output-time" id="run-output-time"></span>
+                <div class="run-output-actions">
+                  <button class="run-output-btn" onclick="copyRunOutput()" title="Copy output">📋 Copy</button>
+                  <button class="run-output-btn" onclick="closeRunOutput()" title="Close">✕</button>
+                </div>
+              </div>
+              <div class="run-output-content" id="run-output-content">
+                <div class="run-output-line dim">Ready to run code...</div>
+              </div>
+              <div class="run-output-loader hidden" id="run-output-loader">
+                <div class="pyodide-progress">
+                  <div class="pyodide-bar"><div class="pyodide-fill" id="pyodide-fill"></div></div>
+                  <span class="pyodide-status" id="pyodide-status">Loading Python runtime...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal -->
+            <div class="terminal-panel">
+              <div class="terminal-header">
+                <span class="terminal-tab-label">Terminal</span>
+                <button class="terminal-clear-btn" onclick="clearTerminal()">Clear</button>
+              </div>
+              <div class="terminal-content" id="terminal-content">
+                <div class="term-line dim">AweiClaw Terminal — ready</div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Right AI Panel -->
+        <aside class="app-ai-panel">
+          <div class="ai-header">
+            <div class="ai-icon">AI</div>
+            <span class="ai-title">AI Assistant</span>
+            <span class="ai-model-badge">Awei AI-Coding</span>
+          </div>
+          <div class="ai-context-bar" id="ai-context-bar" style="display:none">
+            <span class="ai-ctx-icon">📄</span>
+            <span class="ai-ctx-label" id="ai-ctx-label">Viewing current file</span>
+          </div>
+          <div class="ai-multi-context hidden" id="ai-multi-context">
+            <span style="font-size:11px;color:var(--text-muted);margin-right:4px;">Context:</span>
+            <div id="ai-ctx-chips" style="display:flex;flex-wrap:wrap;gap:4px;"></div>
+            <button class="ai-ctx-add-btn" onclick="toggleContextPicker()">+ Add File</button>
+            <span class="ai-ctx-token-info" id="ai-ctx-tokens">~0 tokens</span>
+            <div class="ai-ctx-picker hidden" id="ai-ctx-picker"></div>
+          </div>
+          <div class="ai-messages" id="ai-messages">
+            <div class="ai-msg assistant">
+              <p>👋 Hello! I'm your AI assistant powered by <strong>Awei AI-Coding</strong>. I can see your code, create new files, write code, and help you debug or refactor. What would you like to do?</p>
+            </div>
+          </div>
+          <div class="ai-input-area">
+            <div class="ai-input-row">
+              <textarea class="ai-textarea" id="ai-textarea" placeholder="Ask AI anything... (Shift+Enter for new line, Enter to send)" rows="2" onkeydown="handleAIKey(event)"></textarea>
+            </div>
+            <div class="ai-input-actions">
+              <span class="ai-hint">Enter to send · Shift+Enter to wrap</span>
+              <button class="ai-send-btn" onclick="sendAIMessage()">
+                <span id="ai-send-label">Send</span>
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PAGE: AI Settings (Codex-style) ═══ -->
+  <section class="page" id="page-ai">
+    <div class="ai-settings-layout">
+      <!-- Left Panel: Mode Selection -->
+      <div class="ai-settings-left">
+        <!-- Mode Selector -->
+        <div class="ai-section">
+          <div class="ai-section-label">MODE</div>
+          <div class="ai-mode-grid" id="ai-mode-grid">
+            <button class="ai-mode-card active" data-mode="craft" onclick="setAIMode('craft', this)">
+              <span class="mode-icon">🔨</span>
+              <div class="mode-info">
+                <span class="mode-name">Craft</span>
+                <span class="mode-desc">You say, I do. AI writes code and builds.</span>
+              </div>
+              <span class="mode-check">✓</span>
+            </button>
+            <button class="ai-mode-card" data-mode="plan" onclick="setAIMode('plan', this)">
+              <span class="mode-icon">🔏</span>
+              <div class="mode-info">
+                <span class="mode-name">Plan</span>
+                <span class="mode-desc">Think first, do second. AI creates plan.txt.</span>
+              </div>
+              <span class="mode-check">✓</span>
+            </button>
+            <button class="ai-mode-card" data-mode="ask" onclick="setAIMode('ask', this)">
+              <span class="mode-icon">❓</span>
+              <div class="mode-info">
+                <span class="mode-name">Ask</span>
+                <span class="mode-desc">Talk only, hands off. AI answers questions.</span>
+              </div>
+              <span class="mode-check">✓</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Auto Toggle -->
+        <div class="ai-section">
+          <div class="ai-section-label">BEHAVIOR</div>
+          <div class="ai-auto-row" onclick="toggleAuto()">
+            <div class="ai-auto-info">
+              <span class="ai-auto-name">Auto Mode</span>
+              <span class="ai-auto-desc">Let AI choose the best mode for each request</span>
+            </div>
+            <div class="ai-toggle" id="ai-auto-toggle">
+              <div class="ai-toggle-knob"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Permission -->
+        <div class="ai-section">
+          <div class="ai-section-label">PERMISSION</div>
+          <div class="ai-perm-row">
+            <select class="ai-perm-select" id="ai-permission" onchange="setPermission(this.value)">
+              <option value="default">Default Permission</option>
+              <option value="full">Full Permission</option>
+            </select>
+          </div>
+          <div class="ai-perm-desc" id="ai-perm-desc">AI operates with standard safety guards. File operations require confirmation.</div>
+        </div>
+
+        <!-- Auto-Save Toggle -->
+        <div class="ai-section">
+          <div class="ai-section-label">AUTO-SAVE</div>
+          <div class="ai-auto-row" onclick="toggleAutoSave()">
+            <div class="ai-auto-info">
+              <span class="ai-auto-name">Auto-Save</span>
+              <span class="ai-auto-desc">Save current file every 30 seconds</span>
+            </div>
+            <div class="ai-toggle" id="auto-save-toggle">
+              <div class="ai-toggle-knob"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Language Toggle -->
+        <div class="ai-section">
+          <div class="ai-section-label">LANGUAGE</div>
+          <div class="ai-lang-row">
+            <button class="ai-lang-btn active" data-lang="en" onclick="setLanguage('en')">English</button>
+            <button class="ai-lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Model Selection -->
+      <div class="ai-settings-right">
+        <div class="ai-section">
+          <div class="ai-section-label">AI MODEL</div>
+          <div class="ai-model-list" id="ai-model-list">
+            <button class="ai-model-card active" data-model="awei-studio-master" onclick="setModel('awei-studio-master', this)">
+              <div class="model-left">
+                <span class="model-icon-master">✦</span>
+                <div class="model-info">
+                  <span class="model-name">Awei-studio-Master</span>
+                  <span class="model-tags"><span class="tag-premium">Premium</span><span class="tag-slow">Slower</span></span>
+                </div>
+              </div>
+              <span class="model-mult">×12.31</span>
+            </button>
+            <button class="ai-model-card" data-model="awei-ai-max" onclick="setModel('awei-ai-max', this)">
+              <div class="model-left">
+                <span class="model-icon-premium">⬡</span>
+                <div class="model-info">
+                  <span class="model-name">Awei-AI-Max</span>
+                  <span class="model-tags"><span class="tag-premium">Premium</span></span>
+                </div>
+              </div>
+              <span class="model-mult">×2.8</span>
+            </button>
+            <button class="ai-model-card" data-model="deepseek-v4" onclick="setModel('deepseek-v4', this)">
+              <div class="model-left">
+                <span class="model-icon-deep">⬢</span>
+                <div class="model-info">
+                  <span class="model-name">deepseek-ai/DeepSeek-V4</span>
+                  <span class="model-tags"><span class="tag-new">New</span></span>
+                </div>
+              </div>
+              <span class="model-mult">×1.3</span>
+            </button>
+            <button class="ai-model-card" data-model="awei-ai" onclick="setModel('awei-ai', this)">
+              <div class="model-left">
+                <span class="model-icon-default">◆</span>
+                <div class="model-info">
+                  <span class="model-name">Awei-AI</span>
+                </div>
+              </div>
+              <span class="model-mult">×1.2</span>
+            </button>
+            <button class="ai-model-card" data-model="deepseek-r1" onclick="setModel('deepseek-r1', this)">
+              <div class="model-left">
+                <span class="model-icon-deep">⬢</span>
+                <div class="model-info">
+                  <span class="model-name">Deepseek-R1</span>
+                </div>
+              </div>
+              <span class="model-mult">×0.8</span>
+            </button>
+            <button class="ai-model-card" data-model="awei-ai-pro" onclick="setModel('awei-ai-pro', this)">
+              <div class="model-left">
+                <span class="model-icon-fast">⚡</span>
+                <div class="model-info">
+                  <span class="model-name">Awei-AI-Pro</span>
+                  <span class="model-tags"><span class="tag-fast">Fast</span></span>
+                </div>
+              </div>
+              <span class="model-mult">×0.3</span>
+            </button>
+            <button class="ai-model-card" data-model="awei-ai-flash" onclick="setModel('awei-ai-flash', this)">
+              <div class="model-left">
+                <span class="model-icon-fast">⚡</span>
+                <div class="model-info">
+                  <span class="model-name">Awei-AI-Flash</span>
+                  <span class="model-tags"><span class="tag-flash">Fastest</span></span>
+                </div>
+              </div>
+              <span class="model-mult">×0.15</span>
+            </button>
+            <button class="ai-model-card" data-model="mushroom-ai-max" onclick="setModel('mushroom-ai-max', this)">
+              <div class="model-left">
+                <span class="model-icon-mushroom">🍄</span>
+                <div class="model-info">
+                  <span class="model-name">Mushroom-AI-Max</span>
+                </div>
+              </div>
+              <span class="model-mult">×0.05</span>
+            </button>
+            <button class="ai-model-card" data-model="mushroom-ai" onclick="setModel('mushroom-ai', this)">
+              <div class="model-left">
+                <span class="model-icon-mushroom">🍄</span>
+                <div class="model-info">
+                  <span class="model-name">Mushroom-AI</span>
+                </div>
+              </div>
+              <span class="model-mult">×0.01</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Safety Warning Overlay ═══ -->
+  <div class="safety-overlay hidden" id="safety-overlay">
+    <div class="safety-dialog">
+      <div class="safety-icon">⚠️</div>
+      <h2 class="safety-title">Full Permission Warning</h2>
+      <p class="safety-body">
+        Enabling <strong>Full Permission</strong> allows AI to:
+      </p>
+      <ul class="safety-list">
+        <li>Create, modify, and delete files on your local system</li>
+        <li>Rename and move files and folders</li>
+        <li>Execute shell commands without confirmation</li>
+        <li>Install packages and dependencies</li>
+      </ul>
+      <p class="safety-caution">
+        This grants the AI unrestricted access to your workspace. Use with caution and only in trusted environments.
+      </p>
+      <div class="safety-actions">
+        <button class="safety-btn-cancel" onclick="cancelFullPermission()">Cancel</button>
+        <button class="safety-btn-confirm" onclick="confirmFullPermission()">I Understand, Enable Full Permission</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE: Landing ═══ -->
+  <section class="page" id="page-landing">
+    <div class="landing-scroll">
+      <!-- Hero -->
+      <div class="hero-section">
+        <div class="hero-left">
+          <span class="hero-eyebrow">Open Source · AI-Native Developer Tool</span>
+          <h1 class="hero-title">AweiClaw</h1>
+          <p class="hero-sub">The AI-native coding assistant that helps you write, refactor, and run code with unprecedented speed. Powered by Awei AI-Coding.</p>
+          <div class="hero-cta">
+            <button class="cta-primary" onclick="switchPage('app', document.querySelector('[data-page=app]'))">Open App</button>
+            <button class="cta-secondary">View on GitHub</button>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="code-window-title">main.py</span>
+            </div>
+            <div class="code-window-content">
+              <div class="code-ln"><span class="ln-num">1</span><span class="cl purple">from</span><span class="cl"> aweiclaw </span><span class="cl purple">import</span><span class="cl"> AI</span></div>
+              <div class="code-ln"><span class="ln-num">2</span></div>
+              <div class="code-ln"><span class="ln-num">3</span><span class="cl green"># Ask AI to generate code</span></div>
+              <div class="code-ln"><span class="ln-num">4</span><span class="cl blue">ai</span><span class="cl"> = AI(model=</span><span class="cl amber">"awei-coding"</span><span class="cl">)</span></div>
+              <div class="code-ln"><span class="ln-num">5</span><span class="cl blue">result</span><span class="cl"> = ai.generate(</span><span class="cl amber">"Build an API"</span><span class="cl">)</span></div>
+              <div class="code-ln"><span class="ln-num">6</span><span class="cl blue">ai</span><span class="cl">.run(result)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="features-section">
+        <div class="section-header">
+          <h2>Built for Developers</h2>
+          <p>Everything you need to code smarter and faster with AI.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon indigo">🤖</div>
+            <h3>Real AI — Awei AI-Coding</h3>
+            <p>Not a mockup. Every response is powered by our cutting-edge AI coding model, designed to produce production-ready code.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon green">💾</div>
+            <h3>Persistent Projects</h3>
+            <p>All your projects and files are permanently saved in your browser. They're there when you come back.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon amber">▶</div>
+            <h3>Run Code Online</h3>
+            <p>Run HTML, Python, JavaScript, and Three.js directly in your browser. HTML &amp; 3D preview in real-time, Python &amp; JS output shown instantly.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon pink">📂</div>
+            <h3>Open Local Files</h3>
+            <p>Open any file from your computer. The AI can read and help you work with your existing code.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Global Search Overlay ═══ -->
+  <div class="search-overlay hidden" id="search-overlay" onclick="if(event.target===this) closeSearch()">
+    <div class="search-panel">
+      <div class="search-input-row">
+        <input type="text" id="search-input" placeholder="Search across all project files... (Ctrl+Shift+F)" oninput="performSearch()" onkeydown="handleSearchKey(event)">
+        <button class="search-toggle" id="search-regex-btn" onclick="toggleSearchRegex()">.*</button>
+        <button class="search-toggle" id="search-case-btn" onclick="toggleSearchCase()">Aa</button>
+        <button class="search-close-btn" onclick="closeSearch()">✕</button>
+      </div>
+      <div class="search-results" id="search-results">
+        <div class="search-no-results">Type to search across project files...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Code Stats Overlay ═══ -->
+  <div class="stats-overlay hidden" id="stats-overlay" onclick="if(event.target===this) closeCodeStats()">
+    <div class="stats-panel" id="stats-panel"></div>
+  </div>
+
+  <!-- ═══ API Tester Overlay ═══ -->
+  <div class="api-tester-overlay hidden" id="api-tester-overlay" onclick="if(event.target===this) closeAPITester()">
+    <div class="api-tester-panel">
+      <div class="api-tester-header">
+        <span class="api-tester-title">🔗 API Tester</span>
+        <button class="api-tester-close" onclick="closeAPITester()">✕</button>
+      </div>
+      <div class="api-tester-body">
+        <div class="api-tester-request">
+          <div class="api-tester-urlbar">
+            <select class="api-method-select" id="api-method">
+              <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option><option>HEAD</option><option>OPTIONS</option>
+            </select>
+            <input class="api-url-input" id="api-url" placeholder="https://api.example.com/endpoint" onkeydown="if(event.key==='Enter')sendAPIRequest()">
+            <button class="api-send-btn" id="api-send-btn" onclick="sendAPIRequest()">Send</button>
+          </div>
+          <div class="api-tester-tabs">
+            <button class="api-tab active" data-tab="headers" onclick="switchAPITab('headers',this)">Headers</button>
+            <button class="api-tab" data-tab="body" onclick="switchAPITab('body',this)">Body</button>
+          </div>
+          <div class="api-tester-editor" id="api-headers-editor">
+            <textarea id="api-headers" placeholder='{"Content-Type":"application/json"}'>{"Content-Type":"application/json"}</textarea>
+          </div>
+          <div class="api-tester-editor hidden" id="api-body-editor">
+            <textarea id="api-body" placeholder='{"key":"value"}'></textarea>
+          </div>
+        </div>
+        <div class="api-tester-response">
+          <div class="api-response-header" id="api-resp-header" style="display:none">
+            <span class="api-response-status" id="api-resp-status"></span>
+            <span class="api-response-time" id="api-resp-time"></span>
+          </div>
+          <div class="api-response-body" id="api-resp-body"></div>
+          <div class="api-response-empty" id="api-resp-empty">Send a request to see the response</div>
+          <div class="api-save-row">
+            <button class="btn-secondary" onclick="saveAPIRequest()">💾 Save Request</button>
+            <select id="api-saved-select" onchange="loadSavedAPIRequest(this.value)" style="flex:1;padding:6px;border:1px solid var(--border);border-radius:5px;background:var(--bg-tertiary);color:var(--text-primary);font-size:12px;">
+              <option value="">— Load Saved —</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Chat History Sidebar ═══ -->
+  <div class="chat-history-panel hidden" id="chat-history-panel">
+    <div class="chat-history-hd">
+      <h3>💬 Chat History</h3>
+      <div class="chat-history-actions">
+        <button class="btn-secondary" onclick="exportChatHistory()" style="font-size:11px;">📥 Export MD</button>
+        <button class="search-close-btn" onclick="closeChatHistory()">✕</button>
+      </div>
+    </div>
+    <div id="chat-history-panel-list" class="chat-history-list"></div>
+    <div id="chat-history-empty" class="chat-history-empty hidden">No chat history yet. Start a conversation!</div>
+  </div>
+
+  <!-- ═══ Snippet Manager Overlay ═══ -->
+  <div class="snippets-overlay hidden" id="snippets-overlay" onclick="if(event.target===this) closeSnippetManager()">
+    <div class="snippets-panel" id="snippets-panel"></div>
+  </div>
+
+</div>
+
+<!-- ═══ New Project Dialog ═══ -->
+<div class="dialog-overlay hidden" id="new-project-dialog">
+  <div class="dialog-card">
+    <h3 class="dialog-title">New Project</h3>
+    <div class="form-group">
+      <label>Project Name</label>
+      <input type="text" id="new-project-name" placeholder="my-project" autocomplete="off">
+    </div>
+    <div class="dialog-actions">
+      <button class="btn-secondary" onclick="closeDialog('new-project-dialog')">Cancel</button>
+      <button class="btn-primary" onclick="createNewProject()">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ New File Dialog ═══ -->
+<div class="dialog-overlay hidden" id="new-file-dialog">
+  <div class="dialog-card">
+    <h3 class="dialog-title">New File</h3>
+    <div class="form-group">
+      <label>File Name</label>
+      <input type="text" id="new-file-name" placeholder="index.html" autocomplete="off">
+    </div>
+    <div class="dialog-actions">
+      <button class="btn-secondary" onclick="closeDialog('new-file-dialog')">Cancel</button>
+      <button class="btn-primary" onclick="createNewFile()">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Run Preview iframe overlay ═══ -->
+<div class="run-overlay hidden" id="run-overlay">
+  <div class="run-modal">
+    <div class="run-modal-header">
+      <span class="run-modal-title" id="run-modal-title">Preview</span>
+      <div class="run-modal-actions">
+        <button class="btn-secondary" onclick="openRunNewTab()">Open in New Tab</button>
+        <button class="btn-secondary" onclick="closeRun()">✕ Close</button>
+      </div>
+    </div>
+    <iframe class="run-iframe" id="run-iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
+  </div>
+</div>
+
+<!-- Timestamp Converter Overlay -->
+<div class="ts-converter-overlay hidden" id="ts-converter-overlay" onclick="if(event.target===this) closeTimestampConverter()">
+  <div class="ts-converter-panel">
+    <div class="ts-converter-header">
+      <span>🕐 Timestamp Converter</span>
+      <button class="ts-close-btn" onclick="closeTimestampConverter()">✕</button>
+    </div>
+    <div class="ts-body">
+      <div class="ts-row">
+        <label>Unix Timestamp</label>
+        <input type="text" id="ts-unix-input" placeholder="e.g. 1750579200 or 1750579200000" oninput="tsToDate()">
+        <select id="ts-unit" onchange="tsToDate()">
+          <option value="s">Seconds (s)</option>
+          <option value="ms">Milliseconds (ms)</option>
+        </select>
+      </div>
+      <div class="ts-row">
+        <label>🔽 Converted Date</label>
+        <input type="text" id="ts-date-output" readonly>
+      </div>
+      <div class="ts-row">
+        <label>Date Input</label>
+        <input type="text" id="ts-date-input" placeholder="e.g. 2026-06-22 11:35:00" oninput="dateToTs()">
+      </div>
+      <div class="ts-row">
+        <label>🔼 Converted Timestamp</label>
+        <input type="text" id="ts-unix-output" readonly>
+      </div>
+      <div class="ts-row ts-now-row">
+        <button class="ts-btn" onclick="tsNow()">🕐 Now</button>
+        <button class="ts-btn" onclick="tsRelative(-3600)">-1 hour</button>
+        <button class="ts-btn" onclick="tsRelative(-86400)">-1 day</button>
+        <button class="ts-btn" onclick="tsRelative(-604800)">-1 week</button>
+        <button class="ts-btn" onclick="tsRelative(-2592000)">-30 days</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI Usage Dashboard Overlay -->
+<div class="usage-overlay hidden" id="usage-overlay" onclick="if(event.target===this) closeUsageDashboard()">
+  <div class="usage-panel">
+    <div class="usage-header">
+      <span>📊 AI Usage Dashboard</span>
+      <button class="usage-close-btn" onclick="closeUsageDashboard()">✕</button>
+    </div>
+    <div class="usage-body">
+      <div class="usage-cards">
+        <div class="usage-card"><span class="usage-card-label">Today Calls</span><span class="usage-card-value" id="usage-today-calls">0</span></div>
+        <div class="usage-card"><span class="usage-card-label">Total Tokens</span><span class="usage-card-value" id="usage-total-tokens">0</span></div>
+        <div class="usage-card"><span class="usage-card-label">Est. Cost</span><span class="usage-card-value" id="usage-est-cost">¥0.00</span></div>
+        <div class="usage-card"><span class="usage-card-label">Total Calls</span><span class="usage-card-value" id="usage-total-calls">0</span></div>
+      </div>
+      <div class="usage-section">
+        <div class="usage-section-title">Model Usage</div>
+        <div class="usage-bar-row" id="usage-model-bars"></div>
+      </div>
+      <div class="usage-section">
+        <div class="usage-section-title">Call Timeline (Last 7 days)</div>
+        <div class="usage-timeline" id="usage-timeline"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     AI FORMAL CHAT PAGE (全屏 AI 工作区)
+     ═══════════════════════════════════════════ -->
+<div class="chat-view hidden" id="chat-view">
+  <div class="chat-layout">
+    <!-- Left: History Sidebar -->
+    <aside class="chat-history-sidebar" id="chat-history-sidebar">
+      <div class="chat-history-header">
+        <span class="chat-history-title">💬 History</span>
+        <button class="chat-history-new-btn" onclick="newChatSession()" title="New Chat">+</button>
+      </div>
+      <div class="chat-history-list" id="chat-history-list"></div>
+      <div class="chat-history-footer">
+        <button class="chat-history-clear-btn" onclick="clearAllChatHistory()">Clear All</button>
+      </div>
+    </aside>
+
+    <!-- Center: Main Chat Area -->
+    <main class="chat-main">
+      <div class="chat-main-header">
+        <h2 class="chat-main-title" id="chat-session-title">New Chat Session</h2>
+        <div class="chat-main-actions">
+          <button class="chat-action-btn" onclick="importAssistantFiles()" title="Import files from Assistant">📂 Import</button>
+          <button class="chat-action-btn" onclick="exportChatMarkdown()" title="Export as Markdown">📥 Export</button>
+        </div>
+      </div>
+
+      <!-- Operation Steps Panel -->
+      <div class="chat-steps-panel hidden" id="chat-steps-panel">
+        <div class="chat-steps-header">
+          <span class="chat-steps-title">⚙ AI Working...</span>
+          <button class="chat-steps-close" onclick="toggleStepsPanel()">×</button>
+        </div>
+        <div class="chat-steps-list" id="chat-steps-list"></div>
+      </div>
+
+      <!-- Messages Area -->
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-empty-state" id="chat-empty-state">
+          <div class="chat-empty-icon">🤖</div>
+          <h3>Awei AI Studio</h3>
+          <p>Select experts and describe your task.<br>AI will plan, think, and execute step by step.</p>
+          <div class="chat-empty-hints">
+            <span>Choose up to 5 experts</span>
+            <span>Import code from Assistant</span>
+            <span>Watch AI work in real-time</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="chat-input-area">
+        <div class="chat-input-files hidden" id="chat-input-files"></div>
+        <div class="chat-input-row">
+          <textarea class="chat-textarea" id="chat-textarea" placeholder="Describe your task to AI... Shift+Enter for new line, Enter to send" rows="2" onkeydown="handleChatKey(event)"></textarea>
+          <button class="chat-send-btn" onclick="sendChatMessage()">
+            <span id="chat-send-label">Send</span>
           </button>
         </div>
       </div>
-    `;
-    chatMessages.appendChild(aiMsg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }, 800);
+    </main>
 
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    <!-- Right: Config & Experts Panel -->
+    <aside class="chat-config-panel" id="chat-config-panel">
+      <!-- Section: Work Mode -->
+      <div class="chat-config-section">
+        <div class="chat-config-section-title">⚡ Work Mode</div>
+        <div class="chat-mode-grid" id="chat-mode-grid">
+          <button class="chat-mode-card active" data-mode="craft" onclick="setChatMode('craft')">
+            <span class="chat-mode-icon">🔨</span>
+            <span class="chat-mode-name">Craft</span>
+            <span class="chat-mode-desc">AI builds directly</span>
+          </button>
+          <button class="chat-mode-card" data-mode="plan" onclick="setChatMode('plan')">
+            <span class="chat-mode-icon">📋</span>
+            <span class="chat-mode-name">Plan</span>
+            <span class="chat-mode-desc">Plan first, then execute</span>
+          </button>
+          <button class="chat-mode-card" data-mode="ask" onclick="setChatMode('ask')">
+            <span class="chat-mode-icon">💡</span>
+            <span class="chat-mode-name">Ask</span>
+            <span class="chat-mode-desc">Questions & guidance</span>
+          </button>
+        </div>
+      </div>
 
-function sendQuickMessage(text) {
-  chatInput.value = text;
-  charCount.textContent = text.length + ' / 4000';
-  sendMessage();
-}
+      <!-- Section: Model Config -->
+      <div class="chat-config-section">
+        <div class="chat-config-section-title">🧠 Model</div>
+        <select class="chat-config-select" id="chat-model-select" onchange="setChatModel(this.value)">
+          <option value="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B">Awei AI (DeepSeek-R1)</option>
+          <option value="Qwen/Qwen3-235B-A22B">Awei AI-Max (Qwen3-235B)</option>
+          <option value="deepseek-ai/DeepSeek-V3">Awei AI-Pro (DeepSeek-V3)</option>
+        </select>
+      </div>
 
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
+      <!-- Section: Settings -->
+      <div class="chat-config-section">
+        <div class="chat-config-section-title">⚙ Settings</div>
+        <label class="chat-config-toggle">
+          <input type="checkbox" id="chat-autosave-toggle" onchange="toggleChatAutoSave()">
+          <span>Auto Save</span>
+        </label>
+        <label class="chat-config-toggle">
+          <input type="checkbox" id="chat-secure-toggle" onchange="toggleChatSecure()">
+          <span>Safe Mode</span>
+        </label>
+      </div>
 
-// ============================================
-// Terminal functionality
-// ============================================
-function handleTerminalInput(e) {
-  if (e.key !== 'Enter') return;
-  const input = e.target;
-  const cmd = input.value.trim();
-  if (!cmd) return;
+      <!-- Section: Experts -->
+      <div class="chat-config-section">
+        <div class="chat-config-section-title">👥 Experts <span class="chat-expert-count" id="chat-expert-count">0/5</span></div>
+        <div class="chat-expert-search">
+          <input type="text" class="chat-expert-search-input" id="chat-expert-search" placeholder="Search experts..." oninput="filterExperts()">
+        </div>
+        <div class="chat-expert-categories" id="chat-expert-categories"></div>
+        <div class="chat-expert-list" id="chat-expert-list"></div>
+        <div class="chat-selected-experts" id="chat-selected-experts"></div>
+      </div>
+    </aside>
+  </div>
+</div>
 
-  const output = document.getElementById('terminalOutput');
+<!-- ═══════════════════════════════════════════
+     PRODUCTS VIEWING PAGE (成品观察页)
+     ═══════════════════════════════════════════ -->
+<div class="products-view hidden" id="products-view">
+  <div class="products-header">
+    <h2 class="products-title">📦 Generated Products</h2>
+    <button class="products-clear-btn" onclick="clearAllProducts()">Clear All</button>
+  </div>
+  <div class="products-empty hidden" id="products-empty">
+    <div class="products-empty-icon">📭</div>
+    <p>No products yet. Complete an AI task in the Chat page to see results here.</p>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</div>
 
-  // Add command
-  const cmdLine = document.createElement('div');
-  cmdLine.className = 'terminal-line';
-  cmdLine.style.marginTop = '4px';
-  cmdLine.innerHTML = '<span class="terminal-prompt">~</span><span class="terminal-command">' + escapeHtml(cmd) + '</span>';
-  output.appendChild(cmdLine);
-
-  // Simulate output
-  const responses = {
-    'help': 'Available commands: help, ls, pwd, whoami, date, clear, echo, version',
-    'ls': 'src/  components/  utils/  index.html  package.json  tsconfig.json',
-    'pwd': '/Users/awei/projects/awei-claw',
-    'whoami': 'awei',
-    'date': new Date().toString(),
-    'version': 'AweiClaw v1.0.0',
-    'clear': '__clear__',
-    'echo': cmd.replace(/^echo\s+/, ''),
-    'git': 'On branch main\nnothing to commit, working tree clean',
-  };
-
-  let response = '';
-  if (cmd === 'clear') {
-    output.innerHTML = '';
-    input.value = '';
-    output.scrollTop = output.scrollHeight;
-    return;
-  } else if (responses[cmd]) {
-    response = responses[cmd];
-  } else if (cmd.startsWith('echo ')) {
-    response = cmd.substring(5);
-  } else {
-    response = 'command not found: ' + cmd + '\nType "help" for available commands.';
-  }
-
-  const outLines = response.split('\n');
-  outLines.forEach(line => {
-    const outLine = document.createElement('div');
-    outLine.className = 'terminal-line';
-    const cls = line.startsWith('command not found') ? 'terminal-error' : 'terminal-output-text';
-    outLine.innerHTML = '<span class="terminal-prompt"></span><span class="' + cls + '">' + escapeHtml(line) + '</span>';
-    output.appendChild(outLine);
-  });
-
-  input.value = '';
-  output.scrollTop = output.scrollHeight;
-}
-
-// ============================================
-// Settings navigation
-// ============================================
-document.querySelectorAll('.settings-nav-item[data-settings]').forEach(item => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.querySelectorAll('.settings-nav-item').forEach(n => n.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
-
-// ============================================
-// Workspace line numbers
-// ============================================
-(function initLineNumbers() {
-  const lnContainer = document.getElementById('lineNumbers');
-  if (!lnContainer) return;
-  for (let i = 1; i <= 28; i++) {
-    const div = document.createElement('div');
-    div.textContent = i;
-    lnContainer.appendChild(div);
-  }
-})();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
