@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AweiClaw - AI 编程助手</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-page: #FAFAFA;
+  --bg-card: #FFFFFF;
+  --text-primary: #09090B;
+  --text-secondary: #64748B;
+  --accent: #2563EB;
+  --accent-light: rgba(37, 99, 235, 0.10);
+  --accent-shadow: rgba(37, 99, 235, 0.30);
+  --border-light: #E3E3E7;
+  --border-subtle: rgba(227, 227, 231, 0.50);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --cta-glass: rgba(255, 255, 255, 0.18);
+  --badge-bg: #E8EEF2;
+  --ghost-bg: #F2F2F5;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ========== NavBar ========== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 72px;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+nav .logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a.accent-link {
+  color: var(--accent);
+}
+
+/* ========== Hero ========== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 100px 48px 80px;
+  gap: 28px;
+  width: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 18px;
+  background: var(--badge-bg);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.hero .subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--text-secondary);
+  margin-top: -12px;
+}
+
+.hero .description {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 28px;
+  margin-top: -4px;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 26px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 24px var(--accent-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px var(--accent-shadow);
+}
+
+.btn-primary svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 26px;
+  background: var(--ghost-bg);
+  border: 1.5px solid var(--border-light);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: #EBEBEE;
+}
+
+.btn-ghost svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========== Features ========== */
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 48px;
+  gap: 48px;
+  width: 100%;
+}
+
+.features h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 36px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid #E8E8EC;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.feature-card .card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-card .card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.feature-card p {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 24px;
+}
+
+/* ========== Languages ========== */
+.languages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 48px;
+  gap: 40px;
+  width: 100%;
+}
+
+.languages h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+
+.lang-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lang-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 20px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid #E8E8EC;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lang-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+/* ========== CTA Section ========== */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 48px;
+  width: 100%;
+  height: 460px;
+  background: linear-gradient(180deg, #2563EB 0%, #5989F2 100%);
+}
+
+.glass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 48px;
+  border-radius: 24px;
+  background: var(--cta-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.30);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 2px rgba(255,255,255,0.25);
+  max-width: 720px;
+  width: 100%;
+}
+
+.glass-card h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #FFFFFF;
+}
+
+.glass-card p {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  max-width: 480px;
+  text-align: center;
+  line-height: 26px;
+}
+
+.glass-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 28px;
+  border-radius: 28px;
+  background: #FFFFFF;
+  color: #18181B;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-white:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.btn-white svg {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 28px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.20);
+  border: 1.5px solid rgba(255,255,255,0.40);
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.30);
+}
+
+/* ========== Footer ========== */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px 48px;
+  width: 100%;
+  background: #F8F8F8;
+  border-top: 1px solid #E8E8EC;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-left .logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.footer-left .by {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-right a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-right a:hover {
+  color: var(--text-primary);
+}
+
+.footer-right a.highlight {
+  color: var(--accent);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 48px; letter-spacing: -1px; }
+  .hero .subtitle { font-size: 22px; }
+  .hero .description { font-size: 15px; max-width: 100%; }
+  .features h2 { font-size: 30px; }
+  .languages h2 { font-size: 28px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .glass-card { padding: 32px 24px; }
+  .glass-card h2 { font-size: 26px; }
+  .cta-row, .glass-cta-row { flex-direction: column; width: 100%; }
+  .btn-primary, .btn-ghost, .btn-white, .btn-outline-white { width: 100%; justify-content: center; }
+  nav { padding: 0 24px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 13px; }
+  footer { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-right { flex-wrap: wrap; justify-content: center; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ============ NavBar ============ -->
+  <nav>
+    <span class="logo">AweiClaw</span>
+    <div class="nav-links">
+      <a href="#features">特性</a>
+      <a href="#download">下载</a>
+      <a href="https://github.com/fox12387/Awei-claw/wiki" target="_blank">Wiki</a>
+      <a href="https://github.com/fox12387/Awei-claw" target="_blank" class="accent-link">GitHub</a>
+    </div>
+  </nav>
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="badge">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2L3 12H13L8 2Z" fill="#2563EB"/>
+        <path d="M3 12L1 14H8L3 12Z" fill="#2563EB"/>
+        <path d="M13 12L15 14H8L13 12Z" fill="#2563EB"/>
+      </svg>
+      AWEI Studio
+    </div>
+    <h1>AweiClaw</h1>
+    <p class="subtitle">AI 编程助手</p>
+    <p class="description">
+      集成硅基流动 API，基于 DeepSeek-R1 模型，支持 6 种主流编程语言的智能代码提示与补全
+    </p>
+    <div class="cta-row">
+      <a href="https://github.com/fox12387/Awei-claw" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 2V12M9 12L5 8M9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 14V15C2 15.5523 2.44772 16 3 16H15C15.5523 16 16 15.5523 16 15V14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        从 GitHub 下载
+      </a>
+      <a href="https://github.com/fox12387/Awei-claw" target="_blank" class="btn-ghost">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2C5.58 2 2 5.58 2 10C2 13.54 4.29 16.53 7.47 17.59C7.87 17.66 8.02 17.42 8.02 17.21C8.02 17.02 8.01 16.39 8.01 15.72C5.78 16.2 5.31 14.78 5.31 14.78C4.92 13.75 4.37 13.52 4.37 13.52C3.6 13 4.43 13.01 4.43 13.01C5.28 13.07 5.73 13.9 5.73 13.9C6.42 15.15 7.62 14.78 8.05 14.56C8.12 14.06 8.33 13.7 8.55 13.5C6.66 13.28 4.68 12.6 4.68 9.53C4.68 8.66 4.97 7.98 5.48 7.44C5.4 7.23 5.13 6.42 5.56 5.33C5.56 5.33 6.23 5.12 8 6.15C8.65 5.97 9.33 5.88 10.01 5.88C10.69 5.88 11.37 5.97 12.02 6.15C13.79 5.12 14.46 5.33 14.46 5.33C14.89 6.42 14.62 7.23 14.54 7.44C15.05 7.98 15.34 8.66 15.34 9.53C15.34 12.6 13.36 13.28 11.47 13.5C11.76 13.76 12.01 14.25 12.01 15C12.01 16.02 12 16.86 12 17.21C12 17.42 12.15 17.67 12.55 17.59C15.73 16.52 18 13.54 18 10C18 5.58 14.42 2 10 2Z" fill="#09090B"/>
+        </svg>
+        Star on GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ Features ============ -->
+  <section class="features" id="features">
+    <h2>强大特性</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4v10m0 0l-4-4m4 4l4-4" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>AI 智能补全</h3>
+        <p>输入触发字符自动激活 AI 提示，快捷键 Ctrl+Enter 快速获取代码建议，基于 DeepSeek-R1 模型提供高质量代码补全。</p>
+      </div>
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="3" rx="1.5" fill="#2563EB"/>
+            <rect x="3" y="10" width="13" height="3" rx="1.5" fill="#2563EB"/>
+            <rect x="3" y="15" width="9" height="3" rx="1.5" fill="#2563EB"/>
+          </svg>
+        </div>
+        <h3>多语言提示库</h3>
+        <p>每种语言内置 100 条精选代码片段，覆盖常见编程场景，支持快速插入和自定义，Python、C++、C#、HTML、CSS、JS 全支持。</p>
+      </div>
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="3" width="20" height="18" rx="3" stroke="#2563EB" stroke-width="2"/>
+            <path d="M6 19h5" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Terminal 复制</h3>
+        <p>一键复制代码到终端，支持多种终端模拟器，配合快捷键 Ctrl+C/V/S 快速完成编写、复制、保存全流程。</p>
+      </div>
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="1" width="20" height="22" rx="3" stroke="#2563EB" stroke-width="2"/>
+            <circle cx="12" cy="18" r="2.5" stroke="#2563EB" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>极简白色 UI</h3>
+        <p>护眼白色背景设计，简洁优雅的界面风格，原生 CSS + HTML5 + JavaScript 打造，良好的视觉体验。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Languages ============ -->
+  <section class="languages">
+    <h2>支持 6 种编程语言</h2>
+    <div class="lang-row">
+      <span class="lang-tag">Python</span>
+      <span class="lang-tag">C++</span>
+      <span class="lang-tag">C#</span>
+      <span class="lang-tag">HTML</span>
+      <span class="lang-tag">CSS</span>
+      <span class="lang-tag">JavaScript</span>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="download">
+    <div class="glass-card">
+      <h2>准备好开始了吗？</h2>
+      <p>AweiClaw 完全开源，MIT 协议。立即从 GitHub 下载，体验 AI 编程的强大。</p>
+      <div class="glass-cta-row">
+        <a href="https://github.com/fox12387/Awei-claw" target="_blank" class="btn-white">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 2C6.03 2 2 6.03 2 11C2 15.09 4.61 18.47 8.24 19.62C8.69 19.72 8.86 19.46 8.86 19.24C8.86 19.04 8.85 18.29 8.85 17.49C6.38 18.02 5.78 16.29 5.78 16.29C5.34 15.12 4.76 14.87 4.76 14.87C3.92 14.32 4.82 14.33 4.82 14.33C5.75 14.4 6.23 15.29 6.23 15.29C7.09 16.87 8.39 16.46 8.85 16.22C8.93 15.68 9.15 15.28 9.4 15.07C7.37 14.84 5.24 14.12 5.24 10.59C5.24 9.63 5.55 8.89 6.11 8.28C6.02 8.05 5.69 7.16 6.16 5.97C6.16 5.97 6.88 5.75 8.85 6.87C9.53 6.67 10.24 6.57 10.96 6.57C11.68 6.57 12.4 6.67 13.07 6.87C15.04 5.75 15.76 5.97 15.76 5.97C16.23 7.16 15.9 8.05 15.81 8.28C16.37 8.89 16.68 9.63 16.68 10.59C16.68 14.12 14.55 14.84 12.53 15.07C12.85 15.35 13.13 15.9 13.13 16.75C13.13 17.93 13.12 18.84 13.12 19.24C13.12 19.47 13.3 19.74 13.72 19.62C17.39 18.46 20 15.09 20 11C20 6.03 15.97 2 11 2Z" fill="#18181B"/>
+          </svg>
+          从 GitHub 下载
+        </a>
+        <a href="https://github.com/fox12387/Awei-claw/wiki" target="_blank" class="btn-outline-white">
+          阅读 Wiki
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Footer ============ -->
+  <footer>
+    <div class="footer-left">
+      <span class="logo">AweiClaw</span>
+      <span class="by">Made with love by AWEI Studio</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/fox12387/Awei-claw/blob/main/LICENSE" target="_blank">MIT License</a>
+      <a href="https://github.com/fox12387/Awei-claw" target="_blank" class="highlight">GitHub</a>
+      <a href="https://github.com/fox12387/Awei-claw/wiki" target="_blank" class="highlight">Wiki</a>
+      <a href="https://awgzs.cn" target="_blank">awgzs.cn</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
