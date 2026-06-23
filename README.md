@@ -1,7 +1,7 @@
 # 🦅 AweiClaw - AI 编程助手
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-1.0.0-blue?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/Version-2.0.0-blue?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Web-green?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/License-MIT-orange?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/stars/fox12387/Awei-claw?style=flat-square&logo=github" alt="Stars">
