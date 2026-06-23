@@ -17,6 +17,11 @@ public partial class MainForm : Form
     {
         InitializeComponent();
 
+        // ── 应用图标（EXE 文件图标 + 窗口标题栏/任务栏图标） ──
+        string iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "awei.ico");
+        if (File.Exists(iconPath))
+            this.Icon = new Icon(iconPath);
+
         // ── WebView2 控件 ──
         webView = new WebView2();
         webView.Dock = DockStyle.Fill;

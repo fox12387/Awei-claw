@@ -13,6 +13,8 @@
     <Product>AweiClaw - AI 编程助手</Product>
     <Company>AWEI Studio</Company>
     <Description>AI-Native Coding Assistant powered by DeepSeek</Description>
+    <!-- 应用图标 -->
+    <ApplicationIcon>awei.ico</ApplicationIcon>
     <!-- 发布配置 -->
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
@@ -27,6 +29,12 @@
   <ItemGroup>
     <!-- www 文件排除打包进单文件 EXE，始终作为独立文件发布在 EXE 旁边 -->
     <Content Include="www\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <!-- 图标文件 -->
+    <Content Include="awei.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
