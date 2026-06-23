@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <strong>🌟 类似 Codex 的 AI 编程助手，集成硅基流动 API，支持 6 种编程语言的智能代码提示 🌟</strong>
+  <strong>🌟AI 编程助手，集成Open AI API，支持 10+ 种编程语言的智能代码提示 🌟</strong>
 </p>
 
 ---
