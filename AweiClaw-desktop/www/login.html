@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Awei Studio</title>
+<style>
+/* ============================================
+   Apple-Style Design System — Design Tokens
+   ============================================ */
+:root {
+  /* Color Palette */
+  --apple-blue:        #007AFF;
+  --apple-blue-hover:  #0066D6;
+  --apple-blue-active: #0055B3;
+  --apple-blue-light:  #E8F2FF;
+
+  --bg-primary:        #F5F5F7;
+  --bg-card:           rgba(255, 255, 255, 0.72);
+  --bg-card-solid:     #FFFFFF;
+  --bg-input:          rgba(245, 245, 247, 0.6);
+
+  --text-primary:      #1D1D1F;
+  --text-secondary:    #6E6E73;
+  --text-tertiary:     #86868B;
+  --text-placeholder:  #AEAEB2;
+
+  --border-subtle:     rgba(0, 0, 0, 0.08);
+  --border-input:      rgba(0, 0, 0, 0.12);
+  --border-focus:      rgba(0, 122, 255, 0.5);
+
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.06),
+                       0 1px 3px rgba(0, 0, 0, 0.04),
+                       0 0 0 0.5px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.08),
+                       0 2px 8px rgba(0, 0, 0, 0.04),
+                       0 0 0 0.5px rgba(0, 0, 0, 0.06);
+  --shadow-button:     0 2px 8px rgba(0, 122, 255, 0.3);
+
+  /* Typography — mimics SF Pro */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+               'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+
+  --fs-caption: 0.75rem;
+  --fs-body:    0.875rem;
+  --fs-input:   1rem;
+  --fs-title:   1.375rem;
+  --fs-hero:    1.75rem;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+
+  --lh-body:    1.47059;
+
+  /* Spacing (4px base) */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* Radii — Apple's signature continuous curves */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 980px;
+
+  /* Transitions */
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:   120ms;
+  --dur-normal: 250ms;
+  --dur-slow:   450ms;
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ============================================
+   Animated Background Ambient
+   ============================================ */
+.ambient-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+
+.ambient-orb:nth-child(1) {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(0, 122, 255, 0.25), transparent 70%);
+  top: -15%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.ambient-orb:nth-child(2) {
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(175, 82, 222, 0.18), transparent 70%);
+  bottom: -12%;
+  right: -8%;
+  animation-delay: -7s;
+  animation-duration: 24s;
+}
+
+.ambient-orb:nth-child(3) {
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(52, 199, 89, 0.14), transparent 70%);
+  top: 40%;
+  left: 55%;
+  animation-delay: -14s;
+  animation-duration: 18s;
+}
+
+.ambient-orb:nth-child(4) {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 149, 0, 0.12), transparent 70%);
+  top: 55%;
+  left: -5%;
+  animation-delay: -3s;
+  animation-duration: 22s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%      { transform: translate(3%, -2%) scale(1.04); }
+  50%      { transform: translate(-1%, 3%) scale(0.96); }
+  75%      { transform: translate(-3%, -1%) scale(1.03); }
+}
+
+/* Subtle grid overlay */
+.ambient-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.018;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ============================================
+   Login Container
+   ============================================ */
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: var(--sp-5);
+}
+
+/* ============================================
+   Card — Frosted Glass
+   ============================================ */
+.login-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-subtle);
+  padding: var(--sp-8) var(--sp-8) var(--sp-8);
+  animation: cardEnter 0.6s var(--spring-smooth);
+  transition: box-shadow var(--dur-slow) var(--ease-apple);
+}
+
+.login-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.login-header {
+  text-align: center;
+  margin-bottom: var(--sp-6);
+}
+
+.login-logo {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto var(--sp-5);
+  background: linear-gradient(135deg, #007AFF, #5856D6);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.25);
+  animation: logoEnter 0.5s var(--spring-smooth) 0.1s both;
+}
+
+@keyframes logoEnter {
+  from { opacity: 0; transform: scale(0.8) translateY(-8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.login-logo svg {
+  width: 26px;
+  height: 26px;
+  stroke: white;
+}
+
+.login-title {
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+  margin-bottom: var(--sp-1);
+  animation: fadeSlideUp 0.5s var(--spring-smooth) 0.15s both;
+}
+
+.login-subtitle {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  font-weight: var(--fw-regular);
+  animation: fadeSlideUp 0.5s var(--spring-smooth) 0.2s both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   Auth Tabs — Apple segmented control style
+   ============================================ */
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: var(--sp-6);
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  animation: fadeSlideUp 0.5s var(--spring-smooth) 0.22s both;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: var(--sp-2) var(--sp-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--radius-md) - 2px);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-apple);
+  white-space: nowrap;
+}
+
+.auth-tab.active {
+  background: var(--bg-card-solid);
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.auth-tab:hover:not(.active) {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Auth Forms (login / register)
+   ============================================ */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  animation: fadeSlideUp 0.5s var(--spring-smooth) 0.25s both;
+}
+
+.auth-form.hidden {
+  display: none;
+}
+
+/* Field Group */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.field-label {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  color: var(--text-secondary);
+  text-transform: none;
+  letter-spacing: -0.01em;
+  padding-left: var(--sp-1);
+}
+
+/* Input — Apple style */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: var(--sp-3);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  color: var(--text-placeholder);
+  transition: color var(--dur-fast) var(--ease-apple);
+}
+
+.input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.input-field {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4) var(--sp-3) var(--sp-10);
+  font-family: var(--font-sans);
+  font-size: var(--fs-input);
+  font-weight: var(--fw-regular);
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--dur-fast) var(--ease-apple);
+  letter-spacing: -0.01em;
+}
+
+.input-field::placeholder {
+  color: var(--text-placeholder);
+}
+
+.input-field:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.input-field:focus {
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+  background: var(--bg-card-solid);
+}
+
+.input-field:focus ~ .input-icon,
+.input-wrapper:focus-within .input-icon {
+  color: var(--apple-blue);
+}
+
+/* Password toggle */
+.password-toggle {
+  position: absolute;
+  right: var(--sp-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-placeholder);
+  border-radius: var(--radius-sm);
+  transition: all var(--dur-fast) var(--ease-apple);
+  padding: 0;
+}
+
+.password-toggle:hover {
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.password-toggle:active {
+  transform: scale(0.92);
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Row: remember + forgot */
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: calc(-1 * var(--sp-2));
+}
+
+/* Custom checkbox — Apple style */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-caption);
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.checkbox-label a {
+  color: var(--apple-blue);
+  text-decoration: none;
+}
+
+.checkbox-label a:hover { opacity: 0.7; }
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-solid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--dur-fast) var(--ease-apple);
+  flex-shrink: 0;
+}
+
+.checkbox-custom svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all var(--dur-fast) var(--ease-apple);
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background: var(--apple-blue);
+  border-color: var(--apple-blue);
+}
+
+.checkbox-input:checked + .checkbox-custom svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkbox-input:focus-visible + .checkbox-custom {
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+}
+
+.forgot-link {
+  font-size: var(--fs-caption);
+  color: var(--apple-blue);
+  text-decoration: none;
+  font-weight: var(--fw-medium);
+  transition: opacity var(--dur-fast);
+}
+
+.forgot-link:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   Submit Button — Apple's signature blue pill
+   ============================================ */
+.btn-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--sp-3) var(--sp-6);
+  font-family: var(--font-sans);
+  font-size: var(--fs-input);
+  font-weight: var(--fw-semibold);
+  color: #FFFFFF;
+  background: var(--apple-blue);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-apple);
+  letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-button);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-signin:hover {
+  background: var(--apple-blue-hover);
+  box-shadow: 0 4px 14px rgba(0, 122, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-signin:active {
+  background: var(--apple-blue-active);
+  transform: scale(0.98);
+  box-shadow: 0 1px 4px rgba(0, 122, 255, 0.2);
+}
+
+.btn-signin:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.35), var(--shadow-button);
+}
+
+/* Loading state */
+.btn-signin.loading {
+  pointer-events: none;
+  color: transparent;
+}
+
+.btn-signin .spinner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+}
+
+.btn-signin.loading .spinner {
+  opacity: 1;
+}
+
+.spinner circle {
+  fill: none;
+  stroke: white;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: spin 1.2s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success flash */
+.btn-signin.success {
+  background: #34C759;
+  box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+}
+
+/* ============================================
+   Auth message (error / success banner)
+   ============================================ */
+.auth-msg {
+  text-align: center;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  padding: 0;
+  margin: 0;
+  transition: all var(--dur-fast) var(--ease-apple);
+}
+
+.auth-msg.error {
+  color: #FF3B30;
+}
+
+.auth-msg.success {
+  color: #34C759;
+}
+
+/* ============================================
+   Divider & Social
+   ============================================ */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin: var(--sp-2) 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.divider-text {
+  font-size: var(--fs-caption);
+  color: var(--text-tertiary);
+  font-weight: var(--fw-medium);
+  flex-shrink: 0;
+}
+
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-6);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-apple);
+  letter-spacing: -0.01em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-social:hover {
+  background: #F5F5F7;
+  border-color: rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.btn-social:active {
+  transform: scale(0.98);
+  background: #ECECF0;
+}
+
+.btn-social:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+}
+
+.btn-social svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.login-footer {
+  text-align: center;
+  margin-top: var(--sp-6);
+  font-size: var(--fs-caption);
+  color: var(--text-secondary);
+  animation: fadeSlideUp 0.5s var(--spring-smooth) 0.3s both;
+}
+
+.login-footer a {
+  color: var(--apple-blue);
+  text-decoration: none;
+  font-weight: var(--fw-medium);
+  transition: opacity var(--dur-fast);
+}
+
+.login-footer a:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   Error State
+   ============================================ */
+.field-error {
+  font-size: var(--fs-caption);
+  color: #FF3B30;
+  padding-left: var(--sp-1);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all var(--dur-fast) var(--ease-apple);
+  height: 0;
+  overflow: hidden;
+}
+
+.field-error.visible {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto;
+  margin-top: var(--sp-1);
+}
+
+.input-field.error {
+  border-color: #FF3B30;
+  box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.1);
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+.shake {
+  animation: shake 0.5s var(--ease-apple);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 480px) {
+  .login-wrapper {
+    padding: var(--sp-4);
+  }
+
+  .login-card {
+    padding: var(--sp-6) var(--sp-5) var(--sp-5);
+    border-radius: var(--radius-lg);
+  }
+
+  .login-title {
+    font-size: var(--fs-title);
+  }
+
+  .ambient-orb:nth-child(1) { width: 300px; height: 300px; }
+  .ambient-orb:nth-child(2) { width: 260px; height: 260px; }
+  .ambient-orb:nth-child(3) { width: 220px; height: 220px; }
+  .ambient-orb:nth-child(4) { width: 180px; height: 180px; }
+}
+
+/* ============================================
+   GitHub OAuth Modal
+   ============================================ */
+.oauth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-normal) var(--ease-apple);
+}
+
+.oauth-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.oauth-modal {
+  background: var(--bg-card);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-subtle);
+  padding: var(--sp-8);
+  max-width: 380px;
+  width: calc(100% - var(--sp-8));
+  text-align: center;
+  transform: translateY(12px) scale(0.97);
+  transition: transform var(--dur-slow) var(--spring-smooth);
+}
+
+.oauth-modal-overlay.active .oauth-modal {
+  transform: translateY(0) scale(1);
+}
+
+.oauth-modal-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--sp-5);
+  background: #24292F;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oauth-modal-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+
+.oauth-modal h3 {
+  font-size: var(--fs-title);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+  letter-spacing: -0.01em;
+}
+
+.oauth-modal p {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-5);
+  line-height: 1.5;
+}
+
+.oauth-code-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+
+.oauth-code {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px dashed var(--border-input);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3) var(--sp-6);
+  letter-spacing: 0.15em;
+  user-select: all;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-apple);
+}
+
+.oauth-code:hover {
+  border-color: var(--apple-blue);
+  background: var(--apple-blue-light);
+}
+
+.oauth-code.copied {
+  border-color: #34C759;
+  background: rgba(52, 199, 89, 0.08);
+  color: #34C759;
+}
+
+.oauth-steps {
+  text-align: left;
+  margin-bottom: var(--sp-5);
+}
+
+.oauth-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+
+.oauth-step-num {
+  width: 22px;
+  height: 22px;
+  background: var(--text-secondary);
+  color: white;
+  border-radius: 50%;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.oauth-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: #FFFFFF;
+  background: #24292F;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-apple);
+  text-decoration: none;
+}
+
+.oauth-open-btn:hover {
+  background: #1B1F23;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.oauth-open-btn:active {
+  transform: scale(0.97);
+}
+
+.oauth-status {
+  font-size: var(--fs-caption);
+  color: var(--text-tertiary);
+  margin-top: var(--sp-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+}
+
+.oauth-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.85); }
+}
+
+.oauth-modal-close {
+  margin-top: var(--sp-5);
+  font-size: var(--fs-caption);
+  color: var(--text-tertiary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: color var(--dur-fast);
+}
+
+.oauth-modal-close:hover {
+  color: var(--text-secondary);
+}
+
+/* GitHub social button specific */
+.btn-social.github-btn {
+  background: #24292F;
+  color: white;
+  border-color: #24292F;
+}
+
+.btn-social.github-btn:hover {
+  background: #1B1F23;
+  border-color: #1B1F23;
+}
+
+.btn-social.github-btn:active {
+  background: #161A1E;
+}
+
+.btn-social.github-btn svg {
+  fill: white;
+}
+
+.btn-social.github-btn.loading-state {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Ambient Background -->
+<div class="ambient-layer" aria-hidden="true">
+  <div class="ambient-orb"></div>
+  <div class="ambient-orb"></div>
+  <div class="ambient-orb"></div>
+  <div class="ambient-orb"></div>
+</div>
+<div class="ambient-grid" aria-hidden="true"></div>
+
+<!-- Login Container -->
+<div class="login-wrapper">
+  <div class="login-card">
+
+    <!-- Header -->
+    <header class="login-header">
+      <div class="login-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h1 class="login-title" id="loginTitle">Welcome Back</h1>
+      <p class="login-subtitle" id="loginSubtitle">Sign in to continue to Awei Studio</p>
+    </header>
+
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Create Account</button>
+    </div>
+
+    <!-- ═══════ LOGIN FORM ═══════ -->
+    <form class="auth-form" id="loginForm" novalidate autocomplete="on">
+
+      <div class="field-group">
+        <label class="field-label" for="login-email">Username or Email</label>
+        <div class="input-wrapper">
+          <span class="input-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </span>
+          <input type="text" id="login-email" class="input-field" placeholder="Username or email" autocomplete="username" required>
+        </div>
+        <span class="field-error" id="loginEmailError" role="alert">Please enter your username or email.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="login-password">Password</label>
+        <div class="input-wrapper">
+          <span class="input-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </span>
+          <input type="password" id="login-password" class="input-field" placeholder="Enter your password" autocomplete="current-password" required minlength="6">
+          <button type="button" class="password-toggle" id="loginPwToggle" aria-label="Show password" tabindex="-1">
+            <svg id="loginEyeOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+              <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+              <path d="M14.12 14.12a3 3 0 11-4.24-4.24"/>
+              <line x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+            <svg id="loginEyeOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <span class="field-error" id="loginPwError" role="alert">Password must be at least 6 characters.</span>
+      </div>
+
+      <div class="form-row">
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox-input" id="remember" checked>
+          <span class="checkbox-custom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          Remember me
+        </label>
+        <a href="#" class="forgot-link" tabindex="-1">Forgot password?</a>
+      </div>
+
+      <p class="auth-msg" id="login-msg"></p>
+
+      <button type="submit" class="btn-signin" id="loginSubmitBtn">
+        <span class="btn-text">Sign In</span>
+        <svg class="spinner" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+        </svg>
+      </button>
+    </form>
+
+    <!-- ═══════ REGISTER FORM ═══════ -->
+    <form class="auth-form hidden" id="registerForm" novalidate autocomplete="on">
+
+      <div class="field-group">
+        <label class="field-label" for="reg-username">Username</label>
+        <div class="input-wrapper">
+          <span class="input-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          <input type="text" id="reg-username" class="input-field" placeholder="Choose a username" autocomplete="username" required>
+        </div>
+        <span class="field-error" id="regUserError" role="alert">Please enter a username.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="reg-email">Email</label>
+        <div class="input-wrapper">
+          <span class="input-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </span>
+          <input type="email" id="reg-email" class="input-field" placeholder="name@example.com" autocomplete="email" required>
+        </div>
+        <span class="field-error" id="regEmailError" role="alert">Please enter a valid email address.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="reg-password">Password</label>
+        <div class="input-wrapper">
+          <span class="input-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </span>
+          <input type="password" id="reg-password" class="input-field" placeholder="At least 6 characters" autocomplete="new-password" required minlength="6">
+          <button type="button" class="password-toggle" id="regPwToggle" aria-label="Show password" tabindex="-1">
+            <svg id="regEyeOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+              <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+              <path d="M14.12 14.12a3 3 0 11-4.24-4.24"/>
+              <line x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+            <svg id="regEyeOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <span class="field-error" id="regPwError" role="alert">Password must be at least 6 characters.</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="reg-confirm">Confirm Password</label>
+        <div class="input-wrapper">
+          <span class="input-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </span>
+          <input type="password" id="reg-confirm" class="input-field" placeholder="Repeat your password" autocomplete="new-password" required minlength="6">
+        </div>
+        <span class="field-error" id="regConfirmError" role="alert">Passwords do not match.</span>
+      </div>
+
+      <div class="form-row">
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox-input" id="reg-terms">
+          <span class="checkbox-custom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          I agree to the <a href="#" onclick="return false">Terms</a> &amp; <a href="#" onclick="return false">Privacy Policy</a>
+        </label>
+      </div>
+
+      <p class="auth-msg" id="reg-msg"></p>
+
+      <button type="submit" class="btn-signin" id="registerSubmitBtn">
+        <span class="btn-text">Create Account</span>
+        <svg class="spinner" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+        </svg>
+      </button>
+    </form>
+
+    <!-- Divider & Social (login only) -->
+    <div id="loginSocialSection">
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-text">or continue with</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <div class="social-buttons">
+        <button type="button" class="btn-social github-btn" id="githubLoginBtn" onclick="handleGitHubLogin()">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          Continue with GitHub
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <p class="login-footer" id="loginFooter">
+      Don't have an account? <a href="#" onclick="switchAuthTab('register')">Create one</a>
+    </p>
+    <p class="login-footer" id="registerFooter" style="display:none">
+      Already have an account? <a href="#" onclick="switchAuthTab('login')">Sign in</a>
+    </p>
+
+  </div>
+</div>
+
+<!-- GitHub OAuth Device Flow Modal -->
+<div class="oauth-modal-overlay" id="oauthModal" role="dialog" aria-modal="true" aria-label="GitHub 登录验证">
+  <div class="oauth-modal">
+    <div class="oauth-modal-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+    </div>
+    <h3 id="oauthModalTitle">Sign in with GitHub</h3>
+    <p id="oauthModalDesc">Enter the code below on GitHub to authorize Awei Studio.</p>
+
+    <div class="oauth-code-display">
+      <span class="oauth-code" id="oauthUserCode" onclick="copyOAuthCode()" title="Click to copy">----</span>
+    </div>
+
+    <div class="oauth-steps">
+      <div class="oauth-step">
+        <span class="oauth-step-num">1</span>
+        <span>Click the button below to open GitHub</span>
+      </div>
+      <div class="oauth-step">
+        <span class="oauth-step-num">2</span>
+        <span>Enter the code shown above</span>
+      </div>
+      <div class="oauth-step">
+        <span class="oauth-step-num">3</span>
+        <span>Authorize and return here automatically</span>
+      </div>
+    </div>
+
+    <a class="oauth-open-btn" id="oauthOpenLink" href="#" target="_blank" rel="noopener">
+      Open GitHub
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+
+    <div class="oauth-status" id="oauthStatus">
+      <span class="oauth-status-dot"></span>
+      <span>Waiting for authorization...</span>
+    </div>
+
+    <button class="oauth-modal-close" onclick="closeOAuthModal()">Cancel</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  Storage helpers (must match main app keys)
+// ═══════════════════════════════════════════
+var LS_PREFIX = 'aweiclaw_';
+function lsGet(key, fallback) {
+  try { var v = localStorage.getItem(LS_PREFIX + key); return v ? JSON.parse(v) : fallback; }
+  catch(e) { return fallback; }
+}
+function lsSet(key, value) {
+  try { localStorage.setItem(LS_PREFIX + key, JSON.stringify(value)); } catch(e) {}
+}
+
+// ═══════════════════════════════════════════
+//  Tab Switching
+// ═══════════════════════════════════════════
+function switchAuthTab(tab) {
+  var isLogin = tab === 'login';
+  document.getElementById('tab-login').classList.toggle('active', isLogin);
+  document.getElementById('tab-register').classList.toggle('active', !isLogin);
+  document.getElementById('loginForm').classList.toggle('hidden', !isLogin);
+  document.getElementById('registerForm').classList.toggle('hidden', isLogin);
+  document.getElementById('loginSocialSection').style.display = isLogin ? '' : 'none';
+  document.getElementById('loginFooter').style.display = isLogin ? '' : 'none';
+  document.getElementById('registerFooter').style.display = isLogin ? 'none' : '';
+  document.getElementById('loginTitle').textContent = isLogin ? 'Welcome Back' : 'Create Account';
+  document.getElementById('loginSubtitle').textContent = isLogin ? 'Sign in to continue to Awei Studio' : 'Get started with Awei Studio';
+}
+
+// ═══════════════════════════════════════════
+//  Shared Helpers
+// ═══════════════════════════════════════════
+function showFieldError(input, errorEl, msg) {
+  input.classList.add('error');
+  errorEl.textContent = msg;
+  errorEl.classList.add('visible');
+}
+function clearFieldError(input, errorEl) {
+  input.classList.remove('error');
+  errorEl.classList.remove('visible');
+}
+function shakeInput(input) {
+  input.classList.add('shake');
+  setTimeout(function(){ input.classList.remove('shake'); }, 500);
+}
+function showMsg(id, msg, isError) {
+  var el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = 'auth-msg ' + (isError ? 'error' : 'success');
+}
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Flash button green, then redirect
+function successAndRedirect(btn, user) {
+  btn.classList.add('loading');
+  setTimeout(function(){
+    btn.classList.remove('loading');
+    btn.classList.add('success');
+    var txt = btn.querySelector('.btn-text');
+    txt.textContent = 'Success';
+    setTimeout(function(){
+      window.location.href = 'index.html';
+    }, 600);
+  }, 800);
+}
+
+// ═══════════════════════════════════════════
+//  Password Toggles
+// ═══════════════════════════════════════════
+function setupPwToggle(toggleBtn, offIcon, onIcon, inputEl) {
+  toggleBtn.addEventListener('click', function(){
+    var isPw = inputEl.type === 'password';
+    inputEl.type = isPw ? 'text' : 'password';
+    offIcon.style.display = isPw ? 'none' : '';
+    onIcon.style.display = isPw ? '' : 'none';
+    toggleBtn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password');
+  });
+}
+setupPwToggle(
+  document.getElementById('loginPwToggle'),
+  document.getElementById('loginEyeOff'),
+  document.getElementById('loginEyeOn'),
+  document.getElementById('login-password')
+);
+setupPwToggle(
+  document.getElementById('regPwToggle'),
+  document.getElementById('regEyeOff'),
+  document.getElementById('regEyeOn'),
+  document.getElementById('reg-password')
+);
+
+// ═══════════════════════════════════════════
+//  LOGIN
+// ═══════════════════════════════════════════
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var idEl = document.getElementById('login-email');
+  var pwEl = document.getElementById('login-password');
+  var idErr = document.getElementById('loginEmailError');
+  var pwErr = document.getElementById('loginPwError');
+  var btn = document.getElementById('loginSubmitBtn');
+
+  var id = idEl.value.trim();
+  var pw = pwEl.value;
+  var valid = true;
+
+  if (!id) {
+    showFieldError(idEl, idErr, 'Please enter your username or email.');
+    shakeInput(idEl); valid = false;
+  } else { clearFieldError(idEl, idErr); }
+
+  if (!pw) {
+    showFieldError(pwEl, pwErr, 'Password is required.');
+    shakeInput(pwEl); valid = false;
+  } else if (pw.length < 6) {
+    showFieldError(pwEl, pwErr, 'Password must be at least 6 characters.');
+    shakeInput(pwEl); valid = false;
+  } else { clearFieldError(pwEl, pwErr); }
+
+  if (!valid) return;
+
+  var users = lsGet('users', {});
+  var user = users[id];
+  if (!user) {
+    // Try find by email
+    var keys = Object.keys(users);
+    for (var i = 0; i < keys.length; i++) {
+      if (users[keys[i]].email === id) { user = users[keys[i]]; break; }
+    }
+  }
+
+  if (!user || user.password !== pw) {
+    showMsg('login-msg', 'Invalid username or password.', true);
+    shakeInput(idEl);
+    return;
+  }
+
+  showMsg('login-msg', '', false);
+  lsSet('current_user', { username: user.username, email: user.email });
+  successAndRedirect(btn, user);
+});
+
+// ═══════════════════════════════════════════
+//  REGISTER
+// ═══════════════════════════════════════════
+document.getElementById('registerForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var usernameEl = document.getElementById('reg-username');
+  var emailEl    = document.getElementById('reg-email');
+  var passwordEl = document.getElementById('reg-password');
+  var confirmEl  = document.getElementById('reg-confirm');
+  var termsEl    = document.getElementById('reg-terms');
+  var btn        = document.getElementById('registerSubmitBtn');
+
+  var username = usernameEl.value.trim();
+  var email    = emailEl.value.trim();
+  var password = passwordEl.value;
+  var confirm  = confirmEl.value;
+  var valid    = true;
+
+  if (!username) {
+    showFieldError(usernameEl, document.getElementById('regUserError'), 'Please enter a username.');
+    shakeInput(usernameEl); valid = false;
+  } else { clearFieldError(usernameEl, document.getElementById('regUserError')); }
+
+  if (!email) {
+    showFieldError(emailEl, document.getElementById('regEmailError'), 'Email is required.');
+    shakeInput(emailEl); valid = false;
+  } else if (!validateEmail(email)) {
+    showFieldError(emailEl, document.getElementById('regEmailError'), 'Please enter a valid email address.');
+    shakeInput(emailEl); valid = false;
+  } else { clearFieldError(emailEl, document.getElementById('regEmailError')); }
+
+  if (!password) {
+    showFieldError(passwordEl, document.getElementById('regPwError'), 'Password is required.');
+    shakeInput(passwordEl); valid = false;
+  } else if (password.length < 6) {
+    showFieldError(passwordEl, document.getElementById('regPwError'), 'Password must be at least 6 characters.');
+    shakeInput(passwordEl); valid = false;
+  } else { clearFieldError(passwordEl, document.getElementById('regPwError')); }
+
+  if (!confirm) {
+    showFieldError(confirmEl, document.getElementById('regConfirmError'), 'Please confirm your password.');
+    shakeInput(confirmEl); valid = false;
+  } else if (confirm !== password) {
+    showFieldError(confirmEl, document.getElementById('regConfirmError'), 'Passwords do not match.');
+    shakeInput(confirmEl); valid = false;
+  } else { clearFieldError(confirmEl, document.getElementById('regConfirmError')); }
+
+  if (!termsEl.checked) {
+    showMsg('reg-msg', 'Please accept the Terms of Service and Privacy Policy.', true);
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  var users = lsGet('users', {});
+  if (users[username]) {
+    showFieldError(usernameEl, document.getElementById('regUserError'), 'Username already taken.');
+    shakeInput(usernameEl); return;
+  }
+  var keys = Object.keys(users);
+  for (var i = 0; i < keys.length; i++) {
+    if (users[keys[i]].email === email) {
+      showFieldError(emailEl, document.getElementById('regEmailError'), 'Email already registered.');
+      shakeInput(emailEl); return;
+    }
+  }
+
+  users[username] = { username: username, email: email, password: password, createdAt: Date.now() };
+  lsSet('users', users);
+  lsSet('current_user', { username: username, email: email });
+  showMsg('reg-msg', 'Account created! Signing you in...', false);
+  successAndRedirect(btn, { username: username, email: email });
+});
+
+// ═══════════════════════════════════════════
+//  GitHub OAuth — Device Flow
+// ═══════════════════════════════════════════
+
+// ===== CONFIGURATION =====
+// 替换为你的 GitHub OAuth App Client ID
+// 在 https://github.com/settings/developers 创建 OAuth App 获取
+var GITHUB_CLIENT_ID = 'Ov23liNbI8wrw57t9BsT';
+
+var oauthPollTimer = null;
+var oauthDeviceCode = null;
+var oauthInterval = 5;
+
+function handleGitHubLogin() {
+  var btn = document.getElementById('githubLoginBtn');
+  btn.classList.add('loading-state');
+  btn.querySelector('span:last-child') || (function(){
+    // Add text span if not present (for SVG-only button)
+  })();
+
+  // Step 1: Request device code via local proxy (GitHub blocks CORS)
+  fetch('/api/github/device/code', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json'
+    },
+    body: 'client_id=' + encodeURIComponent(GITHUB_CLIENT_ID) + '&scope=read:user+user:email'
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    btn.classList.remove('loading-state');
+
+    if (data.error) {
+      showMsg('login-msg', 'GitHub login error: ' + data.error_description, true);
+      return;
+    }
+
+    // Store device code for polling
+    oauthDeviceCode = data.device_code;
+    oauthInterval = data.interval || 5;
+
+    // Show the modal with user code
+    document.getElementById('oauthUserCode').textContent = data.user_code;
+    document.getElementById('oauthOpenLink').href = data.verification_uri;
+    document.getElementById('oauthStatus').innerHTML =
+      '<span class="oauth-status-dot"></span><span>Waiting for authorization...</span>';
+
+    openOAuthModal();
+
+    // Start polling
+    startOAuthPolling();
+  })
+  .catch(function(err) {
+    btn.classList.remove('loading-state');
+    showMsg('login-msg', 'Network error. Please check your connection and try again.', true);
+    console.error('GitHub OAuth error:', err);
+  });
+}
+
+function openOAuthModal() {
+  document.getElementById('oauthModal').classList.add('active');
+}
+
+function closeOAuthModal() {
+  document.getElementById('oauthModal').classList.remove('active');
+  stopOAuthPolling();
+  oauthDeviceCode = null;
+}
+
+function copyOAuthCode() {
+  var codeEl = document.getElementById('oauthUserCode');
+  var code = codeEl.textContent;
+  if (!code || code === '----') return;
+
+  // Copy to clipboard
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code).then(function() {
+      codeEl.classList.add('copied');
+      codeEl.textContent = 'Copied!';
+      setTimeout(function() {
+        codeEl.classList.remove('copied');
+        codeEl.textContent = code;
+      }, 1500);
+    });
+  } else {
+    // Fallback
+    var ta = document.createElement('textarea');
+    ta.value = code;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    codeEl.classList.add('copied');
+    codeEl.textContent = 'Copied!';
+    setTimeout(function() {
+      codeEl.classList.remove('copied');
+      codeEl.textContent = code;
+    }, 1500);
+  }
+}
+
+function startOAuthPolling() {
+  stopOAuthPolling();
+  oauthPollTimer = setInterval(pollForToken, oauthInterval * 1000);
+  // Also poll immediately once
+  pollForToken();
+}
+
+function stopOAuthPolling() {
+  if (oauthPollTimer) {
+    clearInterval(oauthPollTimer);
+    oauthPollTimer = null;
+  }
+}
+
+function pollForToken() {
+  if (!oauthDeviceCode) return;
+
+  fetch('/api/github/oauth/access_token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json'
+    },
+    body: 'client_id=' + encodeURIComponent(GITHUB_CLIENT_ID) + '&device_code=' + encodeURIComponent(oauthDeviceCode) + '&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Adevice_code'
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.error) {
+      if (data.error === 'authorization_pending') {
+        // Still waiting — update status
+        document.getElementById('oauthStatus').innerHTML =
+          '<span class="oauth-status-dot"></span><span>Waiting for authorization...</span>';
+        return;
+      }
+      if (data.error === 'slow_down') {
+        // Increase interval
+        oauthInterval = (oauthInterval || 5) + 5;
+        stopOAuthPolling();
+        oauthPollTimer = setInterval(pollForToken, oauthInterval * 1000);
+        return;
+      }
+      if (data.error === 'expired_token') {
+        stopOAuthPolling();
+        document.getElementById('oauthStatus').innerHTML =
+          '<span style="color:#FF3B30">Code expired. Please try again.</span>';
+        return;
+      }
+      // Other errors
+      stopOAuthPolling();
+      document.getElementById('oauthStatus').innerHTML =
+        '<span style="color:#FF3B30">Error: ' + data.error_description + '</span>';
+      return;
+    }
+
+    // Success! Got access token
+    if (data.access_token) {
+      stopOAuthPolling();
+      document.getElementById('oauthStatus').innerHTML =
+        '<span style="color:#34C759">Authorized! Fetching your profile...</span>';
+
+      // Fetch GitHub user info
+      fetchGitHubUser(data.access_token);
+    }
+  })
+  .catch(function(err) {
+    console.error('Token poll error:', err);
+  });
+}
+
+function fetchGitHubUser(accessToken) {
+  // Fetch user profile via local proxy (GitHub API blocks CORS)
+  fetch('/api/github/user', {
+    headers: {
+      'Authorization': 'Bearer ' + accessToken,
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(user) {
+    // Also fetch emails if public email is null
+    var fetchEmails = user.email ? Promise.resolve([user]) : fetch('/api/github/user/emails', {
+      headers: {
+        'Authorization': 'Bearer ' + accessToken,
+        'Accept': 'application/json'
+      }
+    }).then(function(res) { return res.json(); });
+
+    return fetchEmails.then(function(emails) {
+      // Find primary email
+      var email = user.email;
+      if (!email && Array.isArray(emails)) {
+        var primary = emails.find(function(e) { return e.primary; });
+        email = primary ? primary.email : (emails[0] ? emails[0].email : '');
+      }
+
+      return {
+        username: user.login,
+        name: user.name || user.login,
+        email: email || '',
+        avatar: user.avatar_url,
+        githubId: user.id,
+        provider: 'github',
+        accessToken: accessToken
+      };
+    });
+  })
+  .then(function(profile) {
+    // Store user data
+    lsSet('current_user', {
+      username: profile.username,
+      email: profile.email,
+      name: profile.name,
+      avatar: profile.avatar,
+      provider: 'github'
+    });
+
+    // Store GitHub token separately for API calls
+    lsSet('github_token', { access_token: profile.accessToken });
+
+    // Success! Redirect
+    document.getElementById('oauthStatus').innerHTML =
+      '<span style="color:#34C759">Welcome, ' + profile.name + '! Redirecting...</span>';
+
+    setTimeout(function() {
+      closeOAuthModal();
+      window.location.href = 'index.html';
+    }, 1000);
+  })
+  .catch(function(err) {
+    stopOAuthPolling();
+    document.getElementById('oauthStatus').innerHTML =
+      '<span style="color:#FF3B30">Failed to fetch profile. Please try again.</span>';
+    console.error('GitHub user fetch error:', err);
+  });
+}
+
+// ═══════════════════════════════════════════
+//  Keyboard: Enter to submit on password field
+// ═══════════════════════════════════════════
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Enter') return;
+  var active = document.activeElement;
+  if (active.id === 'login-password') {
+    document.getElementById('loginForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  } else if (active.id === 'reg-confirm') {
+    document.getElementById('registerForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  }
+});
+</script>
+
+</body>
+</html>

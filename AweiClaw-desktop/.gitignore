@@ -1,0 +1,21 @@
+## Build artifacts
+bin/
+obj/
+publish/
+
+## Visual Studio cache
+.vs/
+
+## .NET user-specific settings
+*.user
+*.suo
+
+## www directory (populated by build.ps1 from repo root)
+www/index.html
+www/style.css
+www/script.js
+www/experts/
+www/snippets/
+
+## Only keep login.html (desktop-specific, not in repo root)
+!www/login.html
